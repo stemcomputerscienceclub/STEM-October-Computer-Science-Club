@@ -47,8 +47,6 @@ Our dedicated team of instructors and leaders includes:
 
 - **Farouk Farrag**: App Development Head
 
-
-
 ## Join Us
 
 Transform your life's algorithm by joining the STEM Computer Science Club. Engage in diverse tracks, elevate your skills through bootcamps, courses, and workshops, and become part of a dynamic community. 
