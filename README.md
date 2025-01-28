@@ -31,7 +31,7 @@ Our club offers a range of activities to enhance learning and engagement:
 
 Our dedicated team of instructors and leaders includes:
 
-- **Karim Atef**: President & Web Development Head & Website Manager
+- **Karim Atef**: President, Web Development Head & Website Manager
 
 - **Adam Mohamed**: Vice-President & Fundamentals of Programming Head
 
