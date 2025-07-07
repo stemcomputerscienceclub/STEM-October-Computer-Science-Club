@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card'
 import { Button } from './ui/button'
-import { Github, ExternalLink, User, ArrowRight } from 'lucide-react'
+import { Github, ExternalLink, User, ArrowRight, Smartphone, Globe, Brain, Calculator, Mail, CheckSquare } from 'lucide-react'
 
 const Projects = () => {
   const projects = [
@@ -12,7 +12,7 @@ const Projects = () => {
       description: 'A Flutter application for currency conversion supporting multiple currencies including USD, EGP, EUR, GBP, and more.',
       category: 'Mobile Development',
       technologies: ['Flutter', 'Dart', 'API Integration'],
-      image: '💱',
+      icon: Calculator,
     },
     {
       id: 2,
@@ -21,7 +21,7 @@ const Projects = () => {
       description: 'A colorful and fun website offering dessert, lunch, and breakfast recipes with easy and fast cooking instructions.',
       category: 'Web Development',
       technologies: ['HTML', 'CSS', 'JavaScript'],
-      image: '🍳',
+      icon: Globe,
     },
     {
       id: 3,
@@ -30,7 +30,7 @@ const Projects = () => {
       description: 'A quiz platform for computer science topics with customizable questions, image support, and unique quiz IDs.',
       category: 'Mobile Development',
       technologies: ['Flutter', 'Firebase', 'Dart'],
-      image: '🧠',
+      icon: Brain,
     },
     {
       id: 4,
@@ -39,7 +39,7 @@ const Projects = () => {
       description: 'An interactive quiz application with multiple-choice questions, timer functionality, and difficulty levels.',
       category: 'Web Development',
       technologies: ['HTML', 'CSS', 'JavaScript'],
-      image: '❓',
+      icon: Brain,
     },
     {
       id: 5,
@@ -48,7 +48,7 @@ const Projects = () => {
       description: 'A web application for crafting and scheduling emails with an intuitive interface and scheduling features.',
       category: 'Web Development',
       technologies: ['HTML', 'CSS', 'JavaScript'],
-      image: '📧',
+      icon: Mail,
     },
     {
       id: 6,
@@ -57,7 +57,7 @@ const Projects = () => {
       description: 'A comprehensive todo application with task management, notes functionality, and smooth transitions.',
       category: 'Mobile Development',
       technologies: ['Flutter', 'Dart', 'Local Storage'],
-      image: '✅',
+      icon: CheckSquare,
     },
   ]
 
@@ -89,17 +89,17 @@ const Projects = () => {
               viewport={{ once: true }}
             >
               <Card className="h-full card-hover group border-0 glass-effect overflow-hidden">
-                <div className="relative h-48 bg-gradient-to-br from-purple-500/20 to-blue-600/20 flex items-center justify-center">
-                  <span className="text-6xl opacity-70">{project.image}</span>
+                <div className="relative h-48 bg-gradient-to-br from-indigo-600/20 to-blue-700/20 flex items-center justify-center">
+                  <project.icon className="w-16 h-16 text-blue-400 opacity-70" />
                   <div className="absolute top-4 right-4">
-                    <span className="px-3 py-1 text-xs font-medium bg-primary/20 text-primary rounded-full backdrop-blur-sm">
+                    <span className="px-3 py-1 text-xs font-medium bg-blue-500/20 text-blue-300 rounded-full backdrop-blur-sm">
                       {project.category}
                     </span>
                   </div>
                 </div>
                 
                 <CardHeader className="pb-4">
-                  <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                  <CardTitle className="text-lg group-hover:text-blue-400 transition-colors">
                     {project.title}
                   </CardTitle>
                   <CardDescription className="line-clamp-3">
@@ -117,7 +117,7 @@ const Projects = () => {
                     {project.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 text-xs font-medium bg-secondary/50 text-foreground rounded-md"
+                        className="px-2 py-1 text-xs font-medium bg-blue-500/10 text-blue-300 rounded-md"
                       >
                         {tech}
                       </span>

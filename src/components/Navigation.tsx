@@ -37,10 +37,14 @@ const Navigation = () => {
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2"
+            className="flex items-center space-x-3"
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">SC</span>
+            <div className="w-10 h-10 rounded-lg overflow-hidden">
+              <img 
+                src="/imgs/official-logo.png" 
+                alt="STEM CS Club Logo" 
+                className="w-full h-full object-cover"
+              />
             </div>
             <span className="text-xl font-bold gradient-text">STEM CS Club</span>
           </motion.div>

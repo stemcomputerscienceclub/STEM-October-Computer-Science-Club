@@ -25,7 +25,7 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="bg-secondary/30 border-t border-white/10">
+    <footer className="bg-slate-900/30 border-t border-white/10">
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
@@ -36,9 +36,13 @@ const Footer = () => {
             viewport={{ once: true }}
             className="lg:col-span-2"
           >
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">SC</span>
+            <div className="flex items-center space-x-3 mb-4">
+              <div className="w-10 h-10 rounded-lg overflow-hidden">
+                <img 
+                  src="/imgs/official-logo.png" 
+                  alt="STEM CS Club Logo" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <span className="text-xl font-bold gradient-text">STEM CS Club</span>
             </div>
@@ -73,7 +77,7 @@ const Footer = () => {
                   <li key={link.name}>
                     <a
                       href={link.href}
-                      className="text-muted-foreground hover:text-primary transition-colors"
+                      className="text-muted-foreground hover:text-blue-400 transition-colors"
                     >
                       {link.name}
                     </a>
@@ -95,13 +99,13 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-4">
               <div className="flex items-center space-x-3 text-muted-foreground">
-                <Mail className="w-5 h-5 text-primary" />
-                <a href="mailto:csse@stemegypt.edu.eg" className="hover:text-primary transition-colors">
+                <Mail className="w-5 h-5 text-blue-400" />
+                <a href="mailto:csse@stemegypt.edu.eg" className="hover:text-blue-400 transition-colors">
                   csse@stemegypt.edu.eg
                 </a>
               </div>
               <div className="flex items-center space-x-3 text-muted-foreground">
-                <MapPin className="w-5 h-5 text-primary" />
+                <MapPin className="w-5 h-5 text-blue-400" />
                 <span>Cosmic Village, 6th October, Egypt</span>
               </div>
             </div>
@@ -115,9 +119,9 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-primary/20 transition-colors group"
+                  className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-blue-500/20 transition-colors group"
                 >
-                  <social.icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                  <social.icon className="w-5 h-5 text-muted-foreground group-hover:text-blue-400 transition-colors" />
                 </motion.a>
               ))}
             </div>

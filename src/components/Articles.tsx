@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card'
 import { Button } from './ui/button'
-import { Calendar, User, ArrowRight, ExternalLink } from 'lucide-react'
+import { Calendar, User, ArrowRight, ExternalLink, BookOpen, Code, Brain } from 'lucide-react'
 
 const Articles = () => {
   const articles = [
@@ -13,7 +13,7 @@ const Articles = () => {
       excerpt: 'Dynamic Programming has emerged as a game-changer in computer science. Its impacts on algorithm design is huge as we will know in this article.',
       category: 'Algorithms',
       readTime: '5 min read',
-      image: '📊',
+      icon: Code,
     },
     {
       id: 2,
@@ -23,7 +23,7 @@ const Articles = () => {
       excerpt: 'Numpy and Pandas are indispensable tools in machine learning. Numpy is a fundamental package for scientific computing.',
       category: 'Machine Learning',
       readTime: '7 min read',
-      image: '🐼',
+      icon: Brain,
     },
     {
       id: 3,
@@ -33,12 +33,12 @@ const Articles = () => {
       excerpt: 'In recent years, the tech industry has witnessed a surge in cross-platform frameworks. Among the leading players, Flutter brings unique strengths.',
       category: 'Mobile Development',
       readTime: '6 min read',
-      image: '📱',
+      icon: BookOpen,
     },
   ]
 
   return (
-    <section id="articles" className="py-20 bg-secondary/20">
+    <section id="articles" className="py-20 bg-slate-900/20">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -65,17 +65,17 @@ const Articles = () => {
               viewport={{ once: true }}
             >
               <Card className="h-full card-hover group border-0 glass-effect overflow-hidden">
-                <div className="relative h-48 bg-gradient-to-br from-blue-500/20 to-purple-600/20 flex items-center justify-center">
-                  <span className="text-6xl opacity-70">{article.image}</span>
+                <div className="relative h-48 bg-gradient-to-br from-blue-600/20 to-indigo-700/20 flex items-center justify-center">
+                  <article.icon className="w-16 h-16 text-blue-400 opacity-70" />
                   <div className="absolute top-4 right-4">
-                    <span className="px-3 py-1 text-xs font-medium bg-primary/20 text-primary rounded-full backdrop-blur-sm">
+                    <span className="px-3 py-1 text-xs font-medium bg-blue-500/20 text-blue-300 rounded-full backdrop-blur-sm">
                       {article.category}
                     </span>
                   </div>
                 </div>
                 
                 <CardHeader className="pb-4">
-                  <CardTitle className="text-lg group-hover:text-primary transition-colors line-clamp-2">
+                  <CardTitle className="text-lg group-hover:text-blue-400 transition-colors line-clamp-2">
                     {article.title}
                   </CardTitle>
                   <CardDescription className="line-clamp-3">
