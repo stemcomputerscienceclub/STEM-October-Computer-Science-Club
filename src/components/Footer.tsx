@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { Button } from './ui/button'
 import { Mail, MapPin, Linkedin, Facebook, Github } from 'lucide-react'
 
@@ -7,14 +8,14 @@ const Footer = () => {
 
   const footerLinks = {
     'Quick Links': [
-      { name: 'Home', href: '#home' },
-      { name: 'About', href: '#about' },
-      { name: 'Tracks', href: '#tracks' },
+      { name: 'Home', href: '/' },
+      { name: 'About', href: '/about' },
+      { name: 'Tracks', href: '/tracks' },
     ],
     'Resources': [
-      { name: 'Articles', href: '#articles' },
-      { name: 'Projects', href: '#projects' },
-      { name: 'Team', href: '#team' },
+      { name: 'Articles', href: '/articles' },
+      { name: 'Projects', href: '/projects' },
+      { name: 'Team', href: '/team' },
     ],
   }
 
@@ -25,8 +26,8 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="bg-slate-900/30 border-t border-white/10">
-      <div className="container mx-auto px-4 py-16">
+    <footer className="bg-slate-900/50 border-t border-white/10">
+      <div className="container-padding py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <motion.div
@@ -44,13 +45,13 @@ const Footer = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <span className="text-xl font-bold gradient-text">STEM CS Club</span>
+              <span className="text-xl font-bold text-white">STEM CS Club</span>
             </div>
-            <p className="text-muted-foreground mb-6 max-w-md">
+            <p className="text-white/70 mb-6 max-w-md">
               Transform your life's algorithm through the STEM Computer Science club. 
               Join our dynamic community and elevate your skills through cutting-edge tracks.
             </p>
-            <Button variant="gradient" className="group">
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white group">
               Apply Now
               <motion.span
                 className="ml-2"
@@ -71,16 +72,16 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-lg font-semibold mb-4">{title}</h3>
+              <h3 className="text-lg font-semibold mb-4 text-white">{title}</h3>
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.name}>
-                    <a
-                      href={link.href}
-                      className="text-muted-foreground hover:text-blue-400 transition-colors"
+                    <Link
+                      to={link.href}
+                      className="text-white/70 hover:text-blue-400 transition-colors"
                     >
                       {link.name}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -98,13 +99,13 @@ const Footer = () => {
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-4">
-              <div className="flex items-center space-x-3 text-muted-foreground">
+              <div className="flex items-center space-x-3 text-white/70">
                 <Mail className="w-5 h-5 text-blue-400" />
                 <a href="mailto:csse@stemegypt.edu.eg" className="hover:text-blue-400 transition-colors">
                   csse@stemegypt.edu.eg
                 </a>
               </div>
-              <div className="flex items-center space-x-3 text-muted-foreground">
+              <div className="flex items-center space-x-3 text-white/70">
                 <MapPin className="w-5 h-5 text-blue-400" />
                 <span>Cosmic Village, 6th October, Egypt</span>
               </div>
@@ -121,7 +122,7 @@ const Footer = () => {
                   whileTap={{ scale: 0.95 }}
                   className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-blue-500/20 transition-colors group"
                 >
-                  <social.icon className="w-5 h-5 text-muted-foreground group-hover:text-blue-400 transition-colors" />
+                  <social.icon className="w-5 h-5 text-white/70 group-hover:text-blue-400 transition-colors" />
                 </motion.a>
               ))}
             </div>
@@ -134,7 +135,7 @@ const Footer = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-8 pt-8 border-t border-white/10 text-center text-muted-foreground"
+          className="mt-8 pt-8 border-t border-white/10 text-center text-white/60"
         >
           <p>© {currentYear} STEM Computer Science Club. All rights reserved.</p>
         </motion.div>

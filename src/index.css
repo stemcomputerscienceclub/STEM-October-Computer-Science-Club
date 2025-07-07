@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    --background: 220 26% 6%;
+    --background: 222 84% 4.9%;
     --foreground: 210 40% 98%;
-    --card: 220 26% 8%;
+    --card: 222 84% 4.9%;
     --card-foreground: 210 40% 98%;
-    --popover: 220 26% 8%;
+    --popover: 222 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 217 91% 60%;
-    --primary-foreground: 220 26% 6%;
-    --secondary: 220 26% 14%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 84% 4.9%;
+    --secondary: 217 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 220 26% 14%;
+    --muted: 217 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 220 26% 14%;
+    --accent: 217 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 220 26% 14%;
-    --input: 220 26% 14%;
-    --ring: 217 91% 60%;
-    --radius: 0.75rem;
+    --border: 217 32.6% 17.5%;
+    --input: 217 32.6% 17.5%;
+    --ring: 212 72% 59%;
+    --radius: 0.5rem;
   }
 }
 
@@ -38,20 +38,38 @@
 }
 
 @layer components {
-  .gradient-text {
-    @apply bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-600 bg-clip-text text-transparent;
+  .tech-pattern {
+    background-image: 
+      radial-gradient(circle at 25px 25px, rgba(59, 130, 246, 0.1) 2px, transparent 0),
+      radial-gradient(circle at 75px 75px, rgba(99, 102, 241, 0.1) 2px, transparent 0);
+    background-size: 100px 100px;
   }
   
-  .glass-effect {
-    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  .code-pattern {
+    background-image: 
+      linear-gradient(45deg, transparent 40%, rgba(59, 130, 246, 0.05) 50%, transparent 60%),
+      linear-gradient(-45deg, transparent 40%, rgba(99, 102, 241, 0.05) 50%, transparent 60%);
+    background-size: 20px 20px;
   }
   
-  .card-hover {
-    @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25;
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg;
   }
   
-  .tech-icon {
-    @apply w-16 h-16 p-3 rounded-xl bg-gradient-to-br from-blue-600/20 to-indigo-700/20 backdrop-blur-sm border border-white/10 transition-all duration-300 hover:scale-110 hover:rotate-6 hover:shadow-lg hover:shadow-blue-500/25;
+  .tech-card {
+    @apply glass-card p-6 transition-all duration-300 hover:bg-white/10 hover:border-blue-500/30 hover:scale-105;
+  }
+  
+  .page-header {
+    @apply text-4xl md:text-5xl font-bold text-center mb-6;
+  }
+  
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+  
+  .container-padding {
+    @apply container mx-auto px-4;
   }
 }
 
@@ -65,12 +83,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--primary));
+  background: hsl(var(--ring));
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--primary) / 0.8);
+  background: hsl(var(--ring) / 0.8);
 }
 
 /* Smooth scrolling */
@@ -90,4 +108,23 @@ html {
 
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Tech animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.6); }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+.glow-animation {
+  animation: glow 2s ease-in-out infinite;
 }
