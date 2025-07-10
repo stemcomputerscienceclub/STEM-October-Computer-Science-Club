@@ -23,7 +23,6 @@ const ChatBot: React.FC = () => {
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const { theme } = useTheme();
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -196,12 +195,11 @@ const ChatBot: React.FC = () => {
                   <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 text-white font-bold text-lg flex items-center justify-center flex-shrink-0">
                     C
                   </div>
-                  <div className="bg-secondary-100 dark:bg-secondary-800 p-3 rounded-lg">
-                    <div className="flex space-x-1">
-                      <div className="w-2 h-2 bg-secondary-400 rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-secondary-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                      <div className="w-2 h-2 bg-secondary-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-                    </div>
+                  <div className="bg-secondary-100 dark:bg-secondary-800 p-3 rounded-lg">                      <div className="flex space-x-1">
+                        <div className="w-2 h-2 bg-secondary-400 rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-secondary-400 rounded-full animate-bounce animate-bounce-delay-1"></div>
+                        <div className="w-2 h-2 bg-secondary-400 rounded-full animate-bounce animate-bounce-delay-2"></div>
+                      </div>
                   </div>
                 </motion.div>
               )}

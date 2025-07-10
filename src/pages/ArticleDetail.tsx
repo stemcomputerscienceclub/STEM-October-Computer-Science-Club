@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useParams, Link } from 'react-router-dom';
-import { Calendar, Clock, User, Eye, Heart, MessageCircle, Share2, Bookmark, ArrowLeft, Tag, ThumbsUp, ThumbsDown, Send } from 'lucide-react';
+import { Calendar, Clock, Eye, Heart, MessageCircle, Share2, Bookmark, ArrowLeft, ThumbsUp, Send } from 'lucide-react';
 
 const ArticleDetail: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
   const [liked, setLiked] = useState(false);
   const [bookmarked, setBookmarked] = useState(false);
   const [comment, setComment] = useState('');
@@ -308,7 +307,7 @@ The investment in learning TypeScript pays off quickly in terms of reduced bugs,
 
   useEffect(() => {
     setComments(mockComments);
-  }, []);
+  }, [mockComments]);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);

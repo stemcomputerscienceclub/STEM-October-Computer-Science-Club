@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, Clock } from 'lucide-react';
+import { BookOpen } from 'lucide-react';
 
 const Articles: React.FC = () => {
   return (

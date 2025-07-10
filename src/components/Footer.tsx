@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, MapPin, Phone, Code2, Facebook, Instagram } from 'lucide-react';
+import { Github, Linkedin, Mail, MapPin, Code2, Facebook, Instagram } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
@@ -171,15 +171,15 @@ const Footer: React.FC = () => {
               </span>
             </div>
             <div className="flex items-center space-x-6 text-sm text-secondary-400">
-              <a href="#" className="hover:text-primary-400 transition-colors">
+              <button className="hover:text-primary-400 transition-colors cursor-pointer">
                 Privacy Policy
-              </a>
-              <a href="#" className="hover:text-primary-400 transition-colors">
+              </button>
+              <button className="hover:text-primary-400 transition-colors cursor-pointer">
                 Terms of Service
-              </a>
-              <a href="#" className="hover:text-primary-400 transition-colors">
+              </button>
+              <button className="hover:text-primary-400 transition-colors cursor-pointer">
                 Code of Conduct
-              </a>
+              </button>
             </div>
           </div>
         </motion.div>

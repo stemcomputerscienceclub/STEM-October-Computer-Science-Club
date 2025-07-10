@@ -77,27 +77,18 @@ const Home: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-slate-100/60 via-white/40 to-blue-50/50 dark:from-slate-900/60 dark:via-transparent dark:to-slate-800/40" />
               {/* Tech Pattern Overlay */}
               <div className="absolute inset-0 opacity-15 dark:opacity-10">
-                <div className="h-full w-full" style={{
-                  backgroundImage: 'linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px)',
-                  backgroundSize: '40px 40px'
-                }} />
+                <div className="h-full w-full tech-grid-pattern" />
               </div>
             </div>
             
             {/* Advanced Circuit Board Pattern */}
             <div className="absolute inset-0 opacity-20 dark:opacity-12">
-              <div className="h-full w-full" style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%232563eb' stroke-width='1.5'%3E%3Cpath d='M15 15h90v90H15z'/%3E%3Cpath d='M25 25h70v70H25z'/%3E%3Cpath d='M35 35h50v50H35z'/%3E%3Ccircle cx='40' cy='40' r='4'/%3E%3Ccircle cx='80' cy='40' r='4'/%3E%3Ccircle cx='40' cy='80' r='4'/%3E%3Ccircle cx='80' cy='80' r='4'/%3E%3Ccircle cx='60' cy='60' r='6'/%3E%3Cpath d='M40 40h40M40 80h40M40 40v40M80 40v40M60 25v70M25 60h70'/%3E%3C/g%3E%3C/svg%3E")`,
-                backgroundSize: '120px 120px'
-              }} />
+              <div className="h-full w-full circuit-board-pattern" />
             </div>
             
             {/* Hexagonal Tech Pattern */}
             <div className="absolute inset-0 opacity-10 dark:opacity-8">
-              <div className="h-full w-full" style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%233b82f6' stroke-width='1'%3E%3Cpolygon points='40,10 60,25 60,55 40,70 20,55 20,25'/%3E%3C/g%3E%3C/svg%3E")`,
-                backgroundSize: '80px 80px'
-              }} />
+              <div className="h-full w-full hexagonal-pattern" />
             </div>
           
           {/* Enhanced Floating Code Elements */}
@@ -485,10 +476,7 @@ const Home: React.FC = () => {
         <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-950 relative overflow-hidden">
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-20 dark:opacity-10">
-            <div className="h-full w-full" style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%233b82f6' stroke-width='1'%3E%3Cpath d='M15 15h30v30H15z'/%3E%3Ccircle cx='30' cy='30' r='8'/%3E%3C/g%3E%3C/svg%3E")`,
-              backgroundSize: '60px 60px'
-            }} />
+            <div className="h-full w-full foundation-pattern" />
           </div>
           
           <div className="container mx-auto px-6 relative z-10">
@@ -685,9 +673,7 @@ const Home: React.FC = () => {
         <section className="py-20 bg-white dark:bg-slate-900 relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23334155' fill-opacity='0.4'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }} />
+          <div className="absolute inset-0 dots-pattern" />
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

@@ -26,7 +26,6 @@
   body {
     font-family: 'Montserrat', sans-serif;
     @apply bg-white dark:bg-secondary-900 text-secondary-900 dark:text-white transition-colors duration-300;
-    cursor: none;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -95,6 +94,31 @@
   }
 }
 
+/* Background Patterns */
+.tech-grid-pattern {
+  background-image: linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.circuit-board-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%232563eb' stroke-width='1.5'%3E%3Cpath d='M15 15h90v90H15z'/%3E%3Cpath d='M25 25h70v70H25z'/%3E%3Cpath d='M35 35h50v50H35z'/%3E%3Ccircle cx='40' cy='40' r='4'/%3E%3Ccircle cx='80' cy='40' r='4'/%3E%3Ccircle cx='40' cy='80' r='4'/%3E%3Ccircle cx='80' cy='80' r='4'/%3E%3Ccircle cx='60' cy='60' r='6'/%3E%3Cpath d='M40 40h40M40 80h40M40 40v40M80 40v40M60 25v70M25 60h70'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 120px 120px;
+}
+
+.hexagonal-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%233b82f6' stroke-width='1'%3E%3Cpolygon points='40,10 60,25 60,55 40,70 20,55 20,25'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 80px 80px;
+}
+
+.foundation-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%233b82f6' stroke-width='1'%3E%3Cpath d='M15 15h30v30H15z'/%3E%3Ccircle cx='30' cy='30' r='8'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 60px 60px;
+}
+
+.dots-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23334155' fill-opacity='0.4'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
 /* Loading Animation */
 .loading-dots {
   display: inline-block;
@@ -118,4 +142,13 @@
   80%, 100% {
     content: '...';
   }
+}
+
+/* Animation Delays */
+.animate-bounce-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.animate-bounce-delay-2 {
+  animation-delay: 0.2s;
 }

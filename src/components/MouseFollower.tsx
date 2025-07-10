@@ -8,7 +8,6 @@ interface MousePosition {
 
 const MouseFollower: React.FC = () => {
   const [mousePosition, setMousePosition] = useState<MousePosition>({ x: 0, y: 0 });
-  const [prevMousePosition, setPrevMousePosition] = useState<MousePosition>({ x: 0, y: 0 });
   const [rotation, setRotation] = useState(0);
   const [scaleX, setScaleX] = useState(1);
   const [yOffset, setYOffset] = useState(0);
@@ -39,8 +38,6 @@ const MouseFollower: React.FC = () => {
           const horizontalMovement = deltaX;
           const yMovement = Math.sin(Date.now() * 0.01) * Math.abs(horizontalMovement) * 0.3;
           setYOffset(yMovement);
-          
-          setPrevMousePosition(prevPos);
         }
         
         return newPosition;
