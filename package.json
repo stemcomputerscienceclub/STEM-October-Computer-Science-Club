@@ -28,7 +28,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "analyze": "npm run build && npx webpack-bundle-analyzer build/static/js/*.js",
+    "seo:audit": "node scripts/seo-audit.js",
+    "build:production": "npm run build && npm run seo:audit"
   },
   "eslintConfig": {
     "extends": [

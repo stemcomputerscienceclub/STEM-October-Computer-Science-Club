@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://your-domain.vercel.app/sitemap.xml
+Sitemap: https://stemcsclub.org/sitemap.xml
 
 # Crawl delay (optional)
 Crawl-delay: 1

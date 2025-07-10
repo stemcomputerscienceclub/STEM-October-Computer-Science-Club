@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Trophy, Medal, Star, TrendingUp, Users, Code, Zap, Target, Crown, Award, ChevronUp, ChevronDown, Filter, Search } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const Leaderboard: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('overall');
@@ -265,6 +266,13 @@ const Leaderboard: React.FC = () => {
 
   return (
     <div className="min-h-screen pt-20">
+      <SEO 
+        title="Leaderboard - Top Performers"
+        description="View the leaderboard and rankings of our top programming community members. Track achievements, coding challenges, and hackathon results."
+        url="/leaderboard"
+        image="/imgs/official-logo.png"
+      />
+
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-secondary-900 dark:via-secondary-800 dark:to-primary-900">
         <div className="max-w-7xl mx-auto text-center">

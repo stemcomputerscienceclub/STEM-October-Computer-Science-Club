@@ -565,7 +565,7 @@ const About: React.FC = () => {
         description="Learn about our mission to empower the next generation of programmers and innovators. Discover our values, team, and commitment to excellence in computer science education."
         keywords="about STEM CS club, computer science mission, programming education, tech innovation, coding community, software development team"
         image="/imgs/Team.jpeg"
-        url="https://your-domain.vercel.app/about"
+        url="https://stemcsclub.org/about"
       />
       
       {/* Enhanced Hero Section */}

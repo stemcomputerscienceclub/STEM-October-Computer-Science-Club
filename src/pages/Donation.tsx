@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Heart, DollarSign, Users, Target } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const Donation: React.FC = () => {
   const handleDonate = () => {
@@ -51,6 +52,13 @@ const Donation: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-secondary-900 dark:via-secondary-800 dark:to-primary-900">
+      <SEO 
+        title="Support Our Mission - Donations"
+        description="Support our programming community and help us empower students through coding education. Your donation makes a direct impact on student learning and growth."
+        url="/donation"
+        image="/imgs/official-logo.png"
+      />
+
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">

@@ -11,6 +11,7 @@ import {
   Tag
 } from 'lucide-react';
 import Navbar from '../components/Header';
+import SEO from '../components/SEO';
 
 interface Workshop {
   id: number;
@@ -179,6 +180,14 @@ const Workshops: React.FC = () => {
   return (
     <div className="min-h-screen pt-20">
       <Navbar />
+
+      {/* SEO Component */}
+      <SEO
+        title="Workshops and Hackathons"
+        description="Join our hands-on workshops and exciting hackathons to learn, code, and innovate. Perfect for all skill levels."
+        url="/workshops-hackathons"
+        image="/imgs/seo-image.jpg"
+      />
 
       {/* Hero */}
       <section className="section-padding bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-secondary-900 dark:via-secondary-800 dark:to-primary-900">

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useParams, Link } from 'react-router-dom';
 import { Calendar, Clock, Eye, Heart, MessageCircle, Share2, Bookmark, ArrowLeft, ThumbsUp, Send } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const ArticleDetail: React.FC = () => {
   const [liked, setLiked] = useState(false);
@@ -382,6 +383,13 @@ The investment in learning TypeScript pays off quickly in terms of reduced bugs,
 
   return (
     <div className="min-h-screen pt-20">
+      <SEO 
+        title={article.title}
+        description={article.excerpt || "Learn programming concepts and best practices from our educational articles and tutorials."}
+        url={`/articles/${article.id}`}
+        image={article.image || "/imgs/articles-hero.png"}
+      />
+      
       {/* Back Button */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <Link

@@ -17,15 +17,15 @@ interface SEOProps {
 }
 
 const SEO: React.FC<SEOProps> = ({
-  title = 'STEM Computer Science Club - Empowering Future Programmers & Innovators',
-  description = 'Join our vibrant community of passionate developers. Master programming tracks, participate in workshops, and unlock your potential in computer science and technology innovation.',
+  title = process.env.REACT_APP_SITE_TITLE || 'STEM Computer Science Club - Empowering Future Programmers & Innovators',
+  description = process.env.REACT_APP_SITE_DESCRIPTION || 'Join our vibrant community of passionate developers. Master programming tracks, participate in workshops, and unlock your potential in computer science and technology innovation.',
   keywords = 'STEM, computer science, programming, web development, machine learning, AI, algorithms, coding bootcamp, tech community, software engineering, python, javascript, react, hackathon',
   image = '/imgs/official-logo.png',
-  url = 'https://your-domain.vercel.app',
+  url = process.env.REACT_APP_SITE_URL || 'https://stemcsclub.org',
   type = 'website',
   article
 }) => {
-  const siteTitle = 'STEM CS Club';
+  const siteTitle = process.env.REACT_APP_SITE_NAME || 'STEM CS Club';
   const fullTitle = title.includes(siteTitle) ? title : `${title} | ${siteTitle}`;
 
   return (
@@ -49,6 +49,8 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
+      <meta name="twitter:site" content={process.env.REACT_APP_TWITTER_HANDLE || '@stemcsclub'} />
+      <meta name="twitter:creator" content={process.env.REACT_APP_TWITTER_HANDLE || '@stemcsclub'} />
 
       {/* Article specific meta tags */}
       {article && (

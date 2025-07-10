@@ -101,7 +101,7 @@ const Home: React.FC = () => {
         description="Join our vibrant community of passionate developers. Master programming tracks, participate in workshops, and unlock your potential in computer science and technology innovation."
         keywords="STEM computer science club, programming community, web development, AI machine learning, coding bootcamp, tech workshops, software engineering, hackathon, programming tracks, computer science education"
         image="/imgs/official-logo.png"
-        url="https://your-domain.vercel.app/"
+        url="https://stemcsclub.org/"
       />
 
       {/* Hero Section */}

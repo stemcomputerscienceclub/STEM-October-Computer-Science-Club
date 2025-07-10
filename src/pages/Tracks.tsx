@@ -404,7 +404,7 @@ const Tracks: React.FC = () => {
         description="Explore our comprehensive programming tracks including Web Development, AI/ML, Mobile Development, and more. Master coding skills with structured learning paths and hands-on projects."
         keywords="programming tracks, web development course, AI machine learning training, mobile app development, data science track, cybersecurity course, coding bootcamp tracks"
         image="/imgs/python-hackathon.png"
-        url="https://your-domain.vercel.app/tracks"
+        url="https://stemcsclub.org/tracks"
       />
       
       {/* Hero Section */}

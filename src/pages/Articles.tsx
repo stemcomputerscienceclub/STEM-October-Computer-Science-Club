@@ -11,7 +11,7 @@ const Articles: React.FC = () => {
         description="Access a comprehensive collection of programming articles, tutorials, and educational resources. Stay updated with the latest in computer science and technology."
         keywords="programming articles, coding tutorials, computer science resources, tech blog, software development guides, programming tips, coding best practices"
         image="/imgs/articles-hero.png"
-        url="https://your-domain.vercel.app/articles"
+        url="https://stemcsclub.org/articles"
       />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
