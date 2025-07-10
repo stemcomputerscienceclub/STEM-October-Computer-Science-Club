@@ -94,7 +94,7 @@ const About: React.FC = () => {
       highboardMembers: [
         {
           name: 'Karim Atef',
-          role: 'Club President',
+          role: 'President',
           image: 'imgs/members/kemo.jpg',
           // email: 'ahmed.mohamed@stemcs.club',
           // phone: '+20 123 456 7890',
