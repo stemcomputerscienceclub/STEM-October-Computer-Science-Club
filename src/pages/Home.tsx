@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Code, Users,Globe ,BookOpen, Trophy,UserPlus, Terminal, Cpu, Database, GitBranch, Braces, FileCode, Zap, Target, Lightbulb, School, Rocket, Users2, Award, Lightbulb as Innovation, BookOpenCheck } from 'lucide-react';
 import CS3DBackground from '../components/CS3DBackground';
+import SEO from '../components/SEO';
 import { useScrollCounter } from '../hooks/useScrollCounter';
 
 const Home: React.FC = () => {
@@ -56,15 +57,15 @@ const Home: React.FC = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, delay: 1.8 + index * 0.1 }}
         whileHover={{ scale: 1.05, y: -5 }}
-        className="text-center group"
+        className="text-center group overflow-protect"
       >
-        <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl ${stat.bgColor} p-4 group-hover:scale-110 transition-transform duration-300 border border-blue-400/40`}>
+        <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl ${stat.bgColor} p-4 group-hover:scale-110 transition-transform duration-300 border border-blue-400/40 stats-icon-micro`}>
           <Icon className="w-full h-full text-white" />
         </div>
-        <div className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-2">
+        <div className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-2 stats-micro">
           {count}{stat.suffix}
         </div>
-        <div className="text-sm md:text-base text-slate-600 dark:text-slate-400">
+        <div className="text-sm md:text-base text-slate-600 dark:text-slate-400 stats-micro overflow-protect">
           {stat.label}
         </div>
       </motion.div>
@@ -94,6 +95,15 @@ const Home: React.FC = () => {
 
   return (
     <div className="min-h-screen">
+      {/* SEO Component */}
+      <SEO 
+        title="STEM Computer Science Club - Empowering Future Programmers & Innovators"
+        description="Join our vibrant community of passionate developers. Master programming tracks, participate in workshops, and unlock your potential in computer science and technology innovation."
+        keywords="STEM computer science club, programming community, web development, AI machine learning, coding bootcamp, tech workshops, software engineering, hackathon, programming tracks, computer science education"
+        image="/imgs/official-logo.png"
+        url="https://your-domain.vercel.app/"
+      />
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 lg:pt-20">
         {/* 3D Background */}
@@ -125,16 +135,16 @@ const Home: React.FC = () => {
                 initial={{ opacity: 0, scale: 0.8, y: -20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                className="inline-flex items-center px-8 py-4 bg-white/98 dark:bg-slate-800/95 backdrop-blur-xl border border-slate-300/60 dark:border-slate-600/50 rounded-2xl mb-4 shadow-2xl shadow-slate-500/15 dark:shadow-blue-400/20"
+                className="inline-flex items-center px-8 py-4 bg-white/98 dark:bg-slate-800/95 backdrop-blur-xl border border-slate-300/60 dark:border-slate-600/50 rounded-2xl mb-4 shadow-2xl shadow-slate-500/15 dark:shadow-blue-400/20 max-w-xs-screen terminal-responsive"
               >
-                <div className="flex space-x-3 mr-6">
+                <div className="flex space-x-3 mr-6 smartwatch-hide">
                   <div className="w-4 h-4 bg-red-500 rounded-full shadow-sm"></div>
                   <div className="w-4 h-4 bg-yellow-500 rounded-full shadow-sm"></div>
                   <div className="w-4 h-4 bg-green-500 rounded-full shadow-sm"></div>
                 </div>
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-3 overflow-protect">
                   <Terminal className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                  <span className="text-slate-700 dark:text-slate-300 font-mono text-base font-medium">
+                  <span className="text-slate-700 dark:text-slate-300 font-mono text-base font-medium code-responsive">
                     ~/stem-cs-club
                   </span>
                   <span className="text-green-600 dark:text-green-400 font-mono text-base font-semibold">
@@ -143,7 +153,7 @@ const Home: React.FC = () => {
                   <motion.span
                     animate={{ opacity: [1, 0, 1] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
-                    className="text-blue-600 dark:text-blue-400 font-mono text-base"
+                    className="text-blue-600 dark:text-blue-400 font-mono text-base code-responsive"
                   >
                     echo "Welcome to STEM CS Club"
                   </motion.span>
@@ -153,7 +163,7 @@ const Home: React.FC = () => {
               {/* Professional Main Heading */}
                <div className="space-y-8">
                  <motion.h1 
-                   className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none"
+                   className="hero-title-responsive text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none overflow-protect"
                    initial={{ opacity: 0, y: 30 }}
                    animate={{ opacity: 1, y: 0 }}
                    transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
@@ -191,7 +201,7 @@ const Home: React.FC = () => {
                    transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
                    className="space-y-6"
                  >
-                   <p className="text-xl md:text-2xl lg:text-3xl text-slate-800 dark:text-slate-300 max-w-4xl mx-auto leading-relaxed font-medium">
+                   <p className="hero-subtitle-responsive text-xl md:text-2xl lg:text-3xl text-slate-800 dark:text-slate-300 max-w-4xl mx-auto leading-relaxed font-medium overflow-protect">
                      Empowering the next generation of
                      <span className="text-blue-700 dark:text-blue-400 font-semibold"> programmers </span>
                      and
@@ -202,7 +212,7 @@ const Home: React.FC = () => {
                      initial={{ opacity: 0 }}
                      animate={{ opacity: 1 }}
                      transition={{ duration: 0.8, delay: 1.4 }}
-                     className="text-lg md:text-xl text-slate-700 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed"
+                     className="hero-subtitle-responsive text-lg md:text-xl text-slate-700 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed overflow-protect"
                    >
                      Join our community of passionate developers and unlock your potential in computer science, programming, and technology innovation.
                    </motion.p>
@@ -225,7 +235,7 @@ const Home: React.FC = () => {
               >
                 <Link
                   to="/tracks"
-                  className="group relative inline-flex items-center px-10 py-5 bg-gradient-to-r from-blue-700 to-indigo-700 hover:from-blue-800 hover:to-indigo-800 text-white font-bold rounded-2xl transition-all duration-300 shadow-2xl shadow-blue-600/30 hover:shadow-blue-600/50 border border-blue-600/30 backdrop-blur-sm overflow-hidden"
+                  className="group relative inline-flex items-center px-10 py-5 bg-gradient-to-r from-blue-700 to-indigo-700 hover:from-blue-800 hover:to-indigo-800 text-white font-bold rounded-2xl transition-all duration-300 shadow-2xl shadow-blue-600/30 hover:shadow-blue-600/50 border border-blue-600/30 backdrop-blur-sm overflow-hidden btn-responsive max-w-xs-screen"
                 >
                   {/* Animated background overlay */}
                   <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -247,7 +257,7 @@ const Home: React.FC = () => {
               >
                 <Link
                   to="/about"
-                  className="group relative inline-flex items-center px-10 py-5 bg-white/95 dark:bg-slate-800/90 backdrop-blur-xl border-2 border-slate-400 dark:border-slate-600 text-slate-800 dark:text-slate-300 hover:text-blue-700 dark:hover:text-blue-400 font-bold rounded-2xl transition-all duration-300 shadow-xl hover:shadow-2xl hover:border-blue-500 dark:hover:border-blue-500 overflow-hidden"
+                  className="group relative inline-flex items-center px-10 py-5 bg-white/95 dark:bg-slate-800/90 backdrop-blur-xl border-2 border-slate-400 dark:border-slate-600 text-slate-800 dark:text-slate-300 hover:text-blue-700 dark:hover:text-blue-400 font-bold rounded-2xl transition-all duration-300 shadow-xl hover:shadow-2xl hover:border-blue-500 dark:hover:border-blue-500 overflow-hidden btn-responsive max-w-xs-screen"
                 >
                   {/* Animated background overlay */}
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -264,7 +274,7 @@ const Home: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.7 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16"
+              className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 grid-responsive"
             >
               {stats.map((stat, index) => (
                 <StatCard key={stat.label} stat={stat} index={index} />

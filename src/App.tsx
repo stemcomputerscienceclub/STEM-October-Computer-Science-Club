@@ -1,10 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from './contexts/ThemeContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ChatBot from './components/ChatBot';
 import MouseFollower from './components/MouseFollower';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import About from './pages/About';
 import Tracks from './pages/Tracks';
@@ -17,28 +19,31 @@ import './index.css';
 
 function App() {
   return (
-    <ThemeProvider>
-      <Router>
-        <div className="min-h-screen flex flex-col bg-white dark:bg-secondary-900 transition-colors duration-300">
-          <Header />
-          <main className="flex-grow">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/tracks" element={<Tracks />} />
-              <Route path="/workshops" element={<Workshops />} />
-              <Route path="/leaderboard" element={<Leaderboard />} />
-              <Route path="/articles" element={<Articles />} />
-              <Route path="/articles/:id" element={<ArticleDetail />} />
-              <Route path="/donation" element={<Donation />} />
-            </Routes>
-          </main>
-          <Footer />
-          <ChatBot />
-          <MouseFollower />
-        </div>
-      </Router>
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider>
+        <Router>
+          <ScrollToTop />
+          <div className="min-h-screen flex flex-col bg-white dark:bg-secondary-900 transition-colors duration-300">
+            <Header />
+            <main className="flex-grow">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/tracks" element={<Tracks />} />
+                <Route path="/workshops" element={<Workshops />} />
+                <Route path="/leaderboard" element={<Leaderboard />} />
+                <Route path="/articles" element={<Articles />} />
+                <Route path="/articles/:id" element={<ArticleDetail />} />
+                <Route path="/donation" element={<Donation />} />
+              </Routes>
+            </main>
+            <Footer />
+            <ChatBot />
+            <MouseFollower />
+          </div>
+        </Router>
+      </ThemeProvider>
+    </HelmetProvider>
   );
 }
 

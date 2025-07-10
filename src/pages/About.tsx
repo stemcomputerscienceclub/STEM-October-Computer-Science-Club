@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Users, Target, Award, Heart, Code, Lightbulb, Rocket, Globe, Crown, Trophy, MapPin, Video, Mail, Phone, Linkedin } from 'lucide-react';
+import SEO from '../components/SEO';
 import '../styles/flipCard.css';
 
 const About: React.FC = () => {
@@ -558,6 +559,15 @@ const About: React.FC = () => {
 
   return (
     <div className="min-h-screen pt-20">
+      {/* SEO Component */}
+      <SEO 
+        title="About Us - STEM Computer Science Club"
+        description="Learn about our mission to empower the next generation of programmers and innovators. Discover our values, team, and commitment to excellence in computer science education."
+        keywords="about STEM CS club, computer science mission, programming education, tech innovation, coding community, software development team"
+        image="/imgs/Team.jpeg"
+        url="https://your-domain.vercel.app/about"
+      />
+      
       {/* Enhanced Hero Section */}
       <section className="relative section-padding bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-secondary-900 dark:via-secondary-800 dark:to-primary-900 overflow-hidden">
         {/* Animated Background Elements */}
