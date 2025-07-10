@@ -95,7 +95,7 @@ const About: React.FC = () => {
         {
           name: 'Karim Atef',
           role: 'Club President',
-          image: 'imgs/members/karim.jpeg',
+          image: 'imgs/members/kemo.jpg',
           // email: 'ahmed.mohamed@stemcs.club',
           // phone: '+20 123 456 7890',
           // linkedin: 'linkedin.com/in/ahmed-mohamed'
@@ -112,7 +112,7 @@ const About: React.FC = () => {
       mentors: [ {
           name: 'Karim Atef',
           role: 'Web Development Head',
-          image: '/imgs/members/karim.jpeg',
+          image: '/imgs/members/kemo.jpg',
           // email: 'ahmed.mohamed@stemcs.club',
           // phone: '+20 123 456 7890',
           // linkedin: 'linkedin.com/in/ahmed-mohamed'
