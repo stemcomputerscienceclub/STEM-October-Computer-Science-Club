@@ -3,11 +3,7 @@ import * as THREE from 'three';
 import { gsap } from 'gsap';
 import { useTheme } from '../contexts/ThemeContext';
 
-interface CS3DBackgroundProps {
-  className?: string;
-}
-
-const CS3DBackground: React.FC<CS3DBackgroundProps> = ({ className = "cs-3d-background" }) => {
+const CS3DBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>();
   const { theme } = useTheme();
@@ -15,20 +11,9 @@ const CS3DBackground: React.FC<CS3DBackgroundProps> = ({ className = "cs-3d-back
   useEffect(() => {
     if (!canvasRef.current) return;
 
-    const canvas = canvasRef.current;
-    const container = canvas.parentElement;
-    if (!container) return;
-
-    // Get container dimensions
-    const getContainerSize = () => {
-      const rect = container.getBoundingClientRect();
-      return { width: rect.width, height: rect.height };
-    };
-
     // Scene setup
     const scene = new THREE.Scene();
-    const { width, height } = getContainerSize();
-    const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 5;
 
     const renderer = new THREE.WebGLRenderer({
@@ -36,7 +21,7 @@ const CS3DBackground: React.FC<CS3DBackgroundProps> = ({ className = "cs-3d-back
       antialias: true,
       alpha: true
     });
-    renderer.setSize(width, height);
+    renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setClearColor(0x000000, 0);
 
@@ -66,7 +51,7 @@ const CS3DBackground: React.FC<CS3DBackgroundProps> = ({ className = "cs-3d-back
       return new THREE.CanvasTexture(canvas);
     }
 
-    for (let i = 0; i < 200; i++) {
+    for (let i = 0; i < 500; i++) {
       const digit = Math.random() > 0.5 ? '1' : '0';
       const colorChoice = i % 3 === 0 ? primaryColor : i % 3 === 1 ? secondaryColor : accentColor;
       const texture = createBinaryTexture(digit, colorChoice);
@@ -195,47 +180,24 @@ const CS3DBackground: React.FC<CS3DBackgroundProps> = ({ className = "cs-3d-back
     const particleSystem = new THREE.Points(particleGeometry, particleMaterial);
     scene.add(particleSystem);
 
-    // Mouse and scroll interaction
+    // Mouse interaction
     let mouseX = 0;
     let mouseY = 0;
-    let scrollY = 0;
 
     const handleMouseMove = (event: MouseEvent) => {
-      const rect = container.getBoundingClientRect();
-      mouseX = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-      mouseY = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-    };
-
-    const handleScroll = () => {
-      const rect = container.getBoundingClientRect();
-      const containerTop = rect.top;
-      const containerHeight = rect.height;
-      
-      // Calculate scroll effect relative to container visibility
-      if (containerTop <= 0 && containerTop > -containerHeight) {
-        // Container is partially or fully visible
-        scrollY = Math.abs(containerTop) / containerHeight;
-      } else {
-        scrollY = 0;
-      }
+      mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+      mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
     };
 
     document.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('scroll', handleScroll);
 
     // Animation
     const animate = () => {
       animationRef.current = requestAnimationFrame(animate);
 
-      // Calculate scroll effect (scrollY is now 0-1 range)
-      const scrollSpeed = scrollY * 0.5;
-      const scrollRotation = scrollY * 0.2;
-
-      // Camera movement with scroll effect
+      // Camera movement
       camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05;
       camera.position.y += (mouseY * 0.5 - camera.position.y) * 0.05;
-      camera.position.z = 5 + scrollSpeed * 3; // Move camera based on scroll
-      camera.rotation.z = scrollRotation * 0.1; // Slight rotation on scroll
       camera.lookAt(scene.position);
 
       // Animate binary sprites
@@ -316,19 +278,12 @@ const CS3DBackground: React.FC<CS3DBackgroundProps> = ({ className = "cs-3d-back
 
     // Resize handler
     const handleResize = () => {
-      const { width, height } = getContainerSize();
-      camera.aspect = width / height;
+      camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
+      renderer.setSize(window.innerWidth, window.innerHeight);
     };
 
     window.addEventListener('resize', handleResize);
-
-    // Use ResizeObserver to watch container size changes
-    const resizeObserver = new ResizeObserver(() => {
-      handleResize();
-    });
-    resizeObserver.observe(container);
 
     // Cleanup
     return () => {
@@ -337,14 +292,12 @@ const CS3DBackground: React.FC<CS3DBackgroundProps> = ({ className = "cs-3d-back
       }
       window.removeEventListener('resize', handleResize);
       document.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('scroll', handleScroll);
-      resizeObserver.disconnect();
       scene.clear();
       renderer.dispose();
     };
   }, [theme]);
 
-  return <canvas ref={canvasRef} className={className} />;
+  return <canvas ref={canvasRef} className="cs-3d-background" />;
 };
 
 export default CS3DBackground;

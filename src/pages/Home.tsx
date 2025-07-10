@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Code, Users,Globe ,BookOpen, Trophy,UserPlus, Terminal, Cpu, Database, GitBranch, Braces, FileCode, Zap, Target, Lightbulb, School, Rocket, Users2, Award, Lightbulb as Innovation, BookOpenCheck } from 'lucide-react';
 import CS3DBackground from '../components/CS3DBackground';
+import { useScrollCounter } from '../hooks/useScrollCounter';
 
 const Home: React.FC = () => {
   const features = [
@@ -33,11 +34,42 @@ const Home: React.FC = () => {
   ];
 
   const stats = [
-    { number: '10+', label: 'Years of Community Growth', icon: Globe, bgColor: 'bg-blue-600' },
-    { number: '20+', label: 'Technologies Mastered', icon: Code, bgColor: 'bg-slate-700' },
-    { number: '100+', label: 'Projects Built', icon: Terminal, bgColor: 'bg-blue-800' },
-    { number: '500+', label: 'Mentorship Sessions Held', icon: UserPlus, bgColor: 'bg-slate-600' }
+    { number: 10, suffix: '+', label: 'Years of Community Growth', icon: Globe, bgColor: 'bg-blue-600' },
+    { number: 20, suffix: '+', label: 'Technologies Mastered', icon: Code, bgColor: 'bg-slate-700' },
+    { number: 100, suffix: '+', label: 'Projects Built', icon: Terminal, bgColor: 'bg-blue-800' },
+    { number: 500, suffix: '+', label: 'Mentorship Sessions Held', icon: UserPlus, bgColor: 'bg-slate-600' }
   ];
+
+  // Stats component with scroll counter
+  const StatCard: React.FC<{ stat: typeof stats[0], index: number }> = ({ stat, index }) => {
+    const { count, elementRef } = useScrollCounter({ 
+      end: stat.number, 
+      duration: 2000 + index * 200,
+      threshold: 0.1
+    });
+    const Icon = stat.icon;
+
+    return (
+      <motion.div
+        ref={elementRef}
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 1.8 + index * 0.1 }}
+        whileHover={{ scale: 1.05, y: -5 }}
+        className="text-center group"
+      >
+        <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl ${stat.bgColor} p-4 group-hover:scale-110 transition-transform duration-300 border border-blue-400/40`}>
+          <Icon className="w-full h-full text-white" />
+        </div>
+        <div className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-2">
+          {count}{stat.suffix}
+        </div>
+        <div className="text-sm md:text-base text-slate-600 dark:text-slate-400">
+          {stat.label}
+        </div>
+      </motion.div>
+    );
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -234,29 +266,9 @@ const Home: React.FC = () => {
               transition={{ duration: 0.8, delay: 1.7 }}
               className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16"
             >
-              {stats.map((stat, index) => {
-                const Icon = stat.icon;
-                return (
-                  <motion.div
-                    key={stat.label}
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 1.8 + index * 0.1 }}
-                    whileHover={{ scale: 1.05, y: -5 }}
-                    className="text-center group"
-                  >
-                    <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl ${stat.bgColor} p-4 group-hover:scale-110 transition-transform duration-300 border border-blue-400/40`}>
-                      <Icon className="w-full h-full text-white" />
-                    </div>
-                    <div className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-2">
-                      {stat.number}
-                    </div>
-                    <div className="text-sm md:text-base text-slate-600 dark:text-slate-400">
-                      {stat.label}
-                    </div>
-                  </motion.div>
-                );
-              })}
+              {stats.map((stat, index) => (
+                <StatCard key={stat.label} stat={stat} index={index} />
+              ))}
             </motion.div>
           </motion.div>
         </div>

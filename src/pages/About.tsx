@@ -109,59 +109,59 @@ const About: React.FC = () => {
         }
       ],
 
-      mentors: [ {
-          name: 'Karim Atef',
-          role: 'Web Development Head',
-          image: '/imgs/members/kemo.jpg',
-          // email: 'ahmed.mohamed@stemcs.club',
-          // phone: '+20 123 456 7890',
-          // linkedin: 'linkedin.com/in/ahmed-mohamed'
-        },
-        {
-          name: 'Adam Mohamed',
-          role: 'Programming Fundamentals Head',
-          image: '/imgs/members/Adam.jpeg',
-          // email: 'omar.hassan@stemcs.club',
-          // linkedin: 'linkedin.com/in/omar-hassan'
-        },
-        {
-          name: 'Ahmed Adel',
-          role: 'Machine Learning Head',
-          image: '/imgs/members/Ahmed Adel.jpg',
-          // email: 'sarah.ahmed@mentor.stemcs.club',
-          // phone: '+20 100 123 4567',
-          // linkedin: 'linkedin.com/in/sarah-ahmed'
-        },
-        {
-          name: 'Abdelrahman Ahmed',
-          role: 'Machine Learning Vice-Head',
-          image: '/imgs/members/Abdelrahman.jpeg',
-          // email: 'khaled.hassan@mentor.stemcs.club'
-        },
-        {
-          name: 'Mohamed Zaki',
-          role: 'Web Development Vice-Head',
-          image: '/imgs/members/Zaki.jpg',
-        
-        },
-        {
-          name: 'Mohamed Mostafa',
-          role: 'Algorithms & Data Structures Head',
-          image: '/imgs/members/Mohammed-Mostafa.jpeg',
-         
-        },
-        {
-          name: 'Mohammed Alhussien',
-          role: 'Algorithms & Data Structures Vice-Head',
-          image: '/imgs/members/Elhusssien.jpeg',
-         
-        },
-        {
-          name: 'Farouk Faragg',
-          role: 'App Development Head',
-          image: '/imgs/members/Farouk.jpeg',
-        
-        }
+      mentors: [{
+        name: 'Karim Atef',
+        role: 'Web Development Head',
+        image: '/imgs/members/kemo.jpg',
+        // email: 'ahmed.mohamed@stemcs.club',
+        // phone: '+20 123 456 7890',
+        // linkedin: 'linkedin.com/in/ahmed-mohamed'
+      },
+      {
+        name: 'Adam Mohamed',
+        role: 'Programming Fundamentals Head',
+        image: '/imgs/members/Adam.jpeg',
+        // email: 'omar.hassan@stemcs.club',
+        // linkedin: 'linkedin.com/in/omar-hassan'
+      },
+      {
+        name: 'Ahmed Adel',
+        role: 'Machine Learning Head',
+        image: '/imgs/members/Ahmed Adel.jpg',
+        // email: 'sarah.ahmed@mentor.stemcs.club',
+        // phone: '+20 100 123 4567',
+        // linkedin: 'linkedin.com/in/sarah-ahmed'
+      },
+      {
+        name: 'Abdelrahman Ahmed',
+        role: 'Machine Learning Vice-Head',
+        image: '/imgs/members/Abdelrahman.jpeg',
+        // email: 'khaled.hassan@mentor.stemcs.club'
+      },
+      {
+        name: 'Mohamed Zaki',
+        role: 'Web Development Vice-Head',
+        image: '/imgs/members/Zaki.jpg',
+
+      },
+      {
+        name: 'Mohamed Mostafa',
+        role: 'Algorithms & Data Structures Head',
+        image: '/imgs/members/Mohammed-Mostafa.jpeg',
+
+      },
+      {
+        name: 'Mohammed Alhussien',
+        role: 'Algorithms & Data Structures Vice-Head',
+        image: '/imgs/members/Elhusssien.jpeg',
+
+      },
+      {
+        name: 'Farouk Faragg',
+        role: 'App Development Head',
+        image: '/imgs/members/Farouk.jpeg',
+
+      }
       ],
 
       graphicDesigners: [
@@ -182,7 +182,7 @@ const About: React.FC = () => {
         }
       ],
       developers: [
-      
+
       ],
       marketers: [
         {
@@ -289,7 +289,7 @@ const About: React.FC = () => {
 
   // Get current season data with fallback
   const currentSeasonData = teamData[activeSeason as keyof typeof teamData] || teamData['2024'];
-  
+
   // Handle different data structures for different seasons
   let highboardMembers: any[] = [];
   let offlineMentors: any[] = [];
@@ -298,13 +298,13 @@ const About: React.FC = () => {
   let graphicDesigners: any[] = [];
   let developers: any[] = [];
   let marketers: any[] = [];
-  
+
   if (currentSeasonData) {
     highboardMembers = currentSeasonData.highboardMembers || [];
     graphicDesigners = currentSeasonData.graphicDesigners || [];
     developers = currentSeasonData.developers || [];
     marketers = currentSeasonData.marketers || [];
-    
+
     // For 2024: use combined mentors array
     if (activeSeason === '2024') {
       mentors = (currentSeasonData as any).mentors || [];
@@ -353,7 +353,7 @@ const About: React.FC = () => {
       switch (type) {
         case 'highboard':
           return (
-        <div className="">
+            <div className="">
               <div className=""></div>
             </div>
           );
@@ -367,7 +367,7 @@ const About: React.FC = () => {
           );
         case 'offline':
           return (
-           <div className="">
+            <div className="">
               <div className=""></div>
             </div>
           );
@@ -392,7 +392,7 @@ const About: React.FC = () => {
       <motion.div
         variants={itemVariants}
         className="relative w-full h-80 perspective-1000 group member-card-container"
-        whileHover={{ 
+        whileHover={{
           rotateY: 5,
           rotateX: 5,
           transition: { duration: 0.3 }
@@ -400,13 +400,13 @@ const About: React.FC = () => {
       >
         {/* Flip Card Container */}
         <div className="relative w-full h-full transition-transform duration-700 transform-style-preserve-3d group-hover:rotate-y-180">
-          
+
           {/* Front Face - Image Only */}
           <div className="absolute inset-0 w-full h-full backface-hidden rounded-2xl overflow-hidden">
             <div className="relative w-full h-full bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden shadow-xl">
               {/* Enhanced Background Gradient Effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 gradient-bg"></div>
-              
+
               {/* Profile Image - Full Card */}
               <div className="relative w-full h-full">
                 <img
@@ -419,18 +419,18 @@ const About: React.FC = () => {
                   }}
                   loading="lazy"
                 />
-                
+
                 {/* Enhanced Overlay with Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10 opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
-                
+
                 {/* Animated Border */}
                 <div className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-primary-400/50 via-secondary-500/50 to-primary-600/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
+
                 {/* Enhanced Type Indicator */}
                 <div className="absolute top-4 right-4 type-indicator">
                   {getTypeIndicator()}
                 </div>
-                
+
                 {/* Member Name on Front (Subtle) */}
                 <div className="absolute bottom-6 left-6 right-6">
                   <h3 className="text-white font-bold text-lg drop-shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
@@ -440,12 +440,12 @@ const About: React.FC = () => {
                     {member.role}
                   </p>
                 </div>
-                
+
                 {/* Enhanced Hover Hint */}
                 <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-200">
-                  <motion.div 
+                  <motion.div
                     className="bg-black/60 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-medium border border-white/20"
-                    animate={{ 
+                    animate={{
                       scale: [1, 1.05, 1],
                       transition: { duration: 2, repeat: Infinity }
                     }}
@@ -456,21 +456,21 @@ const About: React.FC = () => {
               </div>
             </div>
           </div>
-          
+
           {/* Back Face - Enhanced Details */}
           <div className="absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-2xl overflow-hidden">
             <div className="relative w-full h-full bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-xl border border-white/40 rounded-2xl p-6 shadow-2xl">
               {/* Enhanced Background Pattern */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary-500/25 to-secondary-500/25 gradient-bg"></div>
-              
+
               {/* Decorative Elements */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary-400/20 to-transparent rounded-full blur-2xl"></div>
               <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-secondary-400/20 to-transparent rounded-full blur-xl"></div>
-              
+
               <div className="relative z-10 flex flex-col items-center justify-center text-center h-full space-y-6">
-                
+
                 {/* Enhanced Name and Position */}
-                <motion.div 
+                <motion.div
                   className="space-y-3"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -483,16 +483,16 @@ const About: React.FC = () => {
                     </p>
                   </div>
                 </motion.div>
-                
+
                 {/* Enhanced Contact Information - Social Media Icons */}
-                <motion.div 
+                <motion.div
                   className="flex items-center justify-center gap-4 w-full"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
                 >
                   {member.email && (
-                    <motion.button 
+                    <motion.button
                       whileHover={{ scale: 1.1, y: -2 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => handleContactClick('email', member.email)}
@@ -502,9 +502,9 @@ const About: React.FC = () => {
                       <Mail className="w-5 h-5" />
                     </motion.button>
                   )}
-                  
+
                   {member.phone && (
-                    <motion.button 
+                    <motion.button
                       whileHover={{ scale: 1.1, y: -2 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => handleContactClick('phone', member.phone)}
@@ -514,9 +514,9 @@ const About: React.FC = () => {
                       <Phone className="w-5 h-5" />
                     </motion.button>
                   )}
-                  
+
                   {member.linkedin && (
-                    <motion.button 
+                    <motion.button
                       whileHover={{ scale: 1.1, y: -2 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={() => handleContactClick('linkedin', member.linkedin)}
@@ -597,8 +597,8 @@ const About: React.FC = () => {
           >
             {/* Enhanced Title with Floating Elements */}
             <div className="relative">
-              
-              <motion.h1 
+
+              <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1 }}
@@ -606,7 +606,7 @@ const About: React.FC = () => {
               >
                 About STEM CS Club
               </motion.h1>
-               </div>
+            </div>
 
             {/* Enhanced Description */}
             <motion.div
@@ -616,10 +616,10 @@ const About: React.FC = () => {
               className="space-y-6"
             >
               <p className="text-xl md:text-2xl text-secondary-600 dark:text-secondary-300 max-w-4xl mx-auto leading-relaxed">
-                We are a passionate community of students dedicated to advancing computer science education 
+                We are a passionate community of students dedicated to advancing computer science education
                 and fostering innovation through collaborative learning and hands-on projects.
               </p>
-              
+
               {/* Stats Row */}
               <div className="flex flex-wrap justify-center gap-8 mt-8">
                 <motion.div
@@ -669,7 +669,7 @@ const About: React.FC = () => {
                 />
                 {/* Overlay with gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-3xl"></div>
-                
+
                 {/* Floating Achievement Badges */}
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
@@ -685,7 +685,7 @@ const About: React.FC = () => {
                     </div>
                   </div> */}
                 </motion.div>
-                
+
               </div>
             </motion.div>
           </motion.div>
@@ -708,20 +708,20 @@ const About: React.FC = () => {
                   <h2 className="text-3xl md:text-4xl font-bold gradient-text">Our Mission</h2>
                 </div>
                 <p className="text-lg text-secondary-600 dark:text-secondary-400 leading-relaxed">
-                  To empower students with cutting-edge programming skills, foster innovation in technology, 
-                  and create a supportive community where aspiring developers can learn, grow, and make a 
+                  To empower students with cutting-edge programming skills, foster innovation in technology,
+                  and create a supportive community where aspiring developers can learn, grow, and make a
                   meaningful impact in the world of computer science.
                 </p>
               </div>
-              
+
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <Heart className="w-8 h-8 text-primary-600" />
                   <h2 className="text-3xl md:text-4xl font-bold gradient-text">Our Vision</h2>
                 </div>
                 <p className="text-lg text-secondary-600 dark:text-secondary-400 leading-relaxed">
-                  To be the leading student-driven technology community that bridges the gap between 
-                  academic learning and real-world application, producing the next generation of 
+                  To be the leading student-driven technology community that bridges the gap between
+                  academic learning and real-world application, producing the next generation of
                   innovative software engineers and tech leaders.
                 </p>
               </div>
@@ -786,7 +786,7 @@ const About: React.FC = () => {
                 >
                   {/* Animated Background Gradient */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
-                  
+
                   {/* Floating Particles Effect */}
                   <div className="absolute inset-0 overflow-hidden">
                     <motion.div
@@ -816,7 +816,7 @@ const About: React.FC = () => {
                       className={`absolute bottom-6 left-6 w-1.5 h-1.5 bg-gradient-to-r ${value.color} rounded-full opacity-20`}
                     />
                   </div>
-                  
+
                   <div className="relative z-10">
                     {/* Enhanced Icon with Multiple Effects */}
                     <motion.div
@@ -830,14 +830,14 @@ const About: React.FC = () => {
                       {/* Glow Effect */}
                       <div className={`absolute inset-0 w-20 h-20 mx-auto rounded-3xl bg-gradient-to-r ${value.color} opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300`}></div>
                     </motion.div>
-                    
+
                     <h3 className="text-xl font-bold mb-4 text-secondary-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
                       {value.title}
                     </h3>
                     <p className="text-secondary-600 dark:text-secondary-400 leading-relaxed group-hover:text-secondary-700 dark:group-hover:text-secondary-300 transition-colors duration-300">
                       {value.description}
                     </p>
-                    
+
                     {/* Decorative Bottom Line */}
                     <motion.div
                       initial={{ width: 0 }}
@@ -889,13 +889,13 @@ const About: React.FC = () => {
                   className="h-16 w-auto mx-auto filter group-hover:brightness-110 transition-all duration-300"
                 />
                 <div className="mt-4 text-center">
-                   <h3 className="text-lg font-semibold text-secondary-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                     USACO Guide
-                   </h3>
-                   <p className="text-sm text-secondary-600 dark:text-secondary-400 mt-1">
-                     Provides us with competitive programming materials and resources
-                   </p>
-                 </div>
+                  <h3 className="text-lg font-semibold text-secondary-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                    USACO Guide
+                  </h3>
+                  <p className="text-sm text-secondary-600 dark:text-secondary-400 mt-1">
+                    Provides us with competitive programming materials and resources
+                  </p>
+                </div>
               </div>
             </motion.div>
 
@@ -912,13 +912,13 @@ const About: React.FC = () => {
                   className="h-16 w-auto mx-auto filter group-hover:brightness-110 transition-all duration-300"
                 />
                 <div className="mt-4 text-center">
-                   <h3 className="text-lg font-semibold text-secondary-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                     Hack Club
-                   </h3>
-                   <p className="text-sm text-secondary-600 dark:text-secondary-400 mt-1">
-                     We are the official Hack Club chapter in Egypt
-                   </p>
-                 </div>
+                  <h3 className="text-lg font-semibold text-secondary-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                    Hack Club
+                  </h3>
+                  <p className="text-sm text-secondary-600 dark:text-secondary-400 mt-1">
+                    We are the official Hack Club chapter in Egypt
+                  </p>
+                </div>
               </div>
             </motion.div>
           </motion.div>
@@ -959,11 +959,11 @@ const About: React.FC = () => {
                 >
                   {/* Animated Background Effect */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
+
                   {/* Decorative Corner Elements */}
                   <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary-200/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-secondary-200/20 to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  
+
                   <div className="flex-shrink-0 relative z-10">
                     {/* Enhanced Icon with Glow Effect */}
                     <motion.div
@@ -976,7 +976,7 @@ const About: React.FC = () => {
                       </div>
                       {/* Glow Effect */}
                       <div className="absolute inset-0 w-16 h-16 bg-gradient-to-r from-primary-500 to-primary-700 rounded-2xl opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-300"></div>
-                      
+
                       {/* Achievement Badge */}
                       <motion.div
                         initial={{ scale: 0, opacity: 0 }}
@@ -988,7 +988,7 @@ const About: React.FC = () => {
                       </motion.div>
                     </motion.div>
                   </div>
-                  
+
                   <div className="flex-grow relative z-10">
                     <div className="mb-3">
                       <h3 className="text-xl font-bold text-secondary-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
@@ -998,7 +998,7 @@ const About: React.FC = () => {
                     <p className="text-secondary-600 dark:text-secondary-400 leading-relaxed group-hover:text-secondary-700 dark:group-hover:text-secondary-300 transition-colors duration-300">
                       {achievement.description}
                     </p>
-                    
+
                     {/* Progress Line Animation */}
                     <motion.div
                       initial={{ width: 0 }}
@@ -1046,11 +1046,10 @@ const About: React.FC = () => {
                     onClick={() => handleSeasonChange(season)}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`relative px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
-                      activeSeason === season
+                    className={`relative px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${activeSeason === season
                         ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-lg shadow-primary-500/30'
                         : 'text-secondary-600 dark:text-secondary-400 hover:bg-secondary-100 dark:hover:bg-secondary-700'
-                    }`}
+                      }`}
                   >
                     {activeSeason === season && (
                       <motion.div
@@ -1085,11 +1084,10 @@ const About: React.FC = () => {
                   onClick={() => setActiveTab(tab.id)}
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`relative flex items-center space-x-4 px-8 py-4 rounded-2xl font-bold transition-all duration-500 overflow-hidden group ${
-                    isActive
+                  className={`relative flex items-center space-x-4 px-8 py-4 rounded-2xl font-bold transition-all duration-500 overflow-hidden group ${isActive
                       ? 'bg-gradient-to-r from-primary-500 to-primary-700 text-white shadow-2xl shadow-primary-500/30'
                       : 'bg-white dark:bg-secondary-700 text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-600 shadow-lg hover:shadow-xl'
-                  }`}
+                    }`}
                 >
                   {/* Animated Background for Active Tab */}
                   {isActive && (
@@ -1099,43 +1097,39 @@ const About: React.FC = () => {
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />
                   )}
-                  
+
                   {/* Hover Effect Background */}
-                  <div className={`absolute inset-0 bg-gradient-to-r from-primary-500/10 to-secondary-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
-                    isActive ? 'hidden' : ''
-                  }`}></div>
-                  
+                  <div className={`absolute inset-0 bg-gradient-to-r from-primary-500/10 to-secondary-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${isActive ? 'hidden' : ''
+                    }`}></div>
+
                   <div className="relative z-10 flex items-center space-x-4">
                     {/* Enhanced Icon */}
                     <motion.div
                       whileHover={{ rotate: isActive ? [0, -10, 10, 0] : 0 }}
                       transition={{ duration: 0.5 }}
-                      className={`w-6 h-6 ${
-                        isActive ? 'text-white' : 'text-primary-600 dark:text-primary-400 group-hover:text-primary-700 dark:group-hover:text-primary-300'
-                      } transition-colors duration-300`}
+                      className={`w-6 h-6 ${isActive ? 'text-white' : 'text-primary-600 dark:text-primary-400 group-hover:text-primary-700 dark:group-hover:text-primary-300'
+                        } transition-colors duration-300`}
                     >
                       <Icon className="w-full h-full" />
                     </motion.div>
-                    
-                    <span className={`text-lg ${
-                      isActive ? 'text-white' : 'group-hover:text-primary-700 dark:group-hover:text-primary-300'
-                    } transition-colors duration-300`}>
+
+                    <span className={`text-lg ${isActive ? 'text-white' : 'group-hover:text-primary-700 dark:group-hover:text-primary-300'
+                      } transition-colors duration-300`}>
                       {tab.label}
                     </span>
-                    
+
                     {/* Enhanced Count Badge */}
-                    <motion.span 
+                    <motion.span
                       whileHover={{ scale: 1.1 }}
-                      className={`text-sm font-bold px-3 py-1.5 rounded-full transition-all duration-300 ${
-                        isActive
+                      className={`text-sm font-bold px-3 py-1.5 rounded-full transition-all duration-300 ${isActive
                           ? 'bg-white/20 text-white backdrop-blur-sm'
                           : 'bg-gradient-to-r from-primary-100 to-primary-200 dark:from-primary-900/30 dark:to-primary-800/30 text-primary-700 dark:text-primary-300 group-hover:from-primary-200 group-hover:to-primary-300 dark:group-hover:from-primary-800/40 dark:group-hover:to-primary-700/40'
-                      }`}
+                        }`}
                     >
                       {tab.count}
                     </motion.span>
                   </div>
-                  
+
                   {/* Active Tab Indicator */}
                   {isActive && (
                     <motion.div
@@ -1183,7 +1177,7 @@ const About: React.FC = () => {
                 ))}
               </div>
             </div>
-            
+
             {activeTab === 'highboard' && (
               <div className="relative z-10">
                 <motion.div
@@ -1197,8 +1191,8 @@ const About: React.FC = () => {
                       key={`highboard-${index}`}
                       initial={{ opacity: 0, y: 50, scale: 0.9 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
-                      transition={{ 
-                        delay: index * 0.1, 
+                      transition={{
+                        delay: index * 0.1,
                         duration: 0.6,
                         type: "spring",
                         bounce: 0.3
@@ -1226,8 +1220,8 @@ const About: React.FC = () => {
                       key={`mentor-${index}`}
                       initial={{ opacity: 0, y: 50, scale: 0.9 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
-                      transition={{ 
-                        delay: index * 0.1, 
+                      transition={{
+                        delay: index * 0.1,
                         duration: 0.6,
                         type: "spring",
                         bounce: 0.3
@@ -1238,7 +1232,7 @@ const About: React.FC = () => {
                     </motion.div>
                   ))}
                 </motion.div>
-                
+
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -1250,7 +1244,7 @@ const About: React.FC = () => {
                     <span className="text-sm font-medium text-secondary-600 dark:text-secondary-400">
                       {mentors.length} Mentors Available to Guide You
                     </span>
-                    <div className="w-2 h-2 bg-secondary-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                    <div className="w-2 h-2 bg-secondary-500 rounded-full animate-pulse animate-pulse-delay-1"></div>
                   </div>
                 </motion.div>
               </div>
@@ -1269,8 +1263,8 @@ const About: React.FC = () => {
                       key={`offline-${index}`}
                       initial={{ opacity: 0, y: 50, scale: 0.9 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
-                      transition={{ 
-                        delay: index * 0.1, 
+                      transition={{
+                        delay: index * 0.1,
                         duration: 0.6,
                         type: "spring",
                         bounce: 0.3
@@ -1281,7 +1275,7 @@ const About: React.FC = () => {
                     </motion.div>
                   ))}
                 </motion.div>
-                
+
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -1293,7 +1287,7 @@ const About: React.FC = () => {
                     <span className="text-sm font-medium text-secondary-600 dark:text-secondary-400">
                       {offlineMentors.length} Offline Mentors Available
                     </span>
-                    <div className="w-2 h-2 bg-secondary-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                    <div className="w-2 h-2 bg-secondary-500 rounded-full animate-pulse animate-pulse-delay-1"></div>
                   </div>
                 </motion.div>
               </div>
@@ -1312,8 +1306,8 @@ const About: React.FC = () => {
                       key={`online-${index}`}
                       initial={{ opacity: 0, y: 50, scale: 0.9 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
-                      transition={{ 
-                        delay: index * 0.1, 
+                      transition={{
+                        delay: index * 0.1,
                         duration: 0.6,
                         type: "spring",
                         bounce: 0.3
@@ -1340,8 +1334,8 @@ const About: React.FC = () => {
                       key={`creative-${index}`}
                       initial={{ opacity: 0, y: 50, scale: 0.9 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
-                      transition={{ 
-                        delay: index * 0.1, 
+                      transition={{
+                        delay: index * 0.1,
                         duration: 0.6,
                         type: "spring",
                         bounce: 0.3
