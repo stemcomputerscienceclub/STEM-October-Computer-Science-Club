@@ -1,10 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const Articles: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-secondary-900 dark:via-secondary-800 dark:to-primary-900 flex items-center justify-center">
+      <SEO 
+        title="Articles & Resources - STEM Computer Science Club"
+        description="Access a comprehensive collection of programming articles, tutorials, and educational resources. Stay updated with the latest in computer science and technology."
+        keywords="programming articles, coding tutorials, computer science resources, tech blog, software development guides, programming tips, coding best practices"
+        image="/imgs/articles-hero.png"
+        url="https://your-domain.vercel.app/articles"
+      />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

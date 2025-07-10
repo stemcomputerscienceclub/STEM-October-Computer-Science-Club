@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import {
   Code,
   Brain,
@@ -397,6 +398,15 @@ const Tracks: React.FC = () => {
 
   return (
     <div className="min-h-screen pt-20">
+      {/* SEO Component */}
+      <SEO 
+        title="Programming Tracks - STEM Computer Science Club"
+        description="Explore our comprehensive programming tracks including Web Development, AI/ML, Mobile Development, and more. Master coding skills with structured learning paths and hands-on projects."
+        keywords="programming tracks, web development course, AI machine learning training, mobile app development, data science track, cybersecurity course, coding bootcamp tracks"
+        image="/imgs/python-hackathon.png"
+        url="https://your-domain.vercel.app/tracks"
+      />
+      
       {/* Hero Section */}
       <section className="section-padding bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-secondary-900 dark:via-secondary-800 dark:to-primary-900">
         <div className="max-w-7xl mx-auto text-center">
