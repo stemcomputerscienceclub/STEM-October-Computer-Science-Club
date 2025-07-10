@@ -95,7 +95,7 @@ const About: React.FC = () => {
         {
           name: 'Karim Atef',
           role: 'Club President',
-          image: '/imgs/members/Karim.jpeg',
+          image: 'imgs/members/karim.jpeg',
           // email: 'ahmed.mohamed@stemcs.club',
           // phone: '+20 123 456 7890',
           // linkedin: 'linkedin.com/in/ahmed-mohamed'
