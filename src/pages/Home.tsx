@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Code, Users,Globe ,BookOpen, Trophy,UserPlus, Terminal, Cpu, Database, GitBranch, Braces, FileCode, Zap, Target, Lightbulb, School, Rocket, Users2, Award, Lightbulb as Innovation, BookOpenCheck } from 'lucide-react';
+import CS3DBackground from '../components/CS3DBackground';
 
 const Home: React.FC = () => {
   const features = [
@@ -62,215 +63,15 @@ const Home: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-slate-50 to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-950 pt-16 lg:pt-20">
-          {/* Professional Background Layers */}
-          <div className="absolute inset-0">
-            {/* High-Quality School Image Background */}
-            <div className="absolute inset-0">
-              <img 
-                src="/imgs/back2.jpg" 
-                alt="STEM 6 October High School - Computer Science Excellence" 
-                className="w-full h-full object-cover object-center"
-              />
-              {/* Enhanced Gradient Overlays for Better White Mode Compatibility */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/85 via-blue-50/80 to-indigo-100/85 dark:from-slate-900/85 dark:via-blue-900/70 dark:to-indigo-900/85" />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-100/60 via-white/40 to-blue-50/50 dark:from-slate-900/60 dark:via-transparent dark:to-slate-800/40" />
-              {/* Tech Pattern Overlay */}
-              <div className="absolute inset-0 opacity-15 dark:opacity-10">
-                <div className="h-full w-full tech-grid-pattern" />
-              </div>
-            </div>
-            
-            {/* Advanced Circuit Board Pattern */}
-            <div className="absolute inset-0 opacity-20 dark:opacity-12">
-              <div className="h-full w-full circuit-board-pattern" />
-            </div>
-            
-            {/* Hexagonal Tech Pattern */}
-            <div className="absolute inset-0 opacity-10 dark:opacity-8">
-              <div className="h-full w-full hexagonal-pattern" />
-            </div>
-          
-          {/* Enhanced Floating Code Elements */}
-          <div className="absolute inset-0">
-            {[...Array(25)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute text-blue-600/40 dark:text-blue-400/25 font-mono text-sm select-none backdrop-blur-sm"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                }}
-                animate={{
-                  y: [-20, 20, -20],
-                  x: [-10, 10, -10],
-                  opacity: [0.15, 0.6, 0.15],
-                  rotate: [-5, 5, -5],
-                  scale: [0.8, 1.1, 0.8],
-                }}
-                transition={{
-                  duration: 6 + Math.random() * 4,
-                  repeat: Infinity,
-                  delay: Math.random() * 3,
-                  ease: "easeInOut",
-                }}
-              >
-                {i % 3 === 0 ? (
-                  <span className="px-2 py-1 bg-blue-500/10 dark:bg-blue-400/10 rounded border border-blue-500/20">
-                    {['React', 'TypeScript', 'Node.js', 'Python', 'JavaScript', 'CSS3', 'HTML5', 'Git', 'API', 'JSON'][Math.floor(Math.random() * 10)]}
-                  </span>
-                ) : (
-                  `{${['const', 'let', 'function', 'class', 'import', 'export', 'async', 'await', 'return', 'if'][Math.floor(Math.random() * 10)]}}`
-                )}
-              </motion.div>
-            ))}
-          </div>
-          
-          {/* Floating Algorithm Terms */}
-          <div className="absolute inset-0">
-            {['O(n)', 'O(log n)', 'DFS', 'BFS', 'Hash', 'Tree', 'Graph', 'Sort', 'Search', 'DP'].map((term, i) => (
-              <motion.div
-                key={`algo-${i}`}
-                className="absolute text-indigo-600/30 dark:text-indigo-400/20 font-bold text-lg select-none"
-                style={{
-                  left: `${Math.random() * 90 + 5}%`,
-                  top: `${Math.random() * 90 + 5}%`,
-                }}
-                animate={{
-                  y: [-15, 15, -15],
-                  opacity: [0.1, 0.4, 0.1],
-                  scale: [0.9, 1.2, 0.9],
-                }}
-                transition={{
-                  duration: 8 + Math.random() * 4,
-                  repeat: Infinity,
-                  delay: Math.random() * 4,
-                }}
-              >
-                <span className="px-3 py-1 bg-indigo-500/5 dark:bg-indigo-400/5 rounded-lg border border-indigo-500/15">
-                  {term}
-                </span>
-              </motion.div>
-            ))}
-          </div>
-          
-          {/* Floating Programming Icons */}
-          <div className="absolute inset-0">
-            {[Terminal, Cpu, Database, GitBranch, Braces, FileCode].map((Icon, i) => (
-              <motion.div
-                key={`icon-${i}`}
-                className="absolute text-blue-600/30 dark:text-blue-500/20"
-                style={{
-                  left: `${Math.random() * 90 + 5}%`,
-                  top: `${Math.random() * 90 + 5}%`,
-                }}
-                animate={{
-                  y: [-10, 10, -10],
-                  rotate: [0, 360],
-                  opacity: [0.1, 0.3, 0.1],
-                }}
-                transition={{
-                  duration: 8 + Math.random() * 4,
-                  repeat: Infinity,
-                  delay: Math.random() * 3,
-                }}
-              >
-                <Icon size={24 + Math.random() * 16} />
-              </motion.div>
-            ))}
-          </div>
-          
-          {/* Binary Rain Effect */}
-          <div className="absolute inset-0">
-            {[...Array(10)].map((_, i) => (
-              <motion.div
-                key={`binary-${i}`}
-                className="absolute text-blue-600/25 dark:text-blue-400/15 font-mono text-xs select-none"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: '-10%',
-                }}
-                animate={{
-                  y: ['0vh', '110vh'],
-                }}
-                transition={{
-                  duration: 10 + Math.random() * 5,
-                  repeat: Infinity,
-                  delay: Math.random() * 6,
-                  ease: 'linear',
-                }}
-              >
-                {Array.from({ length: 15 }, () => Math.random() > 0.5 ? '1' : '0').join('')}
-              </motion.div>
-            ))}
-          </div>
-          
-          {/* Enhanced Circuit Board Pattern */}
-          <div className="absolute inset-0">
-            {[...Array(8)].map((_, i) => (
-              <motion.div
-                key={`circuit-${i}`}
-                className="absolute border border-blue-500/15 dark:border-blue-400/10"
-                style={{
-                  left: `${Math.random() * 85}%`,
-                  top: `${Math.random() * 85}%`,
-                  width: `${40 + Math.random() * 60}px`,
-                  height: `${40 + Math.random() * 60}px`,
-                  borderRadius: '8px',
-                }}
-                animate={{
-                  rotate: [0, 90, 180, 270, 360],
-                  scale: [0.8, 1.2, 0.8],
-                  opacity: [0.05, 0.3, 0.05],
-                }}
-                transition={{
-                  duration: 15 + Math.random() * 8,
-                  repeat: Infinity,
-                  delay: Math.random() * 5,
-                  ease: "easeInOut",
-                }}
-              >
-                <div className="absolute inset-3 border border-blue-400/20 dark:border-blue-300/15 rounded-md" />
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-blue-400/30 dark:bg-blue-300/20 rounded-full" />
-                <div className="absolute top-2 left-2 w-1 h-1 bg-blue-500/40 rounded-full" />
-                <div className="absolute bottom-2 right-2 w-1 h-1 bg-blue-500/40 rounded-full" />
-              </motion.div>
-            ))}
-          </div>
-          
-          {/* Floating Geometric Shapes */}
-          <div className="absolute inset-0">
-            {[...Array(6)].map((_, i) => (
-              <motion.div
-                key={`geo-${i}`}
-                className="absolute"
-                style={{
-                  left: `${Math.random() * 90 + 5}%`,
-                  top: `${Math.random() * 90 + 5}%`,
-                }}
-                animate={{
-                  y: [-20, 20, -20],
-                  x: [-15, 15, -15],
-                  rotate: [0, 180, 360],
-                  opacity: [0.1, 0.3, 0.1],
-                }}
-                transition={{
-                  duration: 10 + Math.random() * 5,
-                  repeat: Infinity,
-                  delay: Math.random() * 3,
-                }}
-              >
-                {i % 3 === 0 ? (
-                  <div className="w-8 h-8 border-2 border-indigo-500/20 dark:border-indigo-400/15 rotate-45" />
-                ) : i % 3 === 1 ? (
-                  <div className="w-6 h-6 bg-blue-500/10 dark:bg-blue-400/8 rounded-full border border-blue-500/20" />
-                ) : (
-                  <div className="w-10 h-2 bg-gradient-to-r from-blue-500/15 to-indigo-500/15 dark:from-blue-400/10 dark:to-indigo-400/10 rounded-full" />
-                )}
-              </motion.div>
-            ))}
-          </div>
-        </div>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 lg:pt-20">
+        {/* 3D Background */}
+        <CS3DBackground />
+        
+        {/* Content overlay with enhanced glassmorphism */}
+        <div className="absolute inset-0 bg-black/20 dark:bg-black/40" />
+        
+        {/* Additional overlay for better text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-transparent to-indigo-900/30 dark:from-blue-900/50 dark:via-transparent dark:to-indigo-900/50" />
 
         {/* Enhanced Glassmorphism Container */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

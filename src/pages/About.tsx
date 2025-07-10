@@ -597,17 +597,6 @@ const About: React.FC = () => {
           >
             {/* Enhanced Title with Floating Elements */}
             <div className="relative">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="absolute -top-8 left-1/2 transform -translate-x-1/2"
-              >
-                <div className="flex items-center space-x-2 bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
-                  <Code className="w-4 h-4" />
-                  <span>Est. 2015</span>
-                </div>
-              </motion.div>
               
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
@@ -617,28 +606,7 @@ const About: React.FC = () => {
               >
                 About STEM CS Club
               </motion.h1>
-              
-              {/* Floating Icons */}
-              <motion.div
-                animate={{ y: [-10, 10, -10] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -left-16 top-1/2 transform -translate-y-1/2 hidden lg:block"
-              >
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center shadow-lg">
-                  <Rocket className="w-6 h-6 text-white" />
-                </div>
-              </motion.div>
-              
-              <motion.div
-                animate={{ y: [10, -10, 10] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-                className="absolute -right-16 top-1/2 transform -translate-y-1/2 hidden lg:block"
-              >
-                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-xl flex items-center justify-center shadow-lg">
-                  <Lightbulb className="w-6 h-6 text-white" />
-                </div>
-              </motion.div>
-            </div>
+               </div>
 
             {/* Enhanced Description */}
             <motion.div
@@ -718,20 +686,6 @@ const About: React.FC = () => {
                   </div> */}
                 </motion.div>
                 
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 1.2 }}
-                  className="absolute -right-4 bottom-1/4 bg-white dark:bg-secondary-800 rounded-2xl p-4 shadow-xl border border-white/20 hidden md:block"
-                >
-                  <div className="flex items-center space-x-2">
-                    <Users className="w-6 h-6 text-blue-500" />
-                    <div>
-                      <div className="text-sm font-bold text-secondary-900 dark:text-white">Growing Community</div>
-                      <div className="text-xs text-secondary-600 dark:text-secondary-400">500+ Members</div>
-                    </div>
-                  </div>
-                </motion.div>
               </div>
             </motion.div>
           </motion.div>
@@ -1255,21 +1209,7 @@ const About: React.FC = () => {
                     </motion.div>
                   ))}
                 </motion.div>
-                
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: highboardMembers.length * 0.1 + 0.3, duration: 0.6 }}
-                  className="mt-16 text-center"
-                >
-                  <div className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-full border border-primary-200/50 dark:border-primary-700/50">
-                    <div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse"></div>
-                    <span className="text-sm font-medium text-secondary-600 dark:text-secondary-400">
-                      {highboardMembers.length} Leaders Ready to Guide
-                    </span>
-                    <div className="w-2 h-2 bg-secondary-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                  </div>
-                </motion.div>
+
               </div>
             )}
 
@@ -1384,21 +1324,6 @@ const About: React.FC = () => {
                     </motion.div>
                   ))}
                 </motion.div>
-                
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: onlineMentors.length * 0.1 + 0.3, duration: 0.6 }}
-                  className="mt-16 text-center"
-                >
-                  <div className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-full border border-primary-200/50 dark:border-primary-700/50">
-                    <div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse"></div>
-                    <span className="text-sm font-medium text-secondary-600 dark:text-secondary-400">
-                      {onlineMentors.length} Online Mentors Ready to Help
-                    </span>
-                    <div className="w-2 h-2 bg-secondary-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                  </div>
-                </motion.div>
               </div>
             )}
 
@@ -1426,21 +1351,6 @@ const About: React.FC = () => {
                       <MemberCard member={member} type="creative" />
                     </motion.div>
                   ))}
-                </motion.div>
-                
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: allInOneTeam.length * 0.1 + 0.3, duration: 0.6 }}
-                  className="mt-16 text-center"
-                >
-                  <div className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-primary-50 to-secondary-50 dark:from-primary-900/20 dark:to-secondary-900/20 rounded-full border border-primary-200/50 dark:border-primary-700/50">
-                    <div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse"></div>
-                    <span className="text-sm font-medium text-secondary-600 dark:text-secondary-400">
-                      {allInOneTeam.length} Creative Professionals Ready to Collaborate
-                    </span>
-                    <div className="w-2 h-2 bg-secondary-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                  </div>
                 </motion.div>
               </div>
             )}
