@@ -112,7 +112,7 @@ const About: React.FC = () => {
       mentors: [ {
           name: 'Karim Atef',
           role: 'Web Development Head',
-          image: '/imgs/members/Karim.jpeg',
+          image: '/imgs/members/karim.jpeg',
           // email: 'ahmed.mohamed@stemcs.club',
           // phone: '+20 123 456 7890',
           // linkedin: 'linkedin.com/in/ahmed-mohamed'
