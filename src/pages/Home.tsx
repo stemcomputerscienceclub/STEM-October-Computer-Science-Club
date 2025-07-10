@@ -44,7 +44,7 @@ const Home: React.FC = () => {
   const StatCard: React.FC<{ stat: typeof stats[0], index: number }> = ({ stat, index }) => {
     const { count, elementRef } = useScrollCounter({ 
       end: stat.number, 
-      duration: 2000 + index * 200,
+      duration: 3000 + index * 200,
       threshold: 0.1
     });
     const Icon = stat.icon;

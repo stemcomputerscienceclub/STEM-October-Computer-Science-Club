@@ -29,23 +29,23 @@ export const useScrollCounter = ({
           
           const startTime = Date.now();
           const startCount = startValue;
-          const endCount = end;
-          
-          const animate = () => {
-            const elapsed = Date.now() - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            
-            // Easing function for smooth animation
-            const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
-            const easedProgress = easeOutCubic(progress);
-            
-            const currentCount = Math.floor(startCount + (endCount - startCount) * easedProgress);
-            setCount(currentCount);
-            
-            if (progress < 1) {
-              requestAnimationFrame(animate);
-            }
-          };
+          const endCount = end;            const animate = () => {
+              const elapsed = Date.now() - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+              
+              // Easing function for smooth animation - ease-in-out
+              const easeInOutCubic = (t: number) => {
+                return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+              };
+              const easedProgress = easeInOutCubic(progress);
+              
+              const currentCount = Math.floor(startCount + (endCount - startCount) * easedProgress);
+              setCount(currentCount);
+              
+              if (progress < 1) {
+                requestAnimationFrame(animate);
+              }
+            };
           
           animate();
         }
