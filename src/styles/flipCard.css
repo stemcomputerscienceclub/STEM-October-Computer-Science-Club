@@ -1,0 +1,215 @@
+/* Enhanced 3D Flip Card Styles */
+.perspective-1000 {
+  perspective: 1200px;
+  perspective-origin: center center;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Enhanced flip animation with easing */
+.group:hover .group-hover\:rotate-y-180 {
+  transform: rotateY(180deg);
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Smooth transitions with spring effect */
+.flip-card-inner {
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* Enhanced hover effects */
+.member-card-container {
+  transition: all 0.3s ease;
+  will-change: transform;
+}
+
+.member-card-container:hover {
+  transform: translateY(-8px) scale(1.02);
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+}
+
+/* Improved image loading and transitions */
+.member-image {
+  transition: all 0.5s ease;
+  object-fit: cover;
+  object-position: center top; /* Focus on top part to avoid cutting heads */
+}
+
+/* Remove zoom effect to prevent image cropping */
+.member-image:hover {
+  /* Removed scale transform to prevent zooming and cropping */
+  filter: brightness(1.1) contrast(1.05);
+}
+
+/* Enhanced button interactions */
+.contact-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Social media icon buttons */
+.social-icon-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+.social-icon-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.social-icon-button:hover::before {
+  left: 100%;
+}
+
+.social-icon-button:hover {
+  transform: translateY(-2px) scale(1.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.contact-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.contact-button:hover::before {
+  left: 100%;
+}
+
+.contact-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Improved type indicator */
+.type-indicator {
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Enhanced gradient animations */
+.gradient-bg {
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Improved loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Enhanced accessibility */
+.member-card-container:focus-within {
+  outline: 2px solid #3b82f6;
+  outline-offset: 4px;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .perspective-1000 {
+    perspective: 800px;
+  }
+  
+  .member-card-container:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+  
+  .flip-card-inner {
+    transition: transform 0.6s ease;
+  }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .flip-card-inner,
+  .member-card-container,
+  .contact-button,
+  .member-image {
+    transition: none;
+  }
+  
+  .gradient-bg,
+  .type-indicator {
+    animation: none;
+  }
+}
