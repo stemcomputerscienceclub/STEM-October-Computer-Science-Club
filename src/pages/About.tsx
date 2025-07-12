@@ -1060,6 +1060,12 @@ const About: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   whileHover={{ y: -5, scale: 1.02 }}
+                  style={gyroEnabled ? {
+                    perspective: "1200px",
+                    rotateX: motionPosition.y * 2,
+                    rotateY: motionPosition.x * 2,
+                    transformStyle: "preserve-3d"
+                  } : {}}
                   className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700 group"
                 >
                   {/* Top Banner */}
