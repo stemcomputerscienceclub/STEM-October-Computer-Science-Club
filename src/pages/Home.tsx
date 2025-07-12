@@ -99,7 +99,7 @@ const Home: React.FC = () => {
 
   const stats = [
     { number: 10, suffix: '+', label: 'Years of Community Growth', icon: Globe, bgColor: 'bg-blue-600' },
-    { number: 20, suffix: '+', label: 'Technologies Mastered', icon: Code, bgColor: 'bg-slate-700' },
+    { number: 30, suffix: '+', label: 'Technologies Mastered', icon: Code, bgColor: 'bg-slate-700' },
     { number: 100, suffix: '+', label: 'Projects Built', icon: Terminal, bgColor: 'bg-blue-800' },
     { number: 500, suffix: '+', label: 'Mentorship Sessions Held', icon: UserPlus, bgColor: 'bg-slate-600' }
   ];
@@ -563,252 +563,203 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
-        {/* Mastered Technologies Section */}
+      {/* Mastered Technologies Section */}
       <section className="py-32 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 relative overflow-hidden" id="tech-section">
-          {/* Background Effects */}
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1)_0%,transparent_50%)]" />
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(59,130,246,0.05)_50%,transparent_100%)]" />
-          </div>
-          
-          <div className="relative z-10">
-            {/* Section Header */}
+        {/* Background Effects */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1)_0%,transparent_50%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(59,130,246,0.05)_50%,transparent_100%)]" />
+        </div>
+
+        <div className="relative z-10">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16 px-4"
+          >
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ scale: 0.5, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-center mb-16 px-4"
+              className="inline-flex items-center px-6 py-3 bg-blue-500/20 border border-blue-400/30 rounded-full mb-8"
             >
-              <motion.div
-                initial={{ scale: 0.5, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="inline-flex items-center px-6 py-3 bg-blue-500/20 border border-blue-400/30 rounded-full mb-8"
-              >
-                <Code className="w-5 h-5 text-blue-300 mr-3" />
-                <span className="text-blue-300 font-medium">Technologies We Master</span>
-              </motion.div>
-              
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
-                  Our Tech Arsenal
-                </span>
-              </h2>
-              <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-                From cutting-edge frameworks to powerful databases, we've mastered the tools that shape the future of technology
-              </p>
+              <Code className="w-5 h-5 text-blue-300 mr-3" />
+              <span className="text-blue-300 font-medium">Technologies We Master</span>
             </motion.div>
 
-            {/* Horizontal Scrolling Tech Container */}
-            <div className="tech-scroll-container relative h-96 overflow-hidden">
-              <div className="tech-track flex items-center space-x-8 h-full" id="tech-track">
-                {/* Frontend Technologies */}
-                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="w-12 h-12" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">React</h3>
-                  <p className="text-slate-400 text-center text-sm">Modern UI Library</p>
-                </div>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+                Our Tech Arsenal
+              </span>
+            </h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+              From cutting-edge frameworks to powerful databases, we've mastered the tools that shape the future of technology
+            </p>
+          </motion.div>
 
-                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" className="w-12 h-12" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Vue.js</h3>
-                  <p className="text-slate-400 text-center text-sm">Progressive Framework</p>
+          {/* Horizontal Scrolling Tech Container */}
+          <div className="tech-scroll-container relative h-96 overflow-hidden">
+            <div className="tech-track flex items-center space-x-8 h-full" id="tech-track">
+              {/* Frontend Technologies */}
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" className="w-12 h-12" />
                 </div>
-
-                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" alt="Angular" className="w-12 h-12" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Angular</h3>
-                  <p className="text-slate-400 text-center text-sm">Full Framework</p>
-                </div>
-
-                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-black/20 to-slate-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" className="w-12 h-12 filter invert" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Next.js</h3>
-                  <p className="text-slate-400 text-center text-sm">React Framework</p>
-                </div>
-
-                {/* Backend Technologies */}
-                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-green-500/20 to-lime-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" className="w-12 h-12" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Node.js</h3>
-                  <p className="text-slate-400 text-center text-sm">JavaScript Runtime</p>
-                </div>
-
-                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" className="w-12 h-12" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Python</h3>
-                  <p className="text-slate-400 text-center text-sm">Versatile Language</p>
-                </div>
-
-                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-red-500/20 to-pink-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" className="w-12 h-12" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Java</h3>
-                  <p className="text-slate-400 text-center text-sm">Enterprise Language</p>
-                </div>
-
-                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-purple-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" className="w-12 h-12" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">C#</h3>
-                  <p className="text-slate-400 text-center text-sm">Microsoft Stack</p>
-                </div>
-
-                {/* Databases */}
-                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" className="w-12 h-12" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">PostgreSQL</h3>
-                  <p className="text-slate-400 text-center text-sm">Advanced Database</p>
-                </div>
-
-                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" className="w-12 h-12" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">MongoDB</h3>
-                  <p className="text-slate-400 text-center text-sm">NoSQL Database</p>
-                </div>
-
-                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis" className="w-12 h-12" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Redis</h3>
-                  <p className="text-slate-400 text-center text-sm">In-Memory Store</p>
-                </div>
-
-                {/* AI/ML Technologies */}
-                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" className="w-12 h-12" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">TensorFlow</h3>
-                  <p className="text-slate-400 text-center text-sm">ML Framework</p>
-                </div>
-
-                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" className="w-12 h-12" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">PyTorch</h3>
-                  <p className="text-slate-400 text-center text-sm">Deep Learning</p>
-                </div>
-
-                {/* Cloud & DevOps */}
-                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-orange-500/20 to-yellow-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="AWS" className="w-12 h-12" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">AWS</h3>
-                  <p className="text-slate-400 text-center text-sm">Cloud Platform</p>
-                </div>
-
-                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" className="w-12 h-12" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Docker</h3>
-                  <p className="text-slate-400 text-center text-sm">Containerization</p>
-                </div>
-
-                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes" className="w-12 h-12" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Kubernetes</h3>
-                  <p className="text-slate-400 text-center text-sm">Orchestration</p>
-                </div>
-
-                {/* Mobile Development */}
-                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter" className="w-12 h-12" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Flutter</h3>
-                  <p className="text-slate-400 text-center text-sm">Cross-Platform</p>
-                </div>
-
-                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Native" className="w-12 h-12" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">React Native</h3>
-                  <p className="text-slate-400 text-center text-sm">Mobile Framework</p>
-                </div>
-
-                {/* Additional Popular Technologies */}
-                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" className="w-12 h-12" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">JavaScript</h3>
-                  <p className="text-slate-400 text-center text-sm">Core Language</p>
-                </div>
-
-                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" className="w-12 h-12" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">TypeScript</h3>
-                  <p className="text-slate-400 text-center text-sm">Type Safety</p>
-                </div>
-
-                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" className="w-12 h-12" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Git</h3>
-                  <p className="text-slate-400 text-center text-sm">Version Control</p>
-                </div>
-
-                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" className="w-12 h-12" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Figma</h3>
-                  <p className="text-slate-400 text-center text-sm">Design Tool</p>
-                </div>
+                <h3 className="text-xl font-bold text-white mb-2">JavaScript</h3>
+                <p className="text-slate-400 text-center text-sm">Core Language</p>
               </div>
-            </div>
+              
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" className="w-12 h-12" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">TypeScript</h3>
+                <p className="text-slate-400 text-center text-sm">Type Safety</p>
+              </div>
 
-            {/* Scroll Indicator */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-center mt-12"
-            >
-              <p className="text-slate-400 mb-4">Scroll to explore our technology stack</p>
-              <motion.div
-                animate={{ x: [0, 10, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="inline-flex items-center space-x-2 text-blue-400"
-              >
-                <ArrowRight className="w-5 h-5" />
-                <span className="text-sm">Keep scrolling to continue</span>
-              </motion.div>
-            </motion.div>
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" className="w-12 h-12" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Git</h3>
+                <p className="text-slate-400 text-center text-sm">Version Control</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" className="w-12 h-12" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Figma</h3>
+                <p className="text-slate-400 text-center text-sm">Design Tool</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="w-12 h-12" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">React</h3>
+                <p className="text-slate-400 text-center text-sm">Modern UI Library</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-black/20 to-slate-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" className="w-12 h-12 filter invert" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Next.js</h3>
+                <p className="text-slate-400 text-center text-sm">React Framework</p>
+              </div>
+
+              {/* Backend Technologies */}
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-green-500/20 to-lime-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" className="w-12 h-12" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Node.js</h3>
+                <p className="text-slate-400 text-center text-sm">JavaScript Runtime</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" className="w-12 h-12" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Python</h3>
+                <p className="text-slate-400 text-center text-sm">Versatile Language</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-red-500/20 to-pink-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" className="w-12 h-12" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Java</h3>
+                <p className="text-slate-400 text-center text-sm">Enterprise Language</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-purple-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" className="w-12 h-12" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">C#</h3>
+                <p className="text-slate-400 text-center text-sm">Microsoft Stack</p>
+              </div>
+
+              {/* Databases */}
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" className="w-12 h-12" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">PostgreSQL</h3>
+                <p className="text-slate-400 text-center text-sm">Advanced Database</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" className="w-12 h-12" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">MongoDB</h3>
+                <p className="text-slate-400 text-center text-sm">NoSQL Database</p>
+              </div>
+
+              {/* AI/ML Technologies */}
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" className="w-12 h-12" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">TensorFlow</h3>
+                <p className="text-slate-400 text-center text-sm">ML Framework</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" className="w-12 h-12" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">PyTorch</h3>
+                <p className="text-slate-400 text-center text-sm">Deep Learning</p>
+              </div>
+
+              {/* Mobile Development */}
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter" className="w-12 h-12" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Flutter</h3>
+                <p className="text-slate-400 text-center text-sm">Cross-Platform</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Native" className="w-12 h-12" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">React Native</h3>
+                <p className="text-slate-400 text-center text-sm">Mobile Framework</p>
+              </div>
+
+            </div>
           </div>
-        </section>
+
+          {/* Scroll Indicator */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="text-center mt-12"
+          >
+            <p className="text-slate-400 mb-4">Scroll to explore our technology stack</p>
+            <motion.div
+              animate={{ x: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="inline-flex items-center space-x-2 text-blue-400"
+            >
+              <ArrowRight className="w-5 h-5" />
+              <span className="text-sm">Keep scrolling to continue</span>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Features Section */}
       <section className="py-20 bg-white dark:bg-slate-900 relative overflow-hidden">
