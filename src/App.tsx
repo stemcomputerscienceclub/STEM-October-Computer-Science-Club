@@ -14,6 +14,7 @@ import Workshops from './pages/Workshops';
 import Leaderboard from './pages/Leaderboard';
 import Articles from './pages/Articles';
 import ArticleDetail from './pages/ArticleDetail';
+import Projects from './pages/Projects';
 import Donation from './pages/Donation';
 import './index.css';
 
@@ -34,6 +35,7 @@ function App() {
                 <Route path="/leaderboard" element={<Leaderboard />} />
                 <Route path="/articles" element={<Articles />} />
                 <Route path="/articles/:id" element={<ArticleDetail />} />
+                <Route path="/projects" element={<Projects />} />
                 <Route path="/donation" element={<Donation />} />
               </Routes>
             </main>

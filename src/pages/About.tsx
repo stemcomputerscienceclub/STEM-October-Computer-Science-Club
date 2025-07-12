@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Users, Target, Award, Heart, Code, Lightbulb, Rocket, Globe, Crown, Trophy, MapPin, Video, Mail, Phone, Linkedin } from 'lucide-react';
+import { Users, Target, Award, Heart, Code, Lightbulb, Rocket, Globe, Crown, Trophy, MapPin, Video, Mail, Phone, Linkedin, Calendar, Star, Filter, ChevronDown, Medal, Zap, BookOpen, Users2, Clock, GraduationCap, Building, Briefcase } from 'lucide-react';
 import SEO from '../components/SEO';
 import '../styles/flipCard.css';
 
@@ -82,6 +82,144 @@ const About: React.FC = () => {
 
   const [activeTab, setActiveTab] = useState('highboard');
   const [activeSeason, setActiveSeason] = useState('2025');
+  
+  // Best Members filtering states
+  const [bestMembersYear, setBestMembersYear] = useState('2025');
+  const [bestMembersMonth, setBestMembersMonth] = useState('01');
+  const [bestMembersFilter, setBestMembersFilter] = useState('online');
+
+  // Alumni data
+  const alumni = [
+    {
+      name: 'Ahmed Hassan',
+      graduationYear: '2023',
+      currentPosition: 'Software Engineer at Microsoft',
+      image: '/imgs/members/Ahmed Adel.jpg',
+      linkedin: 'linkedin.com/in/ahmed-hassan',
+      achievements: ['Full Stack Development Track Graduate', 'Led 5+ successful projects'],
+      company: 'Microsoft',
+      location: 'Cairo, Egypt'
+    },
+    {
+      name: 'Sarah Mohamed',
+      graduationYear: '2022',
+      currentPosition: 'ML Engineer at Google',
+      image: '/imgs/members/Omar-Negm.jpeg',
+      linkedin: 'linkedin.com/in/sarah-mohamed',
+      achievements: ['AI/ML Track Graduate', 'Published 3 research papers'],
+      company: 'Google',
+      location: 'London, UK'
+    },
+    {
+      name: 'Omar Ali',
+      graduationYear: '2023',
+      currentPosition: 'Mobile Developer at Uber',
+      image: '/imgs/members/Zaki.jpg',
+      linkedin: 'linkedin.com/in/omar-ali',
+      achievements: ['Mobile Development Expert', 'Created 10+ apps'],
+      company: 'Uber',
+      location: 'Dubai, UAE'
+    },
+    {
+      name: 'Nour Khaled',
+      graduationYear: '2021',
+      currentPosition: 'Tech Lead at Amazon',
+      image: '/imgs/members/Moi.jpg',
+      linkedin: 'linkedin.com/in/nour-khaled',
+      achievements: ['Web Development Pioneer', 'Mentored 50+ students'],
+      company: 'Amazon',
+      location: 'Seattle, USA'
+    }
+  ];
+
+  // Major events and achievements
+  const majorEvents = [
+    {
+      year: '2024',
+      title: 'Scrapyard Hackathon',
+      description: 'Our biggest hackathon focusing on sustainability and recycling technology solutions',
+      image: '/imgs/scrapyard1.jpg',
+      participants: '200+',
+      type: 'Hackathon',
+      achievements: ['30 innovative projects', '15 winning teams', '5 startup initiatives launched']
+    },
+    {
+      year: '2023',
+      title: 'Python Programming Challenge',
+      description: 'Annual coding competition featuring algorithmic problems and AI challenges',
+      image: '/imgs/python-hackathon.png',
+      participants: '150+',
+      type: 'Competition',
+      achievements: ['48-hour coding marathon', '25 teams participated', '3 internship offers']
+    }
+  ];
+
+  // Timeline data
+  const timelineEvents = [
+    {
+      year: '2015',
+      title: 'Club Foundation',
+      description: 'STEM Computer Science Club was established with 15 founding members',
+      type: 'milestone',
+      icon: Rocket
+    },
+    {
+      year: '2018',
+      title: 'International Recognition',
+      description: 'Won first international programming competition',
+      type: 'achievement',
+      icon: Medal
+    },
+    {
+      year: '2021',
+      title: 'AI/ML Specialization',
+      description: 'Introduced artificial intelligence and machine learning tracks',
+      type: 'program',
+      icon: Zap
+    },
+    {
+      year: '2024',
+      title: 'Industry Collaboration',
+      description: 'Launched internship program with 20+ partner companies',
+      type: 'partnership',
+      icon: Briefcase
+    },
+    {
+      year: '2026',
+      title: 'Research Center',
+      description: 'Goal to establish dedicated computer science research facility',
+      type: 'future',
+      icon: BookOpen
+    }
+  ];
+
+  // Best members data structure (sample data)
+  const bestMembersData = {
+    '2024': {
+      '01': {
+        online: {
+          'web-development': { name: 'Ahmed Ali', track: 'Web Development', score: 985, projects: 12 },
+          'ai-ml': { name: 'Omar Khaled', track: 'AI/ML', score: 940, projects: 6 }
+        },
+        offline: {
+          'web-development': { name: 'Mohamed Farouk', track: 'Web Development', score: 890, projects: 10 },
+          'ai-ml': { name: 'Karim Zaki', track: 'AI/ML', score: 910, projects: 5 }
+        }
+      }
+    },
+    '2025': {
+      '01': {
+        online: {
+          'web-development': { name: 'Nour Hassan', track: 'Web Development', score: 995, projects: 15 },
+          'ai-ml': { name: 'Maryam Omar', track: 'AI/ML', score: 970, projects: 8 }
+        },
+        offline: {
+          'web-development': { name: 'Sara Zaki', track: 'Web Development', score: 915, projects: 12 },
+          'ai-ml': { name: 'Layla Ahmed', track: 'AI/ML', score: 935, projects: 7 }
+        }
+      }
+    }
+  };
 
   // Function to handle season change and automatically switch to highboard
   const handleSeasonChange = (season: string) => {
@@ -1359,6 +1497,304 @@ const About: React.FC = () => {
               </div>
             )}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Alumni Section */}
+      <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-950 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-4">
+              <GraduationCap className="w-12 h-12 inline-block mr-4 text-blue-600" />
+              Our Alumni
+            </h2>
+            <p className="text-lg text-secondary-600 dark:text-secondary-400 max-w-3xl mx-auto">
+              Celebrating our graduates who are making their mark in the tech industry worldwide
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {alumni.map((alum, index) => (
+              <motion.div
+                key={alum.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -5, scale: 1.02 }}
+                className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700"
+              >
+                <div className="text-center">
+                  <img
+                    src={alum.image}
+                    alt={alum.name}
+                    className="w-20 h-20 rounded-full mx-auto mb-4 object-cover border-4 border-blue-500/20"
+                  />
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{alum.name}</h3>
+                  <p className="text-sm text-blue-600 dark:text-blue-400 font-medium mb-1">Class of {alum.graduationYear}</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">{alum.currentPosition}</p>
+                  
+                  <div className="flex items-center justify-center mb-4">
+                    <Building className="w-4 h-4 text-slate-500 mr-2" />
+                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{alum.company}</span>
+                  </div>
+                  
+                  <div className="text-xs text-slate-500 dark:text-slate-400 mb-4">
+                    {alum.achievements.join(' • ')}
+                  </div>
+                  
+                  <button
+                    onClick={() => window.open(`https://${alum.linkedin}`, '_blank')}
+                    className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors"
+                  >
+                    <Linkedin className="w-4 h-4 mr-2" />
+                    Connect
+                  </button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Major Events & Achievements Section */}
+      <section className="py-20 bg-white dark:bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-4">
+              <Trophy className="w-12 h-12 inline-block mr-4 text-yellow-600" />
+              What We've Accomplished
+            </h2>
+            <p className="text-lg text-secondary-600 dark:text-secondary-400 max-w-3xl mx-auto">
+              Major events, competitions, and initiatives that have shaped our community
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {majorEvents.map((event, index) => (
+              <motion.div
+                key={event.title}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                whileHover={{ scale: 1.02 }}
+                className="bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300"
+              >
+                <div className="h-48 overflow-hidden">
+                  <img
+                    src={event.image}
+                    alt={event.title}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="px-3 py-1 bg-blue-600 text-white rounded-full text-sm font-medium">
+                      {event.type}
+                    </span>
+                    <span className="text-sm text-slate-500 dark:text-slate-400">{event.year}</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">{event.title}</h3>
+                  <p className="text-slate-600 dark:text-slate-400 mb-4">{event.description}</p>
+                  <div className="flex items-center mb-4">
+                    <Users className="w-4 h-4 text-blue-600 mr-2" />
+                    <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                      {event.participants} participants
+                    </span>
+                  </div>
+                  <div className="space-y-2">
+                    {event.achievements.map((achievement, i) => (
+                      <div key={i} className="flex items-center text-sm text-slate-600 dark:text-slate-400">
+                        <Star className="w-3 h-3 text-yellow-500 mr-2" />
+                        {achievement}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-950">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-4">
+              <Clock className="w-12 h-12 inline-block mr-4 text-green-600" />
+              Our Journey
+            </h2>
+            <p className="text-lg text-secondary-600 dark:text-secondary-400 max-w-3xl mx-auto">
+              From humble beginnings to ambitious future goals - our timeline of growth and innovation
+            </p>
+          </motion.div>
+
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"></div>
+            
+            {timelineEvents.map((event, index) => {
+              const Icon = event.icon;
+              const isLeft = index % 2 === 0;
+              const isFuture = event.type === 'future';
+              
+              return (
+                <motion.div
+                  key={event.year}
+                  initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className={`relative flex items-center mb-12 ${isLeft ? 'flex-row-reverse' : ''}`}
+                >
+                  {/* Event content */}
+                  <div className={`w-5/12 ${isLeft ? 'text-right pr-8' : 'text-left pl-8'}`}>
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      className={`bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-xl border-2 ${isFuture ? 'border-dashed border-purple-300 dark:border-purple-600' : 'border-blue-200 dark:border-slate-700'}`}
+                    >
+                      <div className={`flex items-center ${isLeft ? 'justify-end' : 'justify-start'} mb-3`}>
+                        <span className={`px-3 py-1 rounded-full text-sm font-bold ${
+                          isFuture 
+                            ? 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300' 
+                            : 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
+                        }`}>
+                          {event.year}
+                        </span>
+                      </div>
+                      <h3 className={`text-lg font-bold mb-2 ${isFuture ? 'text-purple-700 dark:text-purple-300' : 'text-slate-900 dark:text-white'}`}>
+                        {event.title}
+                      </h3>
+                      <p className="text-slate-600 dark:text-slate-400 text-sm">
+                        {event.description}
+                      </p>
+                    </motion.div>
+                  </div>
+                  
+                  {/* Timeline icon */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-white dark:bg-slate-800 rounded-full border-4 border-blue-500 flex items-center justify-center shadow-lg">
+                    <Icon className={`w-6 h-6 ${isFuture ? 'text-purple-600' : 'text-blue-600'}`} />
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Best Members Section */}
+      <section className="py-20 bg-white dark:bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-4">
+              <Medal className="w-12 h-12 inline-block mr-4 text-gold-600" />
+              Best Performing Members
+            </h2>
+            <p className="text-lg text-secondary-600 dark:text-secondary-400 max-w-3xl mx-auto">
+              Recognizing our top performers across different tracks and learning modes
+            </p>
+          </motion.div>
+
+          {/* Filters */}
+          <div className="flex flex-wrap gap-4 justify-center mb-12">
+            <select
+              value={bestMembersYear}
+              onChange={(e) => setBestMembersYear(e.target.value)}
+              className="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500"
+              aria-label="Select year for best members"
+            >
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+            </select>
+            
+            <select
+              value={bestMembersMonth}
+              onChange={(e) => setBestMembersMonth(e.target.value)}
+              className="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500"
+              aria-label="Select month for best members"
+            >
+              <option value="01">January</option>
+              <option value="02">February</option>
+              <option value="03">March</option>
+            </select>
+            
+            <div className="flex gap-2">
+              {['online', 'offline', 'bootcamp'].map((type) => (
+                <button
+                  key={type}
+                  onClick={() => setBestMembersFilter(type)}
+                  className={`px-4 py-2 rounded-lg font-medium transition-colors ${
+                    bestMembersFilter === type
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-600'
+                  }`}
+                >
+                  {type.charAt(0).toUpperCase() + type.slice(1)}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Best Members Display */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {bestMembersData[bestMembersYear as keyof typeof bestMembersData]?.[bestMembersMonth as keyof typeof bestMembersData['2024']]?.[bestMembersFilter as keyof typeof bestMembersData['2024']['01']] &&
+              Object.entries(bestMembersData[bestMembersYear as keyof typeof bestMembersData][bestMembersMonth as keyof typeof bestMembersData['2024']][bestMembersFilter as keyof typeof bestMembersData['2024']['01']]).map(([track, member], index) => (
+                <motion.div
+                  key={`${track}-${member.name}`}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-2xl p-6 border-2 border-yellow-200 dark:border-yellow-700 relative"
+                >
+                  <div className="absolute top-2 right-2">
+                    <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
+                      <Crown className="w-4 h-4 text-white" />
+                    </div>
+                  </div>
+                  
+                  <div className="text-center">
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{member.name}</h3>
+                    <p className="text-sm text-blue-600 dark:text-blue-400 font-medium mb-3">{member.track}</p>
+                    
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-slate-600 dark:text-slate-400">Score:</span>
+                        <span className="text-sm font-bold text-green-600">{member.score}</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-slate-600 dark:text-slate-400">Projects:</span>
+                        <span className="text-sm font-bold text-blue-600">{member.projects}</span>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-4 flex justify-center">
+                      <div className="px-3 py-1 bg-yellow-500 text-white rounded-full text-xs font-bold">
+                        #{index + 1} Best Performer
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+          </div>
         </div>
       </section>
     </div>

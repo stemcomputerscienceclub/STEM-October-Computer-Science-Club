@@ -23,6 +23,7 @@ const Header: React.FC = () => {
     { name: 'Home', path: '/', icon: Code },
     { name: 'About', path: '/about', icon: Users },
     { name: 'Tracks', path: '/tracks', icon: BookOpen },
+    { name: 'Projects', path: '/projects', icon: Code },
     { name: 'Events', path: '/workshops', icon: Calendar },
     { name: 'Leaderboard', path: '/leaderboard', icon: Trophy },
     { name: 'Articles', path: '/articles', icon: BookOpen },
@@ -61,7 +62,7 @@ const Header: React.FC = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center">
             {navItems.map((item) => {
               const Icon = item.icon;
               

@@ -1,12 +1,48 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Code, Users,Globe ,BookOpen, Trophy,UserPlus, Terminal, Cpu, Database, GitBranch, Braces, FileCode, Zap, Target, Lightbulb, School, Rocket, Users2, Award, Lightbulb as Innovation, BookOpenCheck } from 'lucide-react';
+import { ArrowRight, Code, Users, Globe, BookOpen, Trophy, UserPlus, Terminal, Cpu, Database, GitBranch, Braces, FileCode, Zap, Target, Lightbulb, School, Rocket, Users2, Award, Lightbulb as Innovation, BookOpenCheck } from 'lucide-react';
 import CS3DBackground from '../components/CS3DBackground';
 import SEO from '../components/SEO';
 import { useScrollCounter } from '../hooks/useScrollCounter';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
 
 const Home: React.FC = () => {
+  // GSAP Horizontal Scroll Animation
+  useEffect(() => {
+    const techTrack = document.getElementById('tech-track');
+    const techSection = document.getElementById('tech-section');
+
+    if (techTrack && techSection) {
+      // Calculate the scroll distance
+      const trackWidth = techTrack.scrollWidth;
+      const containerWidth = techSection.offsetWidth;
+      const scrollDistance = trackWidth - containerWidth;
+
+      // Create the horizontal scroll animation
+      gsap.to(techTrack, {
+        x: -scrollDistance,
+        ease: "none",
+        scrollTrigger: {
+          trigger: techSection,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+          invalidateOnRefresh: true
+        }
+      });
+    }
+
+    // Cleanup on unmount
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
   const features = [
     {
       icon: Code,
@@ -18,19 +54,19 @@ const Home: React.FC = () => {
       icon: Users,
       title: 'Community Driven',
       description: 'Join a vibrant community of passionate programmers and tech enthusiasts.',
-      bgColor: 'bg-slate-700'
+      bgColor: 'bg-blue-600'
     },
     {
       icon: BookOpen,
       title: 'Workshops & Events',
       description: 'Participate in hands-on workshops, hackathons, and coding competitions.',
-      bgColor: 'bg-blue-800'
+      bgColor: 'bg-blue-600'
     },
     {
       icon: Trophy,
       title: 'Achievements',
       description: 'Track your progress and compete with peers on our interactive leaderboard.',
-      bgColor: 'bg-slate-600'
+      bgColor: 'bg-blue-600'
     }
   ];
 
@@ -43,8 +79,8 @@ const Home: React.FC = () => {
 
   // Stats component with scroll counter
   const StatCard: React.FC<{ stat: typeof stats[0], index: number }> = ({ stat, index }) => {
-    const { count, elementRef } = useScrollCounter({ 
-      end: stat.number, 
+    const { count, elementRef } = useScrollCounter({
+      end: stat.number,
       duration: 3000 + index * 200,
       threshold: 0.1
     });
@@ -96,7 +132,7 @@ const Home: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* SEO Component */}
-      <SEO 
+      <SEO
         title="STEM Computer Science Club - Empowering Future Programmers & Innovators"
         description="Join our vibrant community of passionate developers. Master programming tracks, participate in workshops, and unlock your potential in computer science and technology innovation."
         keywords="STEM computer science club, programming community, web development, AI machine learning, coding bootcamp, tech workshops, software engineering, hackathon, programming tracks, computer science education"
@@ -108,10 +144,10 @@ const Home: React.FC = () => {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 lg:pt-20">
         {/* 3D Background */}
         <CS3DBackground />
-        
+
         {/* Content overlay with enhanced glassmorphism */}
         <div className="absolute inset-0 bg-black/20 dark:bg-black/40" />
-        
+
         {/* Additional overlay for better text contrast */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 via-transparent to-indigo-900/30 dark:from-blue-900/50 dark:via-transparent dark:to-indigo-900/50" />
 
@@ -135,89 +171,96 @@ const Home: React.FC = () => {
                 initial={{ opacity: 0, scale: 0.8, y: -20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-                className="inline-flex items-center px-8 py-4 bg-white/98 dark:bg-slate-800/95 backdrop-blur-xl border border-slate-300/60 dark:border-slate-600/50 rounded-2xl mb-4 shadow-2xl shadow-slate-500/15 dark:shadow-blue-400/20 max-w-xs-screen terminal-responsive"
+                className="inline-flex items-center px-8 py-4 bg-white/98 dark:bg-slate-800/95 backdrop-blur-xl border border-slate-300/60 dark:border-slate-600/50 rounded-2xl mb-4 shadow-2xl shadow-slate-500/15 dark:shadow-blue-400/20 terminal-responsive"
               >
-                <div className="flex space-x-3 mr-6 smartwatch-hide">
-                  <div className="w-4 h-4 bg-red-500 rounded-full shadow-sm"></div>
-                  <div className="w-4 h-4 bg-yellow-500 rounded-full shadow-sm"></div>
-                  <div className="w-4 h-4 bg-green-500 rounded-full shadow-sm"></div>
+                <div className="flex terminal-spacing">
+                  <div className="terminal-dots bg-red-500 rounded-full shadow-sm"></div>
+                  <div className="terminal-dots bg-yellow-500 rounded-full shadow-sm"></div>
+                  <div className="terminal-dots bg-green-500 rounded-full shadow-sm"></div>
                 </div>
-                <div className="flex items-center space-x-3 overflow-protect">
-                  <Terminal className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                  <span className="text-slate-700 dark:text-slate-300 font-mono text-base font-medium code-responsive">
+                <div className="flex items-center space-x-3 overflow-hidden min-w-0 flex-1">
+                  <Terminal className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0" />
+                  <span className="text-slate-700 dark:text-slate-300 font-mono text-base font-medium terminal-text truncate">
                     ~/stem-cs-club
                   </span>
-                  <span className="text-green-600 dark:text-green-400 font-mono text-base font-semibold">
+                  <span className="text-green-600 dark:text-green-400 font-mono text-base font-semibold terminal-text">
                     $
                   </span>
                   <motion.span
                     animate={{ opacity: [1, 0, 1] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
-                    className="text-blue-600 dark:text-blue-400 font-mono text-base code-responsive"
+                    className="text-blue-600 dark:text-blue-400 font-mono text-base terminal-text terminal-hide-long truncate"
                   >
                     echo "Welcome to STEM CS Club"
                   </motion.span>
+                  <motion.span
+                    animate={{ opacity: [1, 0, 1] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                    className="text-blue-600 dark:text-blue-400 font-mono terminal-text terminal-show-short truncate hidden"
+                  >
+                    echo "Welcome"
+                  </motion.span>
                 </div>
               </motion.div>
-              
+
               {/* Professional Main Heading */}
-               <div className="space-y-8">
-                 <motion.h1 
-                   className="hero-title-responsive text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none overflow-protect"
-                   initial={{ opacity: 0, y: 30 }}
-                   animate={{ opacity: 1, y: 0 }}
-                   transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-                 >
-                   <motion.span
-                     initial={{ opacity: 0, x: -30 }}
-                     animate={{ opacity: 1, x: 0 }}
-                     transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
-                     className="block text-blue-700 dark:text-blue-400 mb-2"
-                   >
-                     STEM
-                   </motion.span>
-                   <motion.span
-                     initial={{ opacity: 0, scale: 0.8 }}
-                     animate={{ opacity: 1, scale: 1 }}
-                     transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
-                     className="block text-slate-800 dark:text-white mb-2 relative"
-                   >
-                     Computer Science Club
+              <div className="space-y-8">
+                <motion.h1
+                  className="hero-title-responsive text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none overflow-protect"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+                >
+                  <motion.span
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
+                    className="block text-blue-700 dark:text-blue-400 mb-2"
+                  >
+                    STEM
+                  </motion.span>
+                  <motion.span
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
+                    className="block text-slate-800 dark:text-white mb-2 relative"
+                  >
+                    Computer Science Club
 
-                     {/* Subtle underline accent */}
-                     <motion.div
-                       initial={{ width: 0 }}
-                       animate={{ width: "100%" }}
-                       transition={{ duration: 1, delay: 1.5, ease: "easeOut" }}
-                       className="h-1 bg-gradient-to-r from-blue-700 to-indigo-700 dark:from-blue-400 dark:to-indigo-400 mt-4 mx-auto"
-                     />
-                   </motion.span>
-                 </motion.h1>
+                    {/* Subtle underline accent */}
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={{ width: "100%" }}
+                      transition={{ duration: 1, delay: 1.5, ease: "easeOut" }}
+                      className="h-1 bg-gradient-to-r from-blue-700 to-indigo-700 dark:from-blue-400 dark:to-indigo-400 mt-4 mx-auto"
+                    />
+                  </motion.span>
+                </motion.h1>
 
-                 {/* Enhanced Subtitle */}
-                 <motion.div
-                   initial={{ opacity: 0, y: 20 }}
-                   animate={{ opacity: 1, y: 0 }}
-                   transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
-                   className="space-y-6"
-                 >
-                   <p className="hero-subtitle-responsive text-xl md:text-2xl lg:text-3xl text-slate-800 dark:text-slate-300 max-w-4xl mx-auto leading-relaxed font-medium overflow-protect">
-                     Empowering the next generation of
-                     <span className="text-blue-700 dark:text-blue-400 font-semibold"> programmers </span>
-                     and
-                     <span className="text-indigo-700 dark:text-indigo-400 font-semibold"> innovators</span>
-                   </p>
-                   
-                   <motion.p
-                     initial={{ opacity: 0 }}
-                     animate={{ opacity: 1 }}
-                     transition={{ duration: 0.8, delay: 1.4 }}
-                     className="hero-subtitle-responsive text-lg md:text-xl text-slate-700 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed overflow-protect"
-                   >
-                     Join our community of passionate developers and unlock your potential in computer science, programming, and technology innovation.
-                   </motion.p>
-                 </motion.div>
-               </div>
+                {/* Enhanced Subtitle */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
+                  className="space-y-6"
+                >
+                  <p className="hero-subtitle-responsive text-xl md:text-2xl lg:text-3xl text-slate-800 dark:text-slate-300 max-w-4xl mx-auto leading-relaxed font-medium overflow-protect">
+                    Empowering the next generation of
+                    <span className="text-blue-700 dark:text-blue-400 font-semibold"> programmers </span>
+                    and
+                    <span className="text-indigo-700 dark:text-indigo-400 font-semibold"> innovators</span>
+                  </p>
+
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8, delay: 1.4 }}
+                    className="hero-subtitle-responsive text-lg md:text-xl text-slate-700 dark:text-slate-400 max-w-3xl mx-auto leading-relaxed overflow-protect"
+                  >
+                    Join our community of passionate developers and unlock your potential in computer science, programming, and technology innovation.
+                  </motion.p>
+                </motion.div>
+              </div>
             </motion.div>
 
             {/* Professional CTA Buttons */}
@@ -225,46 +268,48 @@ const Home: React.FC = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.6, ease: "easeOut" }}
-              className="flex flex-col sm:flex-row gap-6 justify-center items-center mt-12"
+              className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center mt-8 md:mt-12 px-4"
             >
               {/* Primary CTA */}
               <motion.div
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                className="w-full sm:w-auto"
               >
                 <Link
                   to="/tracks"
-                  className="group relative inline-flex items-center px-10 py-5 bg-gradient-to-r from-blue-700 to-indigo-700 hover:from-blue-800 hover:to-indigo-800 text-white font-bold rounded-2xl transition-all duration-300 shadow-2xl shadow-blue-600/30 hover:shadow-blue-600/50 border border-blue-600/30 backdrop-blur-sm overflow-hidden btn-responsive max-w-xs-screen"
+                  className="group relative inline-flex items-center justify-center w-full sm:w-auto px-10 py-5 bg-gradient-to-r from-blue-700 to-indigo-700 hover:from-blue-800 hover:to-indigo-800 text-white font-bold rounded-2xl transition-all duration-300 shadow-2xl shadow-blue-600/30 hover:shadow-blue-600/50 border border-blue-600/30 backdrop-blur-sm overflow-hidden btn-responsive"
                 >
                   {/* Animated background overlay */}
                   <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  <Code className="mr-3 h-6 w-6 relative z-10" />
+
+                  <Code className="mr-3 h-6 w-6 relative z-10 btn-icon-responsive" />
                   <span className="text-lg relative z-10">Explore Tracks</span>
-                  <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform duration-300 relative z-10" />
-                  
+                  <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform duration-300 relative z-10 btn-icon-responsive" />
+
                   {/* Shine effect */}
                   <div className="absolute inset-0 -top-2 -bottom-2 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                 </Link>
               </motion.div>
-              
+
               {/* Secondary CTA */}
               <motion.div
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                className="w-full sm:w-auto"
               >
                 <Link
                   to="/about"
-                  className="group relative inline-flex items-center px-10 py-5 bg-white/95 dark:bg-slate-800/90 backdrop-blur-xl border-2 border-slate-400 dark:border-slate-600 text-slate-800 dark:text-slate-300 hover:text-blue-700 dark:hover:text-blue-400 font-bold rounded-2xl transition-all duration-300 shadow-xl hover:shadow-2xl hover:border-blue-500 dark:hover:border-blue-500 overflow-hidden btn-responsive max-w-xs-screen"
+                  className="group relative inline-flex items-center justify-center w-full sm:w-auto px-10 py-5 bg-white/95 dark:bg-slate-800/90 backdrop-blur-xl border-2 border-slate-400 dark:border-slate-600 text-slate-800 dark:text-slate-300 hover:text-blue-700 dark:hover:text-blue-400 font-bold rounded-2xl transition-all duration-300 shadow-xl hover:shadow-2xl hover:border-blue-500 dark:hover:border-blue-500 overflow-hidden btn-responsive"
                 >
                   {/* Animated background overlay */}
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/50 dark:to-indigo-950/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  <BookOpen className="mr-3 h-6 w-6 relative z-10" />
+
+                  <BookOpen className="mr-3 h-6 w-6 relative z-10 btn-icon-responsive" />
                   <span className="text-lg relative z-10">Learn More</span>
-                  <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform duration-300 relative z-10" />
+                  <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform duration-300 relative z-10 btn-icon-responsive" />
                 </Link>
               </motion.div>
             </motion.div>
@@ -295,146 +340,146 @@ const Home: React.FC = () => {
         </motion.div>
       </section>
 
-        {/* Our Foundation Section */}
-        <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-950 relative overflow-hidden">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-20 dark:opacity-10">
-            <div className="h-full w-full foundation-pattern" />
-          </div>
-          
-          <div className="container mx-auto px-6 relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
+      {/* Our Foundation Section */}
+      <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-950 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-20 dark:opacity-10">
+          <div className="h-full w-full foundation-pattern" />
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <motion.h2
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 dark:text-slate-100 mb-6"
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-center mb-16"
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <motion.h2 
-                className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 dark:text-slate-100 mb-6"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400">
-                  Our Foundation
-                </span>
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-4xl mx-auto leading-relaxed"
-              >
-                Where Excellence Meets Innovation in Computer Science Education
-              </motion.p>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 dark:from-blue-400 dark:via-indigo-400 dark:to-purple-400">
+                Our Foundation
+              </span>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-4xl mx-auto leading-relaxed"
+            >
+              Where Excellence Meets Innovation in Computer Science Education
+            </motion.p>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* School Image */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="relative"
+            >
+              <div className="relative overflow-hidden rounded-3xl shadow-2xl group">
+                <img
+                  src="/imgs/media5.JPG"
+                  alt="STEM 6 October High School for Boys - Campus"
+                  className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 via-transparent to-transparent" />
+
+                {/* Floating Badge */}
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                  className="absolute top-6 left-6 px-6 py-3 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-2xl shadow-lg"
+                >
+                  <div className="flex items-center space-x-3">
+                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+                    <span className="text-sm font-semibold text-slate-800 dark:text-slate-200">Excellence in Education</span>
+                  </div>
+                </motion.div>
+              </div>
             </motion.div>
 
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              {/* School Image */}
+            {/* Content */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="space-y-8"
+            >
+              {/* School Title */}
+              <div className="space-y-4">
+                <motion.h3
+                  className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-slate-100"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                >
+                  STEM High School for Boys -
+
+                  <span className="block text-2xl md:text-3xl text-blue-600 dark:text-blue-400 mt-2">
+                    6th of October
+                  </span>
+                </motion.h3>
+
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.7 }}
+                  className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 dark:from-blue-400/10 dark:to-indigo-400/10 border border-blue-500/20 dark:border-blue-400/20 rounded-xl"
+                >
+                  <School className="w-5 h-5 text-blue-600 dark:text-blue-400 mr-2" />
+                  <span className="text-blue-600 dark:text-blue-400 font-semibold text-lg">Established Excellence</span>
+                </motion.div>
+              </div>
+
+              {/* Description */}
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="relative"
+                transition={{ duration: 0.6, delay: 0.8 }}
+                className="space-y-6"
               >
-                <div className="relative overflow-hidden rounded-3xl shadow-2xl group">
-                  <img 
-                    src="/imgs/media5.JPG" 
-                    alt="STEM 6 October High School for Boys - Campus" 
-                    className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 via-transparent to-transparent" />
-                  
-                  {/* Floating Badge */}
-                  <motion.div
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                    className="absolute top-6 left-6 px-6 py-3 bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl rounded-2xl shadow-lg"
-                  >
-                    <div className="flex items-center space-x-3">
-                      <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                      <span className="text-sm font-semibold text-slate-800 dark:text-slate-200">Excellence in Education</span>
-                    </div>
-                  </motion.div>
-                </div>
+                <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Our <span className="font-semibold text-blue-600 dark:text-blue-400">Computer Science Club</span> represents the pinnacle of technological education and innovation at STEM High School for Boys -
+                  6th of October. We are a dynamic community of passionate students dedicated to advancing our expertise in programming, software development, and cutting-edge technology.
+                </p>
+
+                <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Through collaborative projects, competitive programming, and hands-on workshops, our club serves as a catalyst for <span className="font-semibold text-indigo-600 dark:text-indigo-400">student innovation</span>, fostering an environment where creativity meets technical excellence and preparing the next generation of technology leaders.
+                </p>
               </motion.div>
 
-              {/* Content */}
+              {/* Key Features */}
               <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                className="space-y-8"
+                transition={{ duration: 0.6, delay: 0.9 }}
+                className="grid grid-cols-2 gap-4"
               >
-                {/* School Title */}
-                <div className="space-y-4">
-                  <motion.h3 
-                    className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-slate-100"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.6 }}
-                  >
-                    STEM High School for Boys - 
-
-                    <span className="block text-2xl md:text-3xl text-blue-600 dark:text-blue-400 mt-2">
-                     6th of October
-                    </span>
-                  </motion.h3>
-                  
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.7 }}
-                    className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 dark:from-blue-400/10 dark:to-indigo-400/10 border border-blue-500/20 dark:border-blue-400/20 rounded-xl"
-                  >
-                    <School className="w-5 h-5 text-blue-600 dark:text-blue-400 mr-2" />
-                    <span className="text-blue-600 dark:text-blue-400 font-semibold text-lg">Established Excellence</span>
-                  </motion.div>
-                </div>
-
-                {/* Description */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.8 }}
-                  className="space-y-6"
-                >
-                  <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
-                    Our <span className="font-semibold text-blue-600 dark:text-blue-400">Computer Science Club</span> represents the pinnacle of technological education and innovation at STEM High School for Boys -
-6th of October. We are a dynamic community of passionate students dedicated to advancing our expertise in programming, software development, and cutting-edge technology.
-                  </p>
-                  
-                  <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
-                    Through collaborative projects, competitive programming, and hands-on workshops, our club serves as a catalyst for <span className="font-semibold text-indigo-600 dark:text-indigo-400">student innovation</span>, fostering an environment where creativity meets technical excellence and preparing the next generation of technology leaders.
-                  </p>
-                </motion.div>
-
-                {/* Key Features */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.9 }}
-                  className="grid grid-cols-2 gap-4"
-                >
-                  {[
-                    { icon: Rocket, label: 'Innovation Hub', color: 'text-blue-600 dark:text-blue-400' },
-                    { icon: Users2, label: 'Collaboration', color: 'text-indigo-600 dark:text-indigo-400' },
-                    { icon: Award, label: 'Excellence', color: 'text-purple-600 dark:text-purple-400' },
-                    { icon: Innovation, label: 'Growth', color: 'text-green-600 dark:text-green-400' }
-                  ].map((feature, index) => {
-                     const IconComponent = feature.icon;
-                     return (
-                     <motion.div
+                {[
+                  { icon: Rocket, label: 'Innovation Hub', color: 'text-blue-600 dark:text-blue-400' },
+                  { icon: Users2, label: 'Collaboration', color: 'text-indigo-600 dark:text-indigo-400' },
+                  { icon: Award, label: 'Excellence', color: 'text-purple-600 dark:text-purple-400' },
+                  { icon: Innovation, label: 'Growth', color: 'text-green-600 dark:text-green-400' }
+                ].map((feature, index) => {
+                  const IconComponent = feature.icon;
+                  return (
+                    <motion.div
                       key={feature.label}
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
@@ -446,59 +491,305 @@ const Home: React.FC = () => {
                       <IconComponent className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                       <span className={`font-semibold ${feature.color}`}>{feature.label}</span>
                     </motion.div>
-                     );
-                   })}
-                </motion.div>
-
-                {/* CTA Button */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 1.1 }}
-                  className="pt-6"
-                >
-                  <Link to="/about">
-                    <motion.button
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 text-white font-bold text-lg rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
-                    >
-                      <motion.div
-                        animate={{ x: ["-100%", "100%"] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
-                      />
-                      <span className="relative z-10 flex items-center">
-                        <BookOpenCheck className="w-5 h-5 mr-2" />
-                        Discover Our Journey
-                        <motion.div
-                          animate={{ x: [0, 5, 0] }}
-                          transition={{ duration: 1.5, repeat: Infinity }}
-                          className="ml-3"
-                        >
-                          <ArrowRight className="w-5 h-5" />
-                        </motion.div>
-                      </span>
-                    </motion.button>
-                  </Link>
-                  
-                  <p className="text-sm text-slate-500 dark:text-slate-400 mt-3 text-center">
-                    Learn more about our club's mission, activities, and impact
-                  </p>
-                </motion.div>
+                  );
+                })}
               </motion.div>
+
+              {/* CTA Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 1.1 }}
+                className="pt-6"
+              >
+                <Link to="/about">
+                  <motion.button
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 text-white font-bold text-lg rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
+                  >
+                    <motion.div
+                      animate={{ x: ["-100%", "100%"] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
+                    />
+                    <span className="relative z-10 flex items-center">
+                      <BookOpenCheck className="w-5 h-5 mr-2" />
+                      Discover Our Journey
+                      <motion.div
+                        animate={{ x: [0, 5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                        className="ml-3"
+                      >
+                        <ArrowRight className="w-5 h-5" />
+                      </motion.div>
+                    </span>
+                  </motion.button>
+                </Link>
+
+                <p className="text-sm text-slate-500 dark:text-slate-400 mt-3 text-center">
+                  Learn more about our club's mission, activities, and impact
+                </p>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+        {/* Mastered Technologies Section */}
+      <section className="py-32 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 relative overflow-hidden" id="tech-section">
+          {/* Background Effects */}
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1)_0%,transparent_50%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(59,130,246,0.05)_50%,transparent_100%)]" />
+          </div>
+          
+          <div className="relative z-10">
+            {/* Section Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-16 px-4"
+            >
+              <motion.div
+                initial={{ scale: 0.5, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center px-6 py-3 bg-blue-500/20 border border-blue-400/30 rounded-full mb-8"
+              >
+                <Code className="w-5 h-5 text-blue-300 mr-3" />
+                <span className="text-blue-300 font-medium">Technologies We Master</span>
+              </motion.div>
+              
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+                  Our Tech Arsenal
+                </span>
+              </h2>
+              <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+                From cutting-edge frameworks to powerful databases, we've mastered the tools that shape the future of technology
+              </p>
+            </motion.div>
+
+            {/* Horizontal Scrolling Tech Container */}
+            <div className="tech-scroll-container relative h-96 overflow-hidden">
+              <div className="tech-track flex items-center space-x-8 h-full" id="tech-track">
+                {/* Frontend Technologies */}
+                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="w-12 h-12" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">React</h3>
+                  <p className="text-slate-400 text-center text-sm">Modern UI Library</p>
+                </div>
+
+                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" className="w-12 h-12" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Vue.js</h3>
+                  <p className="text-slate-400 text-center text-sm">Progressive Framework</p>
+                </div>
+
+                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" alt="Angular" className="w-12 h-12" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Angular</h3>
+                  <p className="text-slate-400 text-center text-sm">Full Framework</p>
+                </div>
+
+                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-black/20 to-slate-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" className="w-12 h-12 filter invert" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Next.js</h3>
+                  <p className="text-slate-400 text-center text-sm">React Framework</p>
+                </div>
+
+                {/* Backend Technologies */}
+                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-green-500/20 to-lime-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" className="w-12 h-12" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Node.js</h3>
+                  <p className="text-slate-400 text-center text-sm">JavaScript Runtime</p>
+                </div>
+
+                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" className="w-12 h-12" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Python</h3>
+                  <p className="text-slate-400 text-center text-sm">Versatile Language</p>
+                </div>
+
+                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-red-500/20 to-pink-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" className="w-12 h-12" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Java</h3>
+                  <p className="text-slate-400 text-center text-sm">Enterprise Language</p>
+                </div>
+
+                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-purple-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" className="w-12 h-12" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">C#</h3>
+                  <p className="text-slate-400 text-center text-sm">Microsoft Stack</p>
+                </div>
+
+                {/* Databases */}
+                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" className="w-12 h-12" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">PostgreSQL</h3>
+                  <p className="text-slate-400 text-center text-sm">Advanced Database</p>
+                </div>
+
+                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" className="w-12 h-12" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">MongoDB</h3>
+                  <p className="text-slate-400 text-center text-sm">NoSQL Database</p>
+                </div>
+
+                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis" className="w-12 h-12" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Redis</h3>
+                  <p className="text-slate-400 text-center text-sm">In-Memory Store</p>
+                </div>
+
+                {/* AI/ML Technologies */}
+                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow" className="w-12 h-12" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">TensorFlow</h3>
+                  <p className="text-slate-400 text-center text-sm">ML Framework</p>
+                </div>
+
+                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" className="w-12 h-12" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">PyTorch</h3>
+                  <p className="text-slate-400 text-center text-sm">Deep Learning</p>
+                </div>
+
+                {/* Cloud & DevOps */}
+                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-orange-500/20 to-yellow-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="AWS" className="w-12 h-12" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">AWS</h3>
+                  <p className="text-slate-400 text-center text-sm">Cloud Platform</p>
+                </div>
+
+                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" className="w-12 h-12" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Docker</h3>
+                  <p className="text-slate-400 text-center text-sm">Containerization</p>
+                </div>
+
+                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes" className="w-12 h-12" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Kubernetes</h3>
+                  <p className="text-slate-400 text-center text-sm">Orchestration</p>
+                </div>
+
+                {/* Mobile Development */}
+                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter" className="w-12 h-12" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Flutter</h3>
+                  <p className="text-slate-400 text-center text-sm">Cross-Platform</p>
+                </div>
+
+                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Native" className="w-12 h-12" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">React Native</h3>
+                  <p className="text-slate-400 text-center text-sm">Mobile Framework</p>
+                </div>
+
+                {/* Additional Popular Technologies */}
+                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" className="w-12 h-12" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">JavaScript</h3>
+                  <p className="text-slate-400 text-center text-sm">Core Language</p>
+                </div>
+
+                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" className="w-12 h-12" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">TypeScript</h3>
+                  <p className="text-slate-400 text-center text-sm">Type Safety</p>
+                </div>
+
+                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" className="w-12 h-12" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Git</h3>
+                  <p className="text-slate-400 text-center text-sm">Version Control</p>
+                </div>
+
+                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                  <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" className="w-12 h-12" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">Figma</h3>
+                  <p className="text-slate-400 text-center text-sm">Design Tool</p>
+                </div>
+              </div>
             </div>
+
+            {/* Scroll Indicator */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-center mt-12"
+            >
+              <p className="text-slate-400 mb-4">Scroll to explore our technology stack</p>
+              <motion.div
+                animate={{ x: [0, 10, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="inline-flex items-center space-x-2 text-blue-400"
+              >
+                <ArrowRight className="w-5 h-5" />
+                <span className="text-sm">Keep scrolling to continue</span>
+              </motion.div>
+            </motion.div>
           </div>
         </section>
 
-        {/* Features Section */}
-        <section className="py-20 bg-white dark:bg-slate-900 relative overflow-hidden">
+      {/* Features Section */}
+      <section className="py-20 bg-white dark:bg-slate-900 relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 dots-pattern" />
         </div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -517,7 +808,7 @@ const Home: React.FC = () => {
               <Terminal className="w-4 h-4 text-blue-400 mr-2" />
               <span className="text-blue-400 text-sm font-medium">Platform Features</span>
             </motion.div>
-            
+
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-4">
               Why Choose STEM CS Club?
             </h2>
@@ -543,7 +834,7 @@ const Home: React.FC = () => {
                 >
                   {/* Hover Effect Background */}
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
+
                   <div className="relative z-10">
                     <motion.div
                       whileHover={{ rotate: 360, scale: 1.1 }}
@@ -552,16 +843,16 @@ const Home: React.FC = () => {
                     >
                       <Icon className="w-full h-full text-white" />
                     </motion.div>
-                    
+
                     <h3 className="text-xl font-semibold mb-3 text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
                       {feature.title}
                     </h3>
-                    
+
                     <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
                       {feature.description}
                     </p>
                   </div>
-                  
+
                   {/* Corner Accent */}
                   <div className="absolute top-0 right-0 w-20 h-20 bg-blue-600/10 rounded-bl-full transform translate-x-10 -translate-y-10 group-hover:scale-150 transition-transform duration-500" />
                 </motion.div>
@@ -600,7 +891,7 @@ const Home: React.FC = () => {
                 <Lightbulb className="w-12 h-12" />
               </motion.div>
             </div>
-            
+
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               Ready to Start Your Journey?
             </h2>
@@ -624,6 +915,7 @@ const Home: React.FC = () => {
           </motion.div>
         </div>
       </section>
+
     </div>
   );
 };
