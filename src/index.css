@@ -110,6 +110,37 @@
       padding: 0.5rem;
     }
   }
+
+  /* Tech Card Light/Dark Mode Styling */
+  .tech-item {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(241, 245, 249, 0.9) 100%);
+    border: 1px solid rgba(203, 213, 225, 0.5);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .dark .tech-item {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.8) 100%);
+    border: 1px solid rgba(51, 65, 85, 0.5);
+    box-shadow: none;
+  }
+
+  .tech-item h3 {
+    color: rgb(30, 41, 59);
+  }
+
+  .dark .tech-item h3 {
+    color: rgb(255, 255, 255);
+  }
+
+  .tech-item p {
+    color: rgb(71, 85, 105);
+  }
+
+  .dark .tech-item p {
+    color: rgb(148, 163, 184);
+  }
+
+  /* Tech Card Light/Dark Mode Styling End */
 }
 
 /* Utility Styles */
@@ -496,6 +527,16 @@ nav a.flex.items-center.space-x-2.px-3.py-2.rounded-lg.transition-all.duration-3
 .tech-track {
   will-change: transform;
   width: max-content;
+  animation: slowScroll 120s linear infinite;
+}
+
+@keyframes slowScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .tech-item {
@@ -503,25 +544,29 @@ nav a.flex.items-center.space-x-2.px-3.py-2.rounded-lg.transition-all.duration-3
   overflow: hidden;
 }
 
-.tech-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  border-radius: 1.5rem;
+/* Light mode enhancements */
+@media (prefers-color-scheme: light) {
+  .tech-item::before {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(147, 51, 234, 0.08) 100%);
+  }
 }
 
-.tech-item:hover::before {
-  opacity: 1;
+/* Dark mode explicit styling */
+.dark .tech-item::before {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(147, 51, 234, 0.15) 100%);
+}
+
+/* Pause animation on hover */
+.tech-track:hover {
+  animation-play-state: paused;
 }
 
 /* Responsive adjustments for tech section */
 @media (max-width: 768px) {
+  .tech-track {
+    animation: slowScroll 80s linear infinite;
+  }
+  
   .tech-item {
     width: 200px !important;
     height: 280px !important;
@@ -539,6 +584,10 @@ nav a.flex.items-center.space-x-2.px-3.py-2.rounded-lg.transition-all.duration-3
 }
 
 @media (max-width: 480px) {
+  .tech-track {
+    animation: slowScroll 60s linear infinite;
+  }
+  
   .tech-item {
     width: 180px !important;
     height: 260px !important;

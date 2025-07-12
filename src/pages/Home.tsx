@@ -99,7 +99,7 @@ const Home: React.FC = () => {
 
   const stats = [
     { number: 10, suffix: '+', label: 'Years of Community Growth', icon: Globe, bgColor: 'bg-blue-600' },
-    { number: 30, suffix: '+', label: 'Technologies Mastered', icon: Code, bgColor: 'bg-slate-700' },
+    { number: 50, suffix: '+', label: 'Technologies Mastered', icon: Code, bgColor: 'bg-slate-700' },
     { number: 100, suffix: '+', label: 'Projects Built', icon: Terminal, bgColor: 'bg-blue-800' },
     { number: 500, suffix: '+', label: 'Mentorship Sessions Held', icon: UserPlus, bgColor: 'bg-slate-600' }
   ];
@@ -564,7 +564,7 @@ const Home: React.FC = () => {
         </div>
       </section>
       {/* Mastered Technologies Section */}
-      <section className="py-32 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 relative overflow-hidden" id="tech-section">
+      <section className="py-32 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-blue-900 dark:to-indigo-900 relative overflow-hidden" id="tech-section">
         {/* Background Effects */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1)_0%,transparent_50%)]" />
@@ -587,38 +587,37 @@ const Home: React.FC = () => {
               viewport={{ once: true }}
               className="inline-flex items-center px-6 py-3 bg-blue-500/20 border border-blue-400/30 rounded-full mb-8"
             >
-              <Code className="w-5 h-5 text-blue-300 mr-3" />
-              <span className="text-blue-300 font-medium">Technologies We Master</span>
+              <Code className="w-5 h-5 text-blue-600 dark:text-blue-300 mr-3" />
+              <span className="text-blue-600 dark:text-blue-300 font-medium">Technologies We Master</span>
             </motion.div>
 
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 dark:text-white mb-6">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400">
                 Our Tech Arsenal
               </span>
             </h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
               From cutting-edge frameworks to powerful databases, we've mastered the tools that shape the future of technology
             </p>
           </motion.div>
 
           {/* Horizontal Scrolling Tech Container */}
           <div className="tech-scroll-container relative h-96 overflow-hidden">
-            <div className="tech-track flex items-center space-x-8 h-full" id="tech-track">
-              {/* Frontend Technologies */}
-              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+            <div className="tech-track flex items-center space-x-8 h-full" id="tech-track">              {/* Frontend Technologies */}
+              <div className="tech-item flex-shrink-0 w-64 h-80 backdrop-blur-xl rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
                 <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" className="w-12 h-12" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">JavaScript</h3>
-                <p className="text-slate-400 text-center text-sm">Core Language</p>
+                <h3 className="text-xl font-bold mb-2">JavaScript</h3>
+                <p className="text-center text-sm">Core Language</p>
               </div>
               
-              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+              <div className="tech-item flex-shrink-0 w-64 h-80 backdrop-blur-xl rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
                 <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" className="w-12 h-12" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">TypeScript</h3>
-                <p className="text-slate-400 text-center text-sm">Type Safety</p>
+                <h3 className="text-xl font-bold mb-2">TypeScript</h3>
+                <p className="text-center text-sm">Type Safety</p>
               </div>
 
               <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
@@ -630,11 +629,189 @@ const Home: React.FC = () => {
               </div>
 
               <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" className="w-12 h-12" />
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-gray-500/20 to-black/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express.js" className="w-12 h-12 filter invert" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Figma</h3>
-                <p className="text-slate-400 text-center text-sm">Design Tool</p>
+                <h3 className="text-xl font-bold text-white mb-2">Express.js</h3>
+                <p className="text-slate-400 text-center text-sm">Node.js Framework</p>
+              </div>
+
+              {/* Database Technologies */}
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL" className="w-12 h-12" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">SQL</h3>
+                <p className="text-slate-400 text-center text-sm">Database Language</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-green-500/20 to-teal-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">SB</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Supabase</h3>
+                <p className="text-slate-400 text-center text-sm">Backend as a Service</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" className="w-12 h-12" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Firebase</h3>
+                <p className="text-slate-400 text-center text-sm">Google Cloud</p>
+              </div>
+
+              {/* Backend Frameworks */}
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg" alt="Laravel" className="w-12 h-12" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Laravel</h3>
+                <p className="text-slate-400 text-center text-sm">PHP Framework</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="Flask" className="w-12 h-12 filter invert" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Flask</h3>
+                <p className="text-slate-400 text-center text-sm">Python Framework</p>
+              </div>
+
+              {/* Mobile Development */}
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-orange-500/20 to-green-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" alt="Kotlin" className="w-12 h-12" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Kotlin</h3>
+                <p className="text-slate-400 text-center text-sm">Android Development</p>
+              </div>
+
+              {/* Machine Learning Libraries */}
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">NP</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">NumPy</h3>
+                <p className="text-slate-400 text-center text-sm">Scientific Computing</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-yellow-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">SP</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">SciPy</h3>
+                <p className="text-slate-400 text-center text-sm">Scientific Library</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">MPL</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Matplotlib</h3>
+                <p className="text-slate-400 text-center text-sm">Data Visualization</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">SB</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Seaborn</h3>
+                <p className="text-slate-400 text-center text-sm">Statistical Plots</p>
+              </div>
+
+              {/* Deployment Platforms */}
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-black/20 to-white/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">▲</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Vercel</h3>
+                <p className="text-slate-400 text-center text-sm">Deployment Platform</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-purple-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">R</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Render</h3>
+                <p className="text-slate-400 text-center text-sm">Cloud Hosting</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">RP</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Replit</h3>
+                <p className="text-slate-400 text-center text-sm">Online IDE</p>
+              </div>
+
+              {/* Frontend Libraries */}
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-red-500/20 to-orange-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-red-500 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">SV</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Svelte</h3>
+                <p className="text-slate-400 text-center text-sm">Frontend Framework</p>
+              </div>
+
+              {/* Automation & AI Tools */}
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">n8n</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">n8n</h3>
+                <p className="text-slate-400 text-center text-sm">Workflow Automation</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-gray-500/20 to-black/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">𝕏</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Grok</h3>
+                <p className="text-slate-400 text-center text-sm">AI Assistant</p>
+              </div>
+
+              {/* Quantum Computing */}
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">Q</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Qiskit</h3>
+                <p className="text-slate-400 text-center text-sm">Quantum Computing</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">⟩</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Quantum</h3>
+                <p className="text-slate-400 text-center text-sm">Future Computing</p>
               </div>
 
               <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
@@ -665,9 +842,8 @@ const Home: React.FC = () => {
               <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
                 <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" className="w-12 h-12" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Python</h3>
-                <p className="text-slate-400 text-center text-sm">Versatile Language</p>
+                </div>                  <h3 className="text-xl font-bold text-white mb-2">Python</h3>
+                <p className="text-slate-400 text-center text-sm">AI & Backend</p>
               </div>
 
               <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
@@ -676,14 +852,12 @@ const Home: React.FC = () => {
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">Java</h3>
                 <p className="text-slate-400 text-center text-sm">Enterprise Language</p>
-              </div>
-
-              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-purple-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" className="w-12 h-12" />
+              </div>                <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++" className="w-12 h-12" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">C#</h3>
-                <p className="text-slate-400 text-center text-sm">Microsoft Stack</p>
+                <h3 className="text-xl font-bold text-white mb-2">C++</h3>
+                <p className="text-slate-400 text-center text-sm">Competitive Programming</p>
               </div>
 
               {/* Databases */}
@@ -737,6 +911,143 @@ const Home: React.FC = () => {
                 <p className="text-slate-400 text-center text-sm">Mobile Framework</p>
               </div>
 
+              {/* Web Fundamentals */}
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" className="w-12 h-12" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">HTML5</h3>
+                <p className="text-slate-400 text-center text-sm">Web Structure</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" className="w-12 h-12" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">CSS3</h3>
+                <p className="text-slate-400 text-center text-sm">Web Styling</p>
+              </div>
+
+              {/* PHP Backend Stack */}
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-purple-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP" className="w-12 h-12" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">PHP</h3>
+                <p className="text-slate-400 text-center text-sm">Server-Side Language</p>
+              </div>
+
+              {/* Programming Fundamentals - C */}
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" className="w-12 h-12" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">C</h3>
+                <p className="text-slate-400 text-center text-sm">System Programming</p>
+              </div>
+
+              {/* Programming Fundamentals - C# */}
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" className="w-12 h-12" />
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">C#</h3>
+                <p className="text-slate-400 text-center text-sm">.NET Framework</p>
+              </div>
+
+              {/* AI Development & Generative AI */}
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">AI</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">OpenAI</h3>
+                <p className="text-slate-400 text-center text-sm">Generative AI</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">LC</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">LangChain</h3>
+                <p className="text-slate-400 text-center text-sm">AI Agents</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">HF</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Hugging Face</h3>
+                <p className="text-slate-400 text-center text-sm">ML Models</p>
+              </div>
+
+              {/* Data Science & ML Libraries */}
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-green-500/20 to-teal-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">PD</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Pandas</h3>
+                <p className="text-slate-400 text-center text-sm">Data Analysis</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-yellow-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">SK</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Scikit-learn</h3>
+                <p className="text-slate-400 text-center text-sm">Machine Learning</p>
+              </div>
+              {/* Computational Science */}
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-purple-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">∫</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">MATLAB</h3>
+                <p className="text-slate-400 text-center text-sm">Computational Science</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-green-500/20 to-blue-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">∑</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Jupyter</h3>
+                <p className="text-slate-400 text-center text-sm">Scientific Computing</p>
+              </div>
+
+              {/* More Quantum Computing */}
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">Q⟩</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">Cirq</h3>
+                <p className="text-slate-400 text-center text-sm">Quantum Circuits</p>
+              </div>
+
+              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">IBM</span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-2">IBM Quantum</h3>
+                <p className="text-slate-400 text-center text-sm">Quantum Cloud</p>
+              </div>
+
             </div>
           </div>
 
@@ -748,11 +1059,11 @@ const Home: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="text-center mt-12"
           >
-            <p className="text-slate-400 mb-4">Scroll to explore our technology stack</p>
+            <p className="text-slate-600 dark:text-slate-400 mb-4">Scroll to explore our technology stack</p>
             <motion.div
               animate={{ x: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="inline-flex items-center space-x-2 text-blue-400"
+              className="inline-flex items-center space-x-2 text-blue-600 dark:text-blue-400"
             >
               <ArrowRight className="w-5 h-5" />
               <span className="text-sm">Keep scrolling to continue</span>
