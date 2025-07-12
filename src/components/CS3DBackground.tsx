@@ -91,42 +91,7 @@ const CS3DBackground: React.FC<CS3DBackgroundProps> = ({ className = "cs-3d-back
 
     // Code snippets
     const codeSnippets: THREE.Sprite[] = [];
-    const words = ['function', 'class', 'const', 'let', 'return', 'async', 'await', 'React', 'Node', 'Python'];
     
-    function createCodeTexture(word: string) {
-      const canvas = document.createElement('canvas');
-      const context = canvas.getContext('2d')!;
-      canvas.width = word.length * 30;
-      canvas.height = 48;
-      context.font = '48px monospace';
-      context.fillStyle = isDark ? '#64748b' : '#475569';
-      context.textBaseline = 'middle';
-      context.fillText(word, 0, 24);
-      return new THREE.CanvasTexture(canvas);
-    }
-
-    for (let i = 0; i < 40; i++) {
-      const word = words[Math.floor(Math.random() * words.length)];
-      const texture = createCodeTexture(word);
-      const material = new THREE.SpriteMaterial({ map: texture, transparent: true, opacity: 0.4 });
-      const sprite = new THREE.Sprite(material);
-
-      sprite.position.set(
-        (Math.random() - 0.5) * 45,
-        (Math.random() - 0.5) * 45,
-        (Math.random() - 0.5) * 45 - 25
-      );
-      sprite.scale.set(0.8, 0.4, 1);
-      sprite.userData = {
-        speedX: (Math.random() - 0.5) * 0.012,
-        speedY: (Math.random() - 0.5) * 0.012,
-        speedZ: (Math.random() - 0.5) * 0.012
-      };
-
-      scene.add(sprite);
-      codeSnippets.push(sprite);
-    }
-
     // Network nodes
     const networkNodes: THREE.Vector3[] = [];
     const nodeMeshes: THREE.Mesh[] = [];

@@ -274,7 +274,7 @@ const Home: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.7 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 grid-responsive"
+              className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-8 mb-8 grid-responsive"
             >
               {stats.map((stat, index) => (
                 <StatCard key={stat.label} stat={stat} index={index} />

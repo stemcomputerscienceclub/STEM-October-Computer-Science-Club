@@ -191,22 +191,6 @@ const Header: React.FC = () => {
             className="lg:hidden bg-white dark:bg-secondary-900 border-t border-secondary-200 dark:border-secondary-700"
           >
             <nav className="px-4 py-4 space-y-2">
-              {/* Mobile Donation Button */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0 }}
-              >
-                <Link
-                  to="/donation"
-                  onClick={() => setIsMenuOpen(false)}
-                  className="flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 bg-gradient-to-r from-primary-600 to-primary-700 text-white font-semibold mb-2"
-                >
-                  <Heart className="w-5 h-5" />
-                  <span className="font-medium">Donate</span>
-                </Link>
-              </motion.div>
-              
               {navItems.map((item, index) => {
                 const Icon = item.icon;
                 
@@ -245,6 +229,22 @@ const Header: React.FC = () => {
                   </motion.div>
                 );
               })}
+              
+              {/* Mobile Donation Button */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navItems.length * 0.1 }}
+              >
+                <Link
+                  to="/donation"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 bg-gradient-to-r from-primary-600 to-primary-700 text-white font-semibold mt-2"
+                >
+                  <Heart className="w-5 h-5" />
+                  <span className="font-medium">Donate</span>
+                </Link>
+              </motion.div>
             </nav>
           </motion.div>
         )}

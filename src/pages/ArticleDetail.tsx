@@ -385,7 +385,7 @@ The investment in learning TypeScript pays off quickly in terms of reduced bugs,
     <div className="min-h-screen pt-20">
       <SEO 
         title={article.title}
-        description={article.excerpt || "Learn programming concepts and best practices from our educational articles and tutorials."}
+        description="Learn programming concepts and best practices from our educational articles and tutorials. Master TypeScript, React, and modern web development techniques."
         url={`/articles/${article.id}`}
         image={article.image || "/imgs/articles-hero.png"}
       />
