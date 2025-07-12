@@ -31,7 +31,8 @@
     "eject": "react-scripts eject",
     "analyze": "npm run build && npx webpack-bundle-analyzer build/static/js/*.js",
     "seo:audit": "node scripts/seo-audit.js",
-    "build:production": "npm run build && npm run seo:audit"
+    "build:production": "npm run build && npm run seo:audit",
+    "vercel-build": "CI=false npm run build"
   },
   "eslintConfig": {
     "extends": [
