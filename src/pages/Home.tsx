@@ -23,17 +23,44 @@ const Home: React.FC = () => {
       const containerWidth = techSection.offsetWidth;
       const scrollDistance = trackWidth - containerWidth;
 
-      // Create the horizontal scroll animation
-      gsap.to(techTrack, {
-        x: -scrollDistance,
-        ease: "none",
+      // Create the horizontal scroll animation with enhanced behavior
+      const tl = gsap.timeline({
         scrollTrigger: {
           trigger: techSection,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 1,
-          invalidateOnRefresh: true
+          start: "center center", // Start when section center reaches viewport center
+          end: "center top", // End when section center reaches viewport top
+          scrub: 0.5, // Smoother scrubbing (lower value = smoother)
+          pin: true, // Pin the section during scroll
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          snap: {
+            snapTo: "labels",
+            duration: { min: 0.2, max: 0.5 },
+            delay: 0.1,
+            ease: "power2.inOut"
+          },
+          onUpdate: (self) => {
+            // Smooth horizontal scrolling with easing
+            const progress = self.progress;
+            if (progress >= 0 && progress <= 1) {
+              // Apply smooth easing to the transform
+              const easedProgress = gsap.parseEase("power2.out")(progress);
+              gsap.to(techTrack, {
+                x: -easedProgress * scrollDistance,
+                duration: 0.1,
+                ease: "power2.out",
+                overwrite: true
+              });
+            }
+          }
         }
+      });
+
+      // Add the horizontal scroll animation
+      tl.to(techTrack, {
+        x: -scrollDistance,
+        ease: "none",
+        duration: 1
       });
     }
 

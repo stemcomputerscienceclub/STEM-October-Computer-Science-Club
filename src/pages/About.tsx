@@ -82,7 +82,7 @@ const About: React.FC = () => {
 
   const [activeTab, setActiveTab] = useState('highboard');
   const [activeSeason, setActiveSeason] = useState('2025');
-  
+
   // Best Members filtering states
   const [bestMembersYear, setBestMembersYear] = useState('2025');
   const [bestMembersMonth, setBestMembersMonth] = useState('01');
@@ -698,14 +698,14 @@ const About: React.FC = () => {
   return (
     <div className="min-h-screen pt-20">
       {/* SEO Component */}
-      <SEO 
+      <SEO
         title="About Us - STEM Computer Science Club"
         description="Learn about our mission to empower the next generation of programmers and innovators. Discover our values, team, and commitment to excellence in computer science education."
         keywords="about STEM CS club, computer science mission, programming education, tech innovation, coding community, software development team"
         image="/imgs/Team.jpeg"
         url="https://stemcsclub.org/about"
       />
-      
+
       {/* Enhanced Hero Section */}
       <section className="relative section-padding bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-secondary-900 dark:via-secondary-800 dark:to-primary-900 overflow-hidden">
         {/* Animated Background Elements */}
@@ -900,9 +900,9 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Values */}
-      <section className="section-padding bg-secondary-50 dark:bg-secondary-800">
-        <div className="max-w-7xl mx-auto">
+      {/* Best Members Section */}
+      <section className="py-20 bg-white dark:bg-slate-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -910,255 +910,94 @@ const About: React.FC = () => {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-4">
-              Our Core Values
+              <Medal className="w-12 h-12 inline-block mr-4 text-gold-600" />
+              Best Performing Members
             </h2>
             <p className="text-lg text-secondary-600 dark:text-secondary-400 max-w-3xl mx-auto">
-              The principles that guide everything we do and shape our community culture
+              Recognizing our top performers across different tracks and learning modes
             </p>
           </motion.div>
 
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-          >
-            {values.map((value, index) => {
-              const Icon = value.icon;
-              return (
-                <motion.div
-                  key={value.title}
-                  variants={itemVariants}
-                  whileHover={{ y: -10, scale: 1.05 }}
-                  className="relative card p-8 text-center group overflow-hidden"
-                >
-                  {/* Animated Background Gradient */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
-
-                  {/* Floating Particles Effect */}
-                  <div className="absolute inset-0 overflow-hidden">
-                    <motion.div
-                      animate={{
-                        y: [-20, -40, -20],
-                        x: [-10, 10, -10],
-                        opacity: [0.3, 0.6, 0.3]
-                      }}
-                      transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        delay: index * 0.5
-                      }}
-                      className={`absolute top-4 right-4 w-2 h-2 bg-gradient-to-r ${value.color} rounded-full opacity-30`}
-                    />
-                    <motion.div
-                      animate={{
-                        y: [-30, -10, -30],
-                        x: [10, -5, 10],
-                        opacity: [0.2, 0.5, 0.2]
-                      }}
-                      transition={{
-                        duration: 5,
-                        repeat: Infinity,
-                        delay: index * 0.3
-                      }}
-                      className={`absolute bottom-6 left-6 w-1.5 h-1.5 bg-gradient-to-r ${value.color} rounded-full opacity-20`}
-                    />
-                  </div>
-
-                  <div className="relative z-10">
-                    {/* Enhanced Icon with Multiple Effects */}
-                    <motion.div
-                      whileHover={{ rotate: [0, -10, 10, 0] }}
-                      transition={{ duration: 0.5 }}
-                      className="relative mx-auto mb-6"
-                    >
-                      <div className={`w-20 h-20 mx-auto rounded-3xl bg-gradient-to-r ${value.color} p-5 group-hover:scale-110 transition-all duration-300 shadow-lg group-hover:shadow-xl`}>
-                        <Icon className="w-full h-full text-white" />
-                      </div>
-                      {/* Glow Effect */}
-                      <div className={`absolute inset-0 w-20 h-20 mx-auto rounded-3xl bg-gradient-to-r ${value.color} opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300`}></div>
-                    </motion.div>
-
-                    <h3 className="text-xl font-bold mb-4 text-secondary-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
-                      {value.title}
-                    </h3>
-                    <p className="text-secondary-600 dark:text-secondary-400 leading-relaxed group-hover:text-secondary-700 dark:group-hover:text-secondary-300 transition-colors duration-300">
-                      {value.description}
-                    </p>
-
-                    {/* Decorative Bottom Line */}
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: "100%" }}
-                      transition={{ duration: 0.8, delay: index * 0.1 }}
-                      className={`h-1 bg-gradient-to-r ${value.color} rounded-full mt-6 mx-auto opacity-20 group-hover:opacity-60 transition-opacity duration-300`}
-                    />
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Partners */}
-      <section className="section-padding bg-white dark:bg-secondary-900">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-4">
-              Our Partners
-            </h2>
-            <p className="text-lg text-secondary-600 dark:text-secondary-400 max-w-3xl mx-auto">
-              Collaborating with leading organizations to enhance learning opportunities
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            className="flex flex-wrap justify-center items-center gap-12 md:gap-16"
-          >
-            <motion.div
-              variants={itemVariants}
-              whileHover={{ scale: 1.1, y: -5 }}
-              className="group cursor-pointer"
-              onClick={() => window.open('https://usaco.guide', '_blank')}
+          {/* Filters */}
+          <div className="flex flex-wrap gap-4 justify-center mb-12">
+            <select
+              value={bestMembersYear}
+              onChange={(e) => setBestMembersYear(e.target.value)}
+              className="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500"
+              aria-label="Select year for best members"
             >
-              <div className="relative p-8 bg-white dark:bg-secondary-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-secondary-200 dark:border-secondary-700 group-hover:border-primary-300 dark:group-hover:border-primary-600">
-                <img
-                  src="/pages/parteners/usacologo.png"
-                  alt="USACO Guide"
-                  className="h-16 w-auto mx-auto filter group-hover:brightness-110 transition-all duration-300"
-                />
-                <div className="mt-4 text-center">
-                  <h3 className="text-lg font-semibold text-secondary-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                    USACO Guide
-                  </h3>
-                  <p className="text-sm text-secondary-600 dark:text-secondary-400 mt-1">
-                    Provides us with competitive programming materials and resources
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+            </select>
 
-            <motion.div
-              variants={itemVariants}
-              whileHover={{ scale: 1.1, y: -5 }}
-              className="group cursor-pointer"
-              onClick={() => window.open('https://hackclub.com', '_blank')}
+            <select
+              value={bestMembersMonth}
+              onChange={(e) => setBestMembersMonth(e.target.value)}
+              className="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500"
+              aria-label="Select month for best members"
             >
-              <div className="relative p-8 bg-white dark:bg-secondary-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-secondary-200 dark:border-secondary-700 group-hover:border-primary-300 dark:group-hover:border-primary-600">
-                <img
-                  src="/pages/parteners/Hackclublogo1.png"
-                  alt="Hack Club"
-                  className="h-16 w-auto mx-auto filter group-hover:brightness-110 transition-all duration-300"
-                />
-                <div className="mt-4 text-center">
-                  <h3 className="text-lg font-semibold text-secondary-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                    Hack Club
-                  </h3>
-                  <p className="text-sm text-secondary-600 dark:text-secondary-400 mt-1">
-                    We are the official Hack Club chapter in Egypt
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+              <option value="01">January</option>
+              <option value="02">February</option>
+              <option value="03">March</option>
+            </select>
 
-      {/* Achievements */}
-      <section className="section-padding bg-secondary-50 dark:bg-secondary-800">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-4">
-              Our Achievements
-            </h2>
-            <p className="text-lg text-secondary-600 dark:text-secondary-400 max-w-3xl mx-auto">
-              Celebrating our milestones and recognitions in the tech community
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
-          >
-            {achievements.map((achievement, index) => {
-              const Icon = achievement.icon;
-              return (
-                <motion.div
-                  key={achievement.title}
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.03, y: -5 }}
-                  className="relative card p-8 flex items-start space-x-6 group overflow-hidden"
+            <div className="flex gap-2">
+              {['online', 'offline', 'bootcamp'].map((type) => (
+                <button
+                  key={type}
+                  onClick={() => setBestMembersFilter(type)}
+                  className={`px-4 py-2 rounded-lg font-medium transition-colors ${bestMembersFilter === type
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-600'
+                    }`}
                 >
-                  {/* Animated Background Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  {type.charAt(0).toUpperCase() + type.slice(1)}
+                </button>
+              ))}
+            </div>
+          </div>
 
-                  {/* Decorative Corner Elements */}
-                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary-200/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-secondary-200/20 to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                  <div className="flex-shrink-0 relative z-10">
-                    {/* Enhanced Icon with Glow Effect */}
-                    <motion.div
-                      whileHover={{ rotate: [0, -5, 5, 0] }}
-                      transition={{ duration: 0.5 }}
-                      className="relative"
-                    >
-                      <div className="w-16 h-16 bg-gradient-to-r from-primary-500 to-primary-700 rounded-2xl p-4 group-hover:scale-110 transition-all duration-300 shadow-lg group-hover:shadow-xl">
-                        <Icon className="w-full h-full text-white" />
-                      </div>
-                      {/* Glow Effect */}
-                      <div className="absolute inset-0 w-16 h-16 bg-gradient-to-r from-primary-500 to-primary-700 rounded-2xl opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-300"></div>
-
-                      {/* Achievement Badge */}
-                      <motion.div
-                        initial={{ scale: 0, opacity: 0 }}
-                        whileInView={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-md"
-                      >
-                        <span className="text-xs font-bold text-white">★</span>
-                      </motion.div>
-                    </motion.div>
-                  </div>
-
-                  <div className="flex-grow relative z-10">
-                    <div className="mb-3">
-                      <h3 className="text-xl font-bold text-secondary-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
-                        {achievement.title}
-                      </h3>
+          {/* Best Members Display */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {bestMembersData[bestMembersYear as keyof typeof bestMembersData]?.[bestMembersMonth as keyof typeof bestMembersData['2024']]?.[bestMembersFilter as keyof typeof bestMembersData['2024']['01']] &&
+              Object.entries(bestMembersData[bestMembersYear as keyof typeof bestMembersData][bestMembersMonth as keyof typeof bestMembersData['2024']][bestMembersFilter as keyof typeof bestMembersData['2024']['01']]).map(([track, member], index) => (
+                <motion.div
+                  key={`${track}-${member.name}`}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-2xl p-6 border-2 border-yellow-200 dark:border-yellow-700 relative"
+                >
+                  <div className="absolute top-2 right-2">
+                    <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
+                      <Crown className="w-4 h-4 text-white" />
                     </div>
-                    <p className="text-secondary-600 dark:text-secondary-400 leading-relaxed group-hover:text-secondary-700 dark:group-hover:text-secondary-300 transition-colors duration-300">
-                      {achievement.description}
-                    </p>
+                  </div>
 
-                    {/* Progress Line Animation */}
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: "100%" }}
-                      transition={{ duration: 1, delay: index * 0.2 }}
-                      className="h-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full mt-4 opacity-30 group-hover:opacity-60 transition-opacity duration-300"
-                    />
+                  <div className="text-center">
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{member.name}</h3>
+                    <p className="text-sm text-blue-600 dark:text-blue-400 font-medium mb-3">{member.track}</p>
+
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-slate-600 dark:text-slate-400">Score:</span>
+                        <span className="text-sm font-bold text-green-600">{member.score}</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-slate-600 dark:text-slate-400">Projects:</span>
+                        <span className="text-sm font-bold text-blue-600">{member.projects}</span>
+                      </div>
+                    </div>
+
+                    <div className="mt-4 flex justify-center">
+                      <div className="px-3 py-1 bg-yellow-500 text-white rounded-full text-xs font-bold">
+                        #{index + 1} Best Performer
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
-              );
-            })}
-          </motion.div>
+              ))}
+          </div>
         </div>
       </section>
 
@@ -1195,8 +1034,8 @@ const About: React.FC = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className={`relative px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${activeSeason === season
-                        ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-lg shadow-primary-500/30'
-                        : 'text-secondary-600 dark:text-secondary-400 hover:bg-secondary-100 dark:hover:bg-secondary-700'
+                      ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-lg shadow-primary-500/30'
+                      : 'text-secondary-600 dark:text-secondary-400 hover:bg-secondary-100 dark:hover:bg-secondary-700'
                       }`}
                   >
                     {activeSeason === season && (
@@ -1233,8 +1072,8 @@ const About: React.FC = () => {
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   className={`relative flex items-center space-x-4 px-8 py-4 rounded-2xl font-bold transition-all duration-500 overflow-hidden group ${isActive
-                      ? 'bg-gradient-to-r from-primary-500 to-primary-700 text-white shadow-2xl shadow-primary-500/30'
-                      : 'bg-white dark:bg-secondary-700 text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-600 shadow-lg hover:shadow-xl'
+                    ? 'bg-gradient-to-r from-primary-500 to-primary-700 text-white shadow-2xl shadow-primary-500/30'
+                    : 'bg-white dark:bg-secondary-700 text-secondary-700 dark:text-secondary-300 hover:bg-secondary-50 dark:hover:bg-secondary-600 shadow-lg hover:shadow-xl'
                     }`}
                 >
                   {/* Animated Background for Active Tab */}
@@ -1270,8 +1109,8 @@ const About: React.FC = () => {
                     <motion.span
                       whileHover={{ scale: 1.1 }}
                       className={`text-sm font-bold px-3 py-1.5 rounded-full transition-all duration-300 ${isActive
-                          ? 'bg-white/20 text-white backdrop-blur-sm'
-                          : 'bg-gradient-to-r from-primary-100 to-primary-200 dark:from-primary-900/30 dark:to-primary-800/30 text-primary-700 dark:text-primary-300 group-hover:from-primary-200 group-hover:to-primary-300 dark:group-hover:from-primary-800/40 dark:group-hover:to-primary-700/40'
+                        ? 'bg-white/20 text-white backdrop-blur-sm'
+                        : 'bg-gradient-to-r from-primary-100 to-primary-200 dark:from-primary-900/30 dark:to-primary-800/30 text-primary-700 dark:text-primary-300 group-hover:from-primary-200 group-hover:to-primary-300 dark:group-hover:from-primary-800/40 dark:group-hover:to-primary-700/40'
                         }`}
                     >
                       {tab.count}
@@ -1500,6 +1339,179 @@ const About: React.FC = () => {
         </div>
       </section>
 
+      {/* Partners */}
+      <section className="section-padding bg-white dark:bg-secondary-900">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-4">
+              Our Partners
+            </h2>
+            <p className="text-lg text-secondary-600 dark:text-secondary-400 max-w-3xl mx-auto">
+              Collaborating with leading organizations to enhance learning opportunities
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            className="flex flex-wrap justify-center items-center gap-12 md:gap-16"
+          >
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ scale: 1.1, y: -5 }}
+              className="group cursor-pointer"
+              onClick={() => window.open('https://usaco.guide', '_blank')}
+            >
+              <div className="relative p-8 bg-white dark:bg-secondary-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-secondary-200 dark:border-secondary-700 group-hover:border-primary-300 dark:group-hover:border-primary-600">
+                <img
+                  src="/pages/parteners/usacologo.png"
+                  alt="USACO Guide"
+                  className="h-16 w-auto mx-auto filter group-hover:brightness-110 transition-all duration-300"
+                />
+                <div className="mt-4 text-center">
+                  <h3 className="text-lg font-semibold text-secondary-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                    USACO Guide
+                  </h3>
+                  <p className="text-sm text-secondary-600 dark:text-secondary-400 mt-1">
+                    Provides us with competitive programming materials and resources
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ scale: 1.1, y: -5 }}
+              className="group cursor-pointer"
+              onClick={() => window.open('https://hackclub.com', '_blank')}
+            >
+              <div className="relative p-8 bg-white dark:bg-secondary-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-secondary-200 dark:border-secondary-700 group-hover:border-primary-300 dark:group-hover:border-primary-600">
+                <img
+                  src="/pages/parteners/Hackclublogo1.png"
+                  alt="Hack Club"
+                  className="h-16 w-auto mx-auto filter group-hover:brightness-110 transition-all duration-300"
+                />
+                <div className="mt-4 text-center">
+                  <h3 className="text-lg font-semibold text-secondary-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                    Hack Club
+                  </h3>
+                  <p className="text-sm text-secondary-600 dark:text-secondary-400 mt-1">
+                    We are the official Hack Club chapter in Egypt
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Values */}
+      <section className="section-padding bg-secondary-50 dark:bg-secondary-800">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-4">
+              Our Core Values
+            </h2>
+            <p className="text-lg text-secondary-600 dark:text-secondary-400 max-w-3xl mx-auto">
+              The principles that guide everything we do and shape our community culture
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          >
+            {values.map((value, index) => {
+              const Icon = value.icon;
+              return (
+                <motion.div
+                  key={value.title}
+                  variants={itemVariants}
+                  whileHover={{ y: -10, scale: 1.05 }}
+                  className="relative card p-8 text-center group overflow-hidden"
+                >
+                  {/* Animated Background Gradient */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+
+                  {/* Floating Particles Effect */}
+                  <div className="absolute inset-0 overflow-hidden">
+                    <motion.div
+                      animate={{
+                        y: [-20, -40, -20],
+                        x: [-10, 10, -10],
+                        opacity: [0.3, 0.6, 0.3]
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        delay: index * 0.5
+                      }}
+                      className={`absolute top-4 right-4 w-2 h-2 bg-gradient-to-r ${value.color} rounded-full opacity-30`}
+                    />
+                    <motion.div
+                      animate={{
+                        y: [-30, -10, -30],
+                        x: [10, -5, 10],
+                        opacity: [0.2, 0.5, 0.2]
+                      }}
+                      transition={{
+                        duration: 5,
+                        repeat: Infinity,
+                        delay: index * 0.3
+                      }}
+                      className={`absolute bottom-6 left-6 w-1.5 h-1.5 bg-gradient-to-r ${value.color} rounded-full opacity-20`}
+                    />
+                  </div>
+
+                  <div className="relative z-10">
+                    {/* Enhanced Icon with Multiple Effects */}
+                    <motion.div
+                      whileHover={{ rotate: [0, -10, 10, 0] }}
+                      transition={{ duration: 0.5 }}
+                      className="relative mx-auto mb-6"
+                    >
+                      <div className={`w-20 h-20 mx-auto rounded-3xl bg-gradient-to-r ${value.color} p-5 group-hover:scale-110 transition-all duration-300 shadow-lg group-hover:shadow-xl`}>
+                        <Icon className="w-full h-full text-white" />
+                      </div>
+                      {/* Glow Effect */}
+                      <div className={`absolute inset-0 w-20 h-20 mx-auto rounded-3xl bg-gradient-to-r ${value.color} opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-300`}></div>
+                    </motion.div>
+
+                    <h3 className="text-xl font-bold mb-4 text-secondary-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
+                      {value.title}
+                    </h3>
+                    <p className="text-secondary-600 dark:text-secondary-400 leading-relaxed group-hover:text-secondary-700 dark:group-hover:text-secondary-300 transition-colors duration-300">
+                      {value.description}
+                    </p>
+
+                    {/* Decorative Bottom Line */}
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "100%" }}
+                      transition={{ duration: 0.8, delay: index * 0.1 }}
+                      className={`h-1 bg-gradient-to-r ${value.color} rounded-full mt-6 mx-auto opacity-20 group-hover:opacity-60 transition-opacity duration-300`}
+                    />
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
+      </section>
+
       {/* Alumni Section */}
       <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-950 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1537,16 +1549,16 @@ const About: React.FC = () => {
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">{alum.name}</h3>
                   <p className="text-sm text-blue-600 dark:text-blue-400 font-medium mb-1">Class of {alum.graduationYear}</p>
                   <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">{alum.currentPosition}</p>
-                  
+
                   <div className="flex items-center justify-center mb-4">
                     <Building className="w-4 h-4 text-slate-500 mr-2" />
                     <span className="text-sm font-medium text-slate-700 dark:text-slate-300">{alum.company}</span>
                   </div>
-                  
+
                   <div className="text-xs text-slate-500 dark:text-slate-400 mb-4">
                     {alum.achievements.join(' • ')}
                   </div>
-                  
+
                   <button
                     onClick={() => window.open(`https://${alum.linkedin}`, '_blank')}
                     className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors"
@@ -1557,6 +1569,75 @@ const About: React.FC = () => {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-950">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-4">
+              <Clock className="w-12 h-12 inline-block mr-4 text-green-600" />
+              Our Journey
+            </h2>
+            <p className="text-lg text-secondary-600 dark:text-secondary-400 max-w-3xl mx-auto">
+              From humble beginnings to ambitious future goals - our timeline of growth and innovation
+            </p>
+          </motion.div>
+
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"></div>
+
+            {timelineEvents.map((event, index) => {
+              const Icon = event.icon;
+              const isLeft = index % 2 === 0;
+              const isFuture = event.type === 'future';
+
+              return (
+                <motion.div
+                  key={event.year}
+                  initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className={`relative flex items-center mb-12 ${isLeft ? 'flex-row-reverse' : ''}`}
+                >
+                  {/* Event content */}
+                  <div className={`w-5/12 ${isLeft ? 'text-right pr-8' : 'text-left pl-8'}`}>
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      className={`bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-xl border-2 ${isFuture ? 'border-dashed border-purple-300 dark:border-purple-600' : 'border-blue-200 dark:border-slate-700'}`}
+                    >
+                      <div className={`flex items-center ${isLeft ? 'justify-end' : 'justify-start'} mb-3`}>
+                        <span className={`px-3 py-1 rounded-full text-sm font-bold ${isFuture
+                          ? 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300'
+                          : 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
+                          }`}>
+                          {event.year}
+                        </span>
+                      </div>
+                      <h3 className={`text-lg font-bold mb-2 ${isFuture ? 'text-purple-700 dark:text-purple-300' : 'text-slate-900 dark:text-white'}`}>
+                        {event.title}
+                      </h3>
+                      <p className="text-slate-600 dark:text-slate-400 text-sm">
+                        {event.description}
+                      </p>
+                    </motion.div>
+                  </div>
+
+                  {/* Timeline icon */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-white dark:bg-slate-800 rounded-full border-4 border-blue-500 flex items-center justify-center shadow-lg">
+                    <Icon className={`w-6 h-6 ${isFuture ? 'text-purple-600' : 'text-blue-600'}`} />
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -1626,9 +1707,9 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Timeline Section */}
-      <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-950">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Achievements */}
+      <section className="section-padding bg-secondary-50 dark:bg-secondary-800">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1636,165 +1717,82 @@ const About: React.FC = () => {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-4">
-              <Clock className="w-12 h-12 inline-block mr-4 text-green-600" />
-              Our Journey
+              Our Achievements
             </h2>
             <p className="text-lg text-secondary-600 dark:text-secondary-400 max-w-3xl mx-auto">
-              From humble beginnings to ambitious future goals - our timeline of growth and innovation
+              Celebrating our milestones and recognitions in the tech community
             </p>
           </motion.div>
 
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"></div>
-            
-            {timelineEvents.map((event, index) => {
-              const Icon = event.icon;
-              const isLeft = index % 2 === 0;
-              const isFuture = event.type === 'future';
-              
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          >
+            {achievements.map((achievement, index) => {
+              const Icon = achievement.icon;
               return (
                 <motion.div
-                  key={event.year}
-                  initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className={`relative flex items-center mb-12 ${isLeft ? 'flex-row-reverse' : ''}`}
+                  key={achievement.title}
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.03, y: -5 }}
+                  className="relative card p-8 flex items-start space-x-6 group overflow-hidden"
                 >
-                  {/* Event content */}
-                  <div className={`w-5/12 ${isLeft ? 'text-right pr-8' : 'text-left pl-8'}`}>
+                  {/* Animated Background Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                  {/* Decorative Corner Elements */}
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary-200/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-secondary-200/20 to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                  <div className="flex-shrink-0 relative z-10">
+                    {/* Enhanced Icon with Glow Effect */}
                     <motion.div
-                      whileHover={{ scale: 1.05 }}
-                      className={`bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-xl border-2 ${isFuture ? 'border-dashed border-purple-300 dark:border-purple-600' : 'border-blue-200 dark:border-slate-700'}`}
+                      whileHover={{ rotate: [0, -5, 5, 0] }}
+                      transition={{ duration: 0.5 }}
+                      className="relative"
                     >
-                      <div className={`flex items-center ${isLeft ? 'justify-end' : 'justify-start'} mb-3`}>
-                        <span className={`px-3 py-1 rounded-full text-sm font-bold ${
-                          isFuture 
-                            ? 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300' 
-                            : 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
-                        }`}>
-                          {event.year}
-                        </span>
+                      <div className="w-16 h-16 bg-gradient-to-r from-primary-500 to-primary-700 rounded-2xl p-4 group-hover:scale-110 transition-all duration-300 shadow-lg group-hover:shadow-xl">
+                        <Icon className="w-full h-full text-white" />
                       </div>
-                      <h3 className={`text-lg font-bold mb-2 ${isFuture ? 'text-purple-700 dark:text-purple-300' : 'text-slate-900 dark:text-white'}`}>
-                        {event.title}
-                      </h3>
-                      <p className="text-slate-600 dark:text-slate-400 text-sm">
-                        {event.description}
-                      </p>
+                      {/* Glow Effect */}
+                      <div className="absolute inset-0 w-16 h-16 bg-gradient-to-r from-primary-500 to-primary-700 rounded-2xl opacity-0 group-hover:opacity-40 blur-lg transition-opacity duration-300"></div>
+
+                      {/* Achievement Badge */}
+                      <motion.div
+                        initial={{ scale: 0, opacity: 0 }}
+                        whileInView={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        className="absolute -top-2 -right-2 w-6 h-6 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center shadow-md"
+                      >
+                        <span className="text-xs font-bold text-white">★</span>
+                      </motion.div>
                     </motion.div>
                   </div>
-                  
-                  {/* Timeline icon */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-white dark:bg-slate-800 rounded-full border-4 border-blue-500 flex items-center justify-center shadow-lg">
-                    <Icon className={`w-6 h-6 ${isFuture ? 'text-purple-600' : 'text-blue-600'}`} />
+
+                  <div className="flex-grow relative z-10">
+                    <div className="mb-3">
+                      <h3 className="text-xl font-bold text-secondary-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
+                        {achievement.title}
+                      </h3>
+                    </div>
+                    <p className="text-secondary-600 dark:text-secondary-400 leading-relaxed group-hover:text-secondary-700 dark:group-hover:text-secondary-300 transition-colors duration-300">
+                      {achievement.description}
+                    </p>
+
+                    {/* Progress Line Animation */}
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "100%" }}
+                      transition={{ duration: 1, delay: index * 0.2 }}
+                      className="h-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full mt-4 opacity-30 group-hover:opacity-60 transition-opacity duration-300"
+                    />
                   </div>
                 </motion.div>
               );
             })}
-          </div>
-        </div>
-      </section>
-
-      {/* Best Members Section */}
-      <section className="py-20 bg-white dark:bg-slate-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-4">
-              <Medal className="w-12 h-12 inline-block mr-4 text-gold-600" />
-              Best Performing Members
-            </h2>
-            <p className="text-lg text-secondary-600 dark:text-secondary-400 max-w-3xl mx-auto">
-              Recognizing our top performers across different tracks and learning modes
-            </p>
           </motion.div>
-
-          {/* Filters */}
-          <div className="flex flex-wrap gap-4 justify-center mb-12">
-            <select
-              value={bestMembersYear}
-              onChange={(e) => setBestMembersYear(e.target.value)}
-              className="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500"
-              aria-label="Select year for best members"
-            >
-              <option value="2024">2024</option>
-              <option value="2025">2025</option>
-            </select>
-            
-            <select
-              value={bestMembersMonth}
-              onChange={(e) => setBestMembersMonth(e.target.value)}
-              className="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500"
-              aria-label="Select month for best members"
-            >
-              <option value="01">January</option>
-              <option value="02">February</option>
-              <option value="03">March</option>
-            </select>
-            
-            <div className="flex gap-2">
-              {['online', 'offline', 'bootcamp'].map((type) => (
-                <button
-                  key={type}
-                  onClick={() => setBestMembersFilter(type)}
-                  className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                    bestMembersFilter === type
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-600'
-                  }`}
-                >
-                  {type.charAt(0).toUpperCase() + type.slice(1)}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Best Members Display */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {bestMembersData[bestMembersYear as keyof typeof bestMembersData]?.[bestMembersMonth as keyof typeof bestMembersData['2024']]?.[bestMembersFilter as keyof typeof bestMembersData['2024']['01']] &&
-              Object.entries(bestMembersData[bestMembersYear as keyof typeof bestMembersData][bestMembersMonth as keyof typeof bestMembersData['2024']][bestMembersFilter as keyof typeof bestMembersData['2024']['01']]).map(([track, member], index) => (
-                <motion.div
-                  key={`${track}-${member.name}`}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-2xl p-6 border-2 border-yellow-200 dark:border-yellow-700 relative"
-                >
-                  <div className="absolute top-2 right-2">
-                    <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
-                      <Crown className="w-4 h-4 text-white" />
-                    </div>
-                  </div>
-                  
-                  <div className="text-center">
-                    <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{member.name}</h3>
-                    <p className="text-sm text-blue-600 dark:text-blue-400 font-medium mb-3">{member.track}</p>
-                    
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs text-slate-600 dark:text-slate-400">Score:</span>
-                        <span className="text-sm font-bold text-green-600">{member.score}</span>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs text-slate-600 dark:text-slate-400">Projects:</span>
-                        <span className="text-sm font-bold text-blue-600">{member.projects}</span>
-                      </div>
-                    </div>
-                    
-                    <div className="mt-4 flex justify-center">
-                      <div className="px-3 py-1 bg-yellow-500 text-white rounded-full text-xs font-bold">
-                        #{index + 1} Best Performer
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-          </div>
         </div>
       </section>
     </div>
