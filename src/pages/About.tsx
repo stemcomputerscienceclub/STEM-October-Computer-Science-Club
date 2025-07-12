@@ -966,32 +966,63 @@ const About: React.FC = () => {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-gradient-to-br from-yellow-50 to-orange-50 dark:from-yellow-900/20 dark:to-orange-900/20 rounded-2xl p-6 border-2 border-yellow-200 dark:border-yellow-700 relative"
+                  whileHover={{ y: -5, scale: 1.02 }}
+                  className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700 group"
                 >
-                  <div className="absolute top-2 right-2">
-                    <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
-                      <Crown className="w-4 h-4 text-white" />
+                  {/* Top Banner */}
+                  <div className="h-3 bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600"></div>
+                  
+                  {/* Member Header with Photo */}
+                  <div className="relative pt-6 pb-4 px-6">
+                    {/* Featured Badge */}
+                    <div className="absolute top-4 right-4">
+                      <span className="flex items-center bg-yellow-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                        <Crown className="w-3 h-3 mr-1" /> Top Performer
+                      </span>
                     </div>
+                    
+                    {/* Member Photo */}
+                    <div className="flex justify-center">
+                      <div className="w-24 h-24 relative">
+                        <img 
+                          src={`https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=3b82f6&color=fff&size=150`} 
+                          alt={member.name}
+                          className="w-full h-full rounded-full object-cover border-4 border-white dark:border-slate-700 shadow-lg transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <div className="absolute -bottom-1 -right-1 bg-yellow-500 w-8 h-8 rounded-full flex items-center justify-center border-2 border-white dark:border-slate-800 shadow-md">
+                          <Crown className="w-4 h-4 text-white" />
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <h3 className="text-center text-xl font-bold text-slate-900 dark:text-white mt-4 mb-1">{member.name}</h3>
                   </div>
-
-                  <div className="text-center">
-                    <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{member.name}</h3>
-                    <p className="text-sm text-blue-600 dark:text-blue-400 font-medium mb-3">{member.track}</p>
-
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs text-slate-600 dark:text-slate-400">Score:</span>
-                        <span className="text-sm font-bold text-green-600">{member.score}</span>
+                  
+                  {/* Member Content */}
+                  <div className="px-6 pb-6">
+                    {/* Track Badge */}
+                    <div className="flex justify-center mb-4">
+                      <span className="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">
+                        {member.track}
+                      </span>
+                    </div>
+                    
+                    {/* Stats */}
+                    <div className="flex justify-between items-center p-3 bg-slate-50 dark:bg-slate-700/30 rounded-xl mb-4">
+                      <div className="text-center flex-1 border-r border-slate-200 dark:border-slate-600">
+                        <div className="text-sm text-slate-500 dark:text-slate-400">Score</div>
+                        <div className="text-lg font-bold text-green-600 dark:text-green-400">{member.score}</div>
                       </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs text-slate-600 dark:text-slate-400">Projects:</span>
-                        <span className="text-sm font-bold text-blue-600">{member.projects}</span>
+                      <div className="text-center flex-1">
+                        <div className="text-sm text-slate-500 dark:text-slate-400">Projects</div>
+                        <div className="text-lg font-bold text-blue-600 dark:text-blue-400">{member.projects}</div>
                       </div>
                     </div>
-
-                    <div className="mt-4 flex justify-center">
-                      <div className="px-3 py-1 bg-yellow-500 text-white rounded-full text-xs font-bold">
-                        #{index + 1} Best Performer
+                    
+                    {/* Rank Indicator */}
+                    <div className="flex justify-center">
+                      <div className="px-4 py-1.5 bg-gradient-to-r from-yellow-500 to-amber-500 text-white rounded-md text-xs font-bold shadow-sm">
+                        #{index + 1} Ranked in {member.track}
                       </div>
                     </div>
                   </div>

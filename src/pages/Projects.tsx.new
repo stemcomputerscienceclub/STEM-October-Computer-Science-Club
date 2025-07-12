@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Search, Filter, Calendar, Globe, Smartphone, Cpu, Database, Code, Star, ExternalLink, Github, Eye, Heart, ChevronDown, SortAsc, SortDesc, Clock } from 'lucide-react';
 import SEO from '../components/SEO';
-import { projects, Project } from '../data/projectsData';
+import { projects as projectsData } from '../data/projectsData';
 
 const Projects: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -13,37 +13,25 @@ const Projects: React.FC = () => {
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
   const [showFilters, setShowFilters] = useState(false);
 
-  // Categories and technologies for filtering
-  const categories = useMemo(() => {
-    // Get unique categories from projects
-    const uniqueCategoriesMap: Record<string, boolean> = {};
-    projects.forEach(project => {
-      uniqueCategoriesMap[project.category] = true;
-    });
-    const uniqueCategories = Object.keys(uniqueCategoriesMap);
-    
-    // Create the categories array with 'all' first
-    return [
-      { value: 'all', label: 'All Categories' },
-      ...uniqueCategories.map(category => ({
-        value: category,
-        label: category.charAt(0).toUpperCase() + category.slice(1).replace('-', ' ') + 's'
-      }))
-    ];
-  }, []);
+  // Using the imported projects data
+  const projects = projectsData;
 
-  const technologies = useMemo(() => {
-    // Get unique technologies from all projects
-    const techMap: Record<string, boolean> = { all: true };
-    
-    projects.forEach(project => {
-      project.technologies.forEach(tech => {
-        techMap[tech] = true;
-      });
-    });
-    
-    return Object.keys(techMap);
-  }, []);
+  // Categories and technologies for filtering
+  const categories = [
+    { value: 'all', label: 'All Categories' },
+    { value: 'website', label: 'Websites' },
+    { value: 'web-app', label: 'Web Applications' },
+    { value: 'mobile-app', label: 'Mobile Apps' },
+    { value: 'desktop-app', label: 'Desktop Apps' },
+    { value: 'iot', label: 'IoT Projects' },
+    { value: 'ai-ml', label: 'AI/ML Projects' },
+    { value: 'game', label: 'Games' }
+  ];
+
+  const technologies = [
+    'all', 'React', 'Vue.js', 'Angular', 'Next.js', 'Node.js', 'Python', 'Flutter', 'React Native',
+    'TensorFlow', 'PyTorch', 'MongoDB', 'PostgreSQL', 'Firebase', 'Docker', 'AWS', 'Three.js'
+  ];
 
   // Filtering and sorting logic
   const filteredAndSortedProjects = useMemo(() => {
@@ -368,6 +356,7 @@ const Projects: React.FC = () => {
                         {project.title}
                       </h3>
                     </Link>
+                    
                     <p className="text-slate-600 dark:text-slate-400 text-sm line-clamp-3 mb-4">
                       {project.description}
                     </p>

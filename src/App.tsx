@@ -15,6 +15,8 @@ import Leaderboard from './pages/Leaderboard';
 import Articles from './pages/Articles';
 import ArticleDetail from './pages/ArticleDetail';
 import Projects from './pages/Projects';
+import ProjectDetail from './components/ProjectDetail';
+import { projects } from './data/projectsData';
 import Donation from './pages/Donation';
 import './index.css';
 
@@ -36,6 +38,7 @@ function App() {
                 <Route path="/articles" element={<Articles />} />
                 <Route path="/articles/:id" element={<ArticleDetail />} />
                 <Route path="/projects" element={<Projects />} />
+                <Route path="/projects/:projectId" element={<ProjectDetail projects={projects} />} />
                 <Route path="/donation" element={<Donation />} />
               </Routes>
             </main>

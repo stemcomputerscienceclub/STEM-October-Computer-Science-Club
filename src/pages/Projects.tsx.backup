@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Search, Filter, Calendar, Globe, Smartphone, Cpu, Database, Code, Star, ExternalLink, Github, Eye, Heart, ChevronDown, SortAsc, SortDesc, Clock } from 'lucide-react';
 import SEO from '../components/SEO';
-import { projects, Project } from '../data/projectsData';
+import { projects as projectsData } from '../data/projectsData';
 
 const Projects: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -13,37 +13,234 @@ const Projects: React.FC = () => {
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
   const [showFilters, setShowFilters] = useState(false);
 
+  // Using the imported projects data
+  const projects = projectsData;
+  
   // Categories and technologies for filtering
-  const categories = useMemo(() => {
-    // Get unique categories from projects
-    const uniqueCategoriesMap: Record<string, boolean> = {};
-    projects.forEach(project => {
-      uniqueCategoriesMap[project.category] = true;
-    });
-    const uniqueCategories = Object.keys(uniqueCategoriesMap);
-    
-    // Create the categories array with 'all' first
-    return [
-      { value: 'all', label: 'All Categories' },
-      ...uniqueCategories.map(category => ({
-        value: category,
-        label: category.charAt(0).toUpperCase() + category.slice(1).replace('-', ' ') + 's'
-      }))
-    ];
-  }, []);
+      author: 'Ahmed Hassan',
+      authorImage: '/imgs/members/Ahmed Adel.jpg',
+      likes: 45,
+      views: 320,
+      githubUrl: 'https://github.com/stemcs/eco-tracker',
+      liveUrl: 'https://eco-tracker-demo.netlify.app',
+      featured: true,
+      difficulty: 'Advanced',
+      completionTime: '3 months',
+      tags: ['Environment', 'Social Impact', 'Full Stack'],
+      longDescription: 'EcoTracker is a comprehensive sustainability platform designed to help communities track and reduce their environmental impact. The platform offers tools for carbon footprint calculation, waste reduction planning, and community engagement features. Users can set sustainability goals, track progress, and connect with like-minded individuals in their area.',
+      members: [
+        { id: 'ah1', name: 'Ahmed Hassan', role: 'Lead Developer', image: '/imgs/members/Ahmed Adel.jpg' },
+        { id: 'mo1', name: 'Mariam Omar', role: 'UI/UX Designer', image: '/imgs/members/Omar-Negm.jpeg' },
+        { id: 'ym1', name: 'Youssef Mohamed', role: 'Backend Developer', image: '/imgs/members/Moi.jpg' }
+      ],
+      gallery: [
+        { type: 'image', url: '/imgs/Projects/eco-tracker-dashboard.jpg', caption: 'Dashboard showing carbon emission tracking' },
+        { type: 'image', url: '/imgs/Projects/eco-tracker-mobile.jpg', caption: 'Mobile view of the sustainability checklist' }
+      ],
+      testimonials: [
+        {
+          text: "Building EcoTracker taught me so much about full-stack development and how technology can help address environmental challenges.",
+          author: "Ahmed Hassan",
+          role: "Lead Developer",
+          image: '/imgs/members/Ahmed Adel.jpg'
+        }
+      ],
+      learningOutcomes: [
+        "Implementing complex data visualization components using D3.js and React",
+        "Designing and building a MongoDB database schema for tracking environmental metrics",
+        "Creating a responsive interface that works across all device sizes",
+        "Integrating third-party APIs for environmental data"
+      ],
+      challenges: [
+        "Optimizing the carbon footprint calculator for accuracy while keeping it user-friendly",
+        "Implementing real-time data synchronization between multiple devices",
+        "Ensuring data privacy while enabling community features"
+      ],
+      futurePlans: [
+        "Add gamification elements to encourage sustainable behavior",
+        "Develop an API for integration with smart home devices",
+        "Create a mobile app version with offline functionality"
+      ]
+    },
+    {
+      id: 2,
+      title: 'MindfulAI - Mental Health Chatbot',
+      description: 'AI-powered mobile application providing mental health support and personalized wellness recommendations.',
+      image: '/imgs/Projects/mindful-ai.jpg',
+      category: 'mobile-app',
+      technologies: ['Flutter', 'Python', 'TensorFlow', 'Firebase'],
+      date: '2024-11-28',
+      author: 'Sarah Mohamed',
+      authorImage: '/imgs/members/Omar-Negm.jpeg',
+      likes: 62,
+      views: 450,
+      githubUrl: 'https://github.com/stemcs/mindful-ai',
+      liveUrl: 'https://play.google.com/store/apps/mindfulai',
+      featured: true,
+      difficulty: 'Advanced',
+      completionTime: '4 months',
+      tags: ['AI/ML', 'Healthcare', 'Mobile Development'],
+      longDescription: 'MindfulAI is a mental health support application that uses natural language processing and machine learning to provide personalized wellness recommendations. The chatbot can detect signs of anxiety, depression, and stress in conversations, offering appropriate resources and coping strategies. The app includes mood tracking, guided meditation sessions, and connections to professional help when needed.',
+      members: [
+        { id: 'sm1', name: 'Sarah Mohamed', role: 'ML Engineer', image: '/imgs/members/Omar-Negm.jpeg' },
+        { id: 'aa1', name: 'Ali Ahmed', role: 'Flutter Developer', image: '/imgs/members/kemo.jpg' },
+        { id: 'nr1', name: 'Noor Rahman', role: 'UX Researcher', image: '/imgs/members/Moi.jpg' }
+      ],
+      testimonials: [
+        {
+          text: "Developing the NLP algorithms for MindfulAI was challenging but incredibly rewarding. Seeing how technology can support mental health has been the highlight of my academic journey.",
+          author: "Sarah Mohamed",
+          role: "ML Engineer",
+          image: '/imgs/members/Omar-Negm.jpeg'
+        }
+      ],
+      learningOutcomes: [
+        "Building and training NLP models for mental health conversation analysis",
+        "Implementing secure user data handling practices for sensitive health information",
+        "Designing accessible interfaces for users with various needs",
+        "Cross-platform development using Flutter"
+      ]
+    },
+    {
+      id: 3,
+      title: 'CodeCollab - Real-time Code Editor',
+      description: 'Collaborative coding platform with real-time editing, video chat, and project management features.',
+      image: '/imgs/Projects/code-collab.jpg',
+      category: 'web-app',
+      technologies: ['Vue.js', 'Socket.io', 'PostgreSQL', 'Docker'],
+      date: '2024-10-12',
+      author: 'Omar Ali',
+      authorImage: '/imgs/members/Zaki.jpg',
+      likes: 38,
+      views: 280,
+      githubUrl: 'https://github.com/stemcs/code-collab',
+      liveUrl: 'https://codecollab-demo.com',
+      featured: false,
+      difficulty: 'Intermediate',
+      completionTime: '2 months',
+      tags: ['Collaboration', 'Real-time', 'Development Tools']
+    },
+    {
+      id: 4,
+      title: 'SmartHome IoT Controller',
+      description: 'Intelligent home automation system with machine learning-based energy optimization and remote control.',
+      image: '/imgs/Projects/smart-home.jpg',
+      category: 'iot',
+      technologies: ['Arduino', 'Python', 'MQTT', 'React Native'],
+      date: '2024-09-25',
+      author: 'Nour Khaled',
+      authorImage: '/imgs/members/Moi.jpg',
+      likes: 54,
+      views: 390,
+      githubUrl: 'https://github.com/stemcs/smart-home-iot',
+      liveUrl: null,
+      featured: true,
+      difficulty: 'Advanced',
+      completionTime: '5 months',
+      tags: ['IoT', 'Hardware', 'Machine Learning', 'Home Automation']
+    },
+    {
+      id: 5,
+      title: 'CryptoPortfolio Tracker',
+      description: 'Cryptocurrency portfolio management tool with real-time price tracking and advanced analytics.',
+      image: '/imgs/Projects/crypto-portfolio.jpg',
+      category: 'desktop-app',
+      technologies: ['Electron', 'TypeScript', 'Chart.js', 'Redis'],
+      date: '2024-08-14',
+      author: 'Karim Atef',
+      authorImage: '/imgs/members/kemo.jpg',
+      likes: 29,
+      views: 210,
+      githubUrl: 'https://github.com/stemcs/crypto-portfolio',
+      liveUrl: null,
+      featured: false,
+      difficulty: 'Intermediate',
+      completionTime: '6 weeks',
+      tags: ['Finance', 'Analytics', 'Desktop', 'Cryptocurrency']
+    },
+    {
+      id: 6,
+      title: 'LearnPath - AI Study Assistant',
+      description: 'Personalized learning platform using AI to create custom study paths and track student progress.',
+      image: '/imgs/Projects/learn-path.jpg',
+      category: 'website',
+      technologies: ['Next.js', 'Python', 'TensorFlow', 'Supabase'],
+      date: '2024-07-30',
+      author: 'Layla Ahmed',
+      authorImage: '/imgs/members/Ahmed Adel.jpg',
+      likes: 71,
+      views: 520,
+      githubUrl: 'https://github.com/stemcs/learn-path',
+      liveUrl: 'https://learnpath-ai.vercel.app',
+      featured: true,
+      difficulty: 'Advanced',
+      completionTime: '4 months',
+      tags: ['Education', 'AI/ML', 'Personalization', 'Learning']
+    },
+    {
+      id: 7,
+      title: 'VirtualLab - Online Science Experiments',
+      description: 'Virtual laboratory platform for conducting physics and chemistry experiments in an interactive 3D environment.',
+      image: '/imgs/Projects/virtual-lab.jpg',
+      category: 'web-app',
+      technologies: ['Three.js', 'WebGL', 'PHP', 'MySQL'],
+      date: '2024-06-18',
+      author: 'Mohamed Zaki',
+      authorImage: '/imgs/members/Zaki.jpg',
+      likes: 43,
+      views: 350,
+      githubUrl: 'https://github.com/stemcs/virtual-lab',
+      liveUrl: 'https://virtuallab-experiments.com',
+      featured: false,
+      difficulty: 'Advanced',
+      completionTime: '3 months',
+      tags: ['Education', '3D Graphics', 'Science', 'Interactive'],
+      testimonials: [
+        {
+          text: "Building VirtualLab was my first major experience with 3D graphics programming. It was challenging to optimize the WebGL performance, but seeing students use it for experiments made it all worthwhile.",
+          author: "Mohamed Zaki",
+          role: "Lead Developer",
+          image: '/imgs/members/Zaki.jpg'
+        }
+      ]
+    },
+    {
+      id: 8,
+      title: 'TaskMaster - Team Productivity App',
+      description: 'Cross-platform productivity application with advanced project management and team collaboration features.',
+      image: '/imgs/Projects/task-master.jpg',
+      category: 'mobile-app',
+      technologies: ['React Native', 'GraphQL', 'Apollo', 'PostgreSQL'],
+      date: '2024-05-22',
+      author: 'Hana Youssef',
+      authorImage: '/imgs/members/Omar-Negm.jpeg',
+      likes: 36,
+      views: 275,
+      githubUrl: 'https://github.com/stemcs/task-master',
+      liveUrl: 'https://taskmaster-app.com',
+      featured: false,
+      difficulty: 'Intermediate',
+      completionTime: '10 weeks',
+      tags: ['Productivity', 'Team Management', 'Cross-platform', 'GraphQL']
+    }
+  ];
 
-  const technologies = useMemo(() => {
-    // Get unique technologies from all projects
-    const techMap: Record<string, boolean> = { all: true };
-    
-    projects.forEach(project => {
-      project.technologies.forEach(tech => {
-        techMap[tech] = true;
-      });
-    });
-    
-    return Object.keys(techMap);
-  }, []);
+  // Categories and technologies for filtering
+  const categories = [
+    { value: 'all', label: 'All Categories' },
+    { value: 'website', label: 'Websites' },
+    { value: 'web-app', label: 'Web Applications' },
+    { value: 'mobile-app', label: 'Mobile Apps' },
+    { value: 'desktop-app', label: 'Desktop Apps' },
+    { value: 'iot', label: 'IoT Projects' },
+    { value: 'ai-ml', label: 'AI/ML Projects' },
+    { value: 'game', label: 'Games' }
+  ];
+
+  const technologies = [
+    'all', 'React', 'Vue.js', 'Angular', 'Next.js', 'Node.js', 'Python', 'Flutter', 'React Native',
+    'TensorFlow', 'PyTorch', 'MongoDB', 'PostgreSQL', 'Firebase', 'Docker', 'AWS', 'Three.js'
+  ];
 
   // Filtering and sorting logic
   const filteredAndSortedProjects = useMemo(() => {
@@ -367,7 +564,8 @@ const Projects: React.FC = () => {
                       <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 line-clamp-2">
                         {project.title}
                       </h3>
-                    </Link>
+                    </Link
+                    >
                     <p className="text-slate-600 dark:text-slate-400 text-sm line-clamp-3 mb-4">
                       {project.description}
                     </p>
