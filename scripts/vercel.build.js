@@ -35,6 +35,39 @@ function checkLargeFiles(dir, threshold) {
 console.log('Checking for large files that might affect build...');
 checkLargeFiles('.', sizeThreshold);
 
+// Check for dependency conflicts
+console.log('Checking for dependency conflicts...');
+try {
+  const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+  
+  // Check for conflicts between devDependencies/dependencies and overrides
+  if (packageJson.overrides) {
+    const allDeps = {
+      ...(packageJson.dependencies || {}),
+      ...(packageJson.devDependencies || {})
+    };
+
+    const conflicts = [];
+    Object.keys(packageJson.overrides).forEach(dep => {
+      if (allDeps[dep]) {
+        conflicts.push(`${dep}: direct version ${allDeps[dep]} conflicts with override ${packageJson.overrides[dep]}`);
+      }
+    });
+
+    if (conflicts.length > 0) {
+      console.error('⚠️ Dependency conflicts detected:');
+      conflicts.forEach(conflict => console.error(`- ${conflict}`));
+      console.error('Resolve these conflicts in package.json before deployment');
+    } else {
+      console.log('✓ No dependency conflicts detected');
+    }
+  } else {
+    console.log('✓ No overrides defined, skipping conflict check');
+  }
+} catch (err) {
+  console.error(`Error checking for dependency conflicts:`, err);
+}
+
 // Check for required files
 ['package.json', 'vercel.json', 'src/index.tsx', 'public/index.html'].forEach(file => {
   try {
