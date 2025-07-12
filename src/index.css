@@ -527,7 +527,7 @@ nav a.flex.items-center.space-x-2.px-3.py-2.rounded-lg.transition-all.duration-3
 .tech-track {
   will-change: transform;
   width: max-content;
-  animation: slowScroll 120s linear infinite;
+  /* Removed auto-scroll animation - will use scroll-based movement */
 }
 
 @keyframes slowScroll {
@@ -556,17 +556,10 @@ nav a.flex.items-center.space-x-2.px-3.py-2.rounded-lg.transition-all.duration-3
   background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(147, 51, 234, 0.15) 100%);
 }
 
-/* Pause animation on hover */
-.tech-track:hover {
-  animation-play-state: paused;
-}
+/* Removed pause animation on hover since we no longer have auto-scroll */
 
 /* Responsive adjustments for tech section */
 @media (max-width: 768px) {
-  .tech-track {
-    animation: slowScroll 80s linear infinite;
-  }
-  
   .tech-item {
     width: 200px !important;
     height: 280px !important;
@@ -584,10 +577,6 @@ nav a.flex.items-center.space-x-2.px-3.py-2.rounded-lg.transition-all.duration-3
 }
 
 @media (max-width: 480px) {
-  .tech-track {
-    animation: slowScroll 60s linear infinite;
-  }
-  
   .tech-item {
     width: 180px !important;
     height: 260px !important;

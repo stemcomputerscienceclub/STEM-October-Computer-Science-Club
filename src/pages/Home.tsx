@@ -18,49 +18,25 @@ const Home: React.FC = () => {
     const techSection = document.getElementById('tech-section');
 
     if (techTrack && techSection) {
-      // Calculate the scroll distance
+      // Calculate the full scroll distance
       const trackWidth = techTrack.scrollWidth;
       const containerWidth = techSection.offsetWidth;
-      const scrollDistance = trackWidth - containerWidth;
+      const fullScrollDistance = trackWidth - containerWidth;
 
-      // Create the horizontal scroll animation with enhanced behavior
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: techSection,
-          start: "center center", // Start when section center reaches viewport center
-          end: "center top", // End when section center reaches viewport top
-          scrub: 0.5, // Smoother scrubbing (lower value = smoother)
-          pin: true, // Pin the section during scroll
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          snap: {
-            snapTo: "labels",
-            duration: { min: 0.2, max: 0.5 },
-            delay: 0.1,
-            ease: "power2.inOut"
-          },
-          onUpdate: (self) => {
-            // Smooth horizontal scrolling with easing
-            const progress = self.progress;
-            if (progress >= 0 && progress <= 1) {
-              // Apply smooth easing to the transform
-              const easedProgress = gsap.parseEase("power2.out")(progress);
-              gsap.to(techTrack, {
-                x: -easedProgress * scrollDistance,
-                duration: 0.1,
-                ease: "power2.out",
-                overwrite: true
-              });
-            }
-          }
-        }
+      // Create the horizontal scroll animation with slower movement
+      const tween = gsap.to(techTrack, {
+        x: -fullScrollDistance,
+        ease: "none"
       });
 
-      // Add the horizontal scroll animation
-      tl.to(techTrack, {
-        x: -scrollDistance,
-        ease: "none",
-        duration: 1
+      ScrollTrigger.create({
+        trigger: techSection,
+        start: "center center",
+        end: "+=700%", // Significantly increased to make scrolling much slower
+        scrub: 1.5, // Increased smoothing for better feel
+        pin: true,
+        animation: tween,
+        invalidateOnRefresh: true
       });
     }
 
@@ -603,7 +579,8 @@ const Home: React.FC = () => {
 
           {/* Horizontal Scrolling Tech Container */}
           <div className="tech-scroll-container relative h-96 overflow-hidden">
-            <div className="tech-track flex items-center space-x-8 h-full" id="tech-track">              {/* Frontend Technologies */}
+            <div className="tech-track flex items-center space-x-8 h-full" id="tech-track">
+              {/* First set of technologies */}              {/* Frontend Technologies */}
               <div className="tech-item flex-shrink-0 w-64 h-80 backdrop-blur-xl rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
                 <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" className="w-12 h-12" />
@@ -611,7 +588,7 @@ const Home: React.FC = () => {
                 <h3 className="text-xl font-bold mb-2">JavaScript</h3>
                 <p className="text-center text-sm">Core Language</p>
               </div>
-              
+
               <div className="tech-item flex-shrink-0 w-64 h-80 backdrop-blur-xl rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
                 <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" className="w-12 h-12" />
