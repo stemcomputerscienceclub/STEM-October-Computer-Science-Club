@@ -32,7 +32,7 @@
     "analyze": "npm run build && npx webpack-bundle-analyzer build/static/js/*.js",
     "seo:audit": "node scripts/seo-audit.js",
     "build:production": "npm run build && npm run seo:audit",
-    "vercel-build": "CI=false npm run build",
+    "vercel-build": "node scripts/vercel.build.js && CI=false NODE_OPTIONS=--max_old_space_size=4096 react-scripts build",
     "check:deps": "node scripts/check-deps.js"
   },
   "eslintConfig": {

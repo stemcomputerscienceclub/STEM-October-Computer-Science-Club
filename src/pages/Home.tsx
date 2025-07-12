@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Code, Users, Globe, BookOpen, Trophy, UserPlus, Terminal, Cpu, Database, GitBranch, Braces, FileCode, Zap, Target, Lightbulb, School, Rocket, Users2, Award, Lightbulb as Innovation, BookOpenCheck } from 'lucide-react';
-import CS3DBackground from '../components/CS3DBackground';
 import SEO from '../components/SEO';
 import { useScrollCounter } from '../hooks/useScrollCounter';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Lazy load the 3D background for better performance and to avoid build issues
+const CS3DBackground = lazy(() => import('../components/CS3DBackground'));
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -145,8 +147,10 @@ const Home: React.FC = () => {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 lg:pt-20">
-        {/* 3D Background */}
-        <CS3DBackground />
+        {/* 3D Background with Suspense for lazy loading */}
+        <Suspense fallback={<div className="absolute inset-0 bg-gradient-to-br from-blue-900/50 via-slate-900/50 to-indigo-900/50" />}>
+          <CS3DBackground />
+        </Suspense>
 
         {/* Content overlay with enhanced glassmorphism */}
         <div className="absolute inset-0 bg-black/20 dark:bg-black/40" />
