@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense, lazy } from 'react';
+import React, { useEffect, Suspense, lazy, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Code, Users, Globe, BookOpen, Trophy, UserPlus, Terminal, Cpu, Database, GitBranch, Braces, FileCode, Zap, Target, Lightbulb, School, Rocket, Users2, Award, Lightbulb as Innovation, BookOpenCheck } from 'lucide-react';
@@ -14,6 +14,54 @@ const CS3DBackground = lazy(() => import('../components/CS3DBackground'));
 gsap.registerPlugin(ScrollTrigger);
 
 const Home: React.FC = () => {
+  // Gyroscope-based motion for 3D backgrounds
+  const [gyroEnabled, setGyroEnabled] = useState(false);
+  const [motionPosition, setMotionPosition] = useState({ x: 0, y: 0 });
+  
+  // Check if device has gyroscope and request permission
+  useEffect(() => {
+    // Check if we're on a mobile device (most likely to have gyroscope)
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    
+    if (isMobile && window.DeviceOrientationEvent && typeof (DeviceOrientationEvent as any).requestPermission === 'function') {
+      // iOS 13+ requires permission
+      const requestPermission = async () => {
+        try {
+          const permission = await (DeviceOrientationEvent as any).requestPermission();
+          if (permission === 'granted') {
+            window.addEventListener('deviceorientation', handleOrientation);
+            setGyroEnabled(true);
+          }
+        } catch (error) {
+          console.log('Gyroscope permission denied or not available');
+        }
+      };
+
+      // Add a button to request permission on user interaction
+      const gyroButton = document.getElementById('enable-gyro-home');
+      if (gyroButton) {
+        gyroButton.addEventListener('click', requestPermission);
+      }
+    } else if (window.DeviceOrientationEvent) {
+      // Android and older iOS devices
+      window.addEventListener('deviceorientation', handleOrientation);
+      setGyroEnabled(true);
+    }
+
+    return () => {
+      window.removeEventListener('deviceorientation', handleOrientation);
+    };
+  }, []);
+
+  // Handle device orientation changes
+  const handleOrientation = (event: DeviceOrientationEvent) => {
+    // Beta = X-axis (-180 to 180) - front to back motion
+    // Gamma = Y-axis (-90 to 90) - left to right motion
+    const x = event.gamma ? event.gamma / 18 : 0;  // Normalize to roughly -5 to 5
+    const y = event.beta ? event.beta / 36 : 0;    // Normalize to roughly -5 to 5
+    
+    setMotionPosition({ x, y });
+  };
   // GSAP Horizontal Scroll Animation
   useEffect(() => {
     const techTrack = document.getElementById('tech-track');
@@ -143,13 +191,22 @@ const Home: React.FC = () => {
         keywords="STEM computer science club, programming community, web development, AI machine learning, coding bootcamp, tech workshops, software engineering, hackathon, programming tracks, computer science education"
         image="/imgs/official-logo.png"
         url="https://stemcsclub.org/"
-      />
-
-      {/* Hero Section */}
+      />        {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 lg:pt-20">
+        {/* Gyroscope permission button for iOS (only shows on iOS) */}
+        {!gyroEnabled && /iPhone|iPad|iPod/i.test(navigator.userAgent) && (
+          <button 
+            id="enable-gyro-home"
+            className="absolute top-24 right-4 z-50 bg-blue-600/90 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-xs font-medium shadow-lg flex items-center space-x-1 hover:bg-blue-700/90 transition-colors"
+          >
+            <Cpu className="w-3 h-3 mr-1" />
+            Enable 3D Motion
+          </button>
+        )}
+        
         {/* 3D Background with Suspense for lazy loading */}
         <Suspense fallback={<div className="absolute inset-0 bg-gradient-to-br from-blue-900/50 via-slate-900/50 to-indigo-900/50" />}>
-          <CS3DBackground />
+          <CS3DBackground gyroEnabled={gyroEnabled} gyroPosition={motionPosition} />
         </Suspense>
 
         {/* Content overlay with enhanced glassmorphism */}
