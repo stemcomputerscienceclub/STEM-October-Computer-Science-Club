@@ -674,54 +674,7 @@ const About: React.FC = () => {
     );
   };
 
-  // Gyroscope-based motion for 3D backgrounds
-  const [gyroEnabled, setGyroEnabled] = useState(false);
-  const [motionPosition, setMotionPosition] = useState({ x: 0, y: 0 });
-  
-  // Check if device has gyroscope and request permission
-  useEffect(() => {
-    // Check if we're on a mobile device (most likely to have gyroscope)
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    
-    if (isMobile && window.DeviceOrientationEvent && typeof (DeviceOrientationEvent as any).requestPermission === 'function') {
-      // iOS 13+ requires permission
-      const requestPermission = async () => {
-        try {
-          const permission = await (DeviceOrientationEvent as any).requestPermission();
-          if (permission === 'granted') {
-            window.addEventListener('deviceorientation', handleOrientation);
-            setGyroEnabled(true);
-          }
-        } catch (error) {
-          console.log('Gyroscope permission denied or not available');
-        }
-      };
-
-      // Add a button to request permission on user interaction
-      const gyroButton = document.getElementById('enable-gyro');
-      if (gyroButton) {
-        gyroButton.addEventListener('click', requestPermission);
-      }
-    } else if (window.DeviceOrientationEvent) {
-      // Android and older iOS devices
-      window.addEventListener('deviceorientation', handleOrientation);
-      setGyroEnabled(true);
-    }
-
-    return () => {
-      window.removeEventListener('deviceorientation', handleOrientation);
-    };
-  }, []);
-
-  // Handle device orientation changes
-  const handleOrientation = (event: DeviceOrientationEvent) => {
-    // Beta = X-axis (-180 to 180) - front to back motion
-    // Gamma = Y-axis (-90 to 90) - left to right motion
-    const x = event.gamma ? event.gamma / 18 : 0;  // Normalize to roughly -5 to 5
-    const y = event.beta ? event.beta / 36 : 0;    // Normalize to roughly -5 to 5
-    
-    setMotionPosition({ x, y });
-  };
+  // Animation variants
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -756,18 +709,13 @@ const About: React.FC = () => {
       />
 
       {/* Enhanced Hero Section */}
-      <section className="relative section-padding bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-secondary-900 dark:via-secondary-800 dark:to-primary-900 overflow-hidden">
-        {/* Animated Background Elements */}
+      <section className="relative section-padding bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-secondary-900 dark:via-secondary-800 dark:to-primary-900 overflow-hidden">          {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
             animate={{
               rotate: [0, 360],
               scale: [1, 1.1, 1]
             }}
-            style={gyroEnabled ? {
-              x: motionPosition.x * 20,
-              y: motionPosition.y * -20,
-            } : {}}
             transition={{
               duration: 20,
               repeat: Infinity,
@@ -780,10 +728,6 @@ const About: React.FC = () => {
               rotate: [360, 0],
               scale: [1, 1.2, 1]
             }}
-            style={gyroEnabled ? {
-              x: motionPosition.x * -30,
-              y: motionPosition.y * 30,
-            } : {}}
             transition={{
               duration: 25,
               repeat: Infinity,
@@ -791,18 +735,6 @@ const About: React.FC = () => {
             }}
             className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-r from-secondary-200/20 to-primary-200/20 rounded-full blur-3xl"
           />
-          
-          {/* Gyroscope Permission Button - Only visible on iOS devices */}
-          {!gyroEnabled && (
-            <div className="absolute top-4 right-4 z-10">
-              <button
-                id="enable-gyro"
-                className="px-3 py-1.5 bg-white/20 backdrop-blur-md border border-white/30 rounded-full text-xs font-medium text-white shadow-lg"
-              >
-                Enable 3D Motion
-              </button>
-            </div>
-          )}
         </div>
 
         <div className="max-w-7xl mx-auto relative z-10">
@@ -951,37 +883,17 @@ const About: React.FC = () => {
               className="relative"
             >
               <div className="grid grid-cols-2 gap-4">
-                <motion.div
-                  className="relative"
-                  style={gyroEnabled ? {
-                    perspective: "1000px",
-                    perspectiveOrigin: "center"
-                  } : {}}
-                >
+                <motion.div className="relative">
                   <motion.img
                     whileHover={{ scale: 1.05 }}
-                    style={gyroEnabled ? {
-                      rotateX: motionPosition.y * 5,
-                      rotateY: motionPosition.x * -5,
-                    } : {}}
                     src="/imgs/undraw_code_thinking_re_gka2.svg"
                     alt="Programming"
                     className="w-full h-48 object-cover rounded-xl shadow-lg"
                   />
                 </motion.div>
-                <motion.div
-                  className="relative mt-8"
-                  style={gyroEnabled ? {
-                    perspective: "1000px",
-                    perspectiveOrigin: "center"
-                  } : {}}
-                >
+                <motion.div className="relative mt-8">
                   <motion.img
                     whileHover={{ scale: 1.05 }}
-                    style={gyroEnabled ? {
-                      rotateX: motionPosition.y * 5,
-                      rotateY: motionPosition.x * -5,
-                    } : {}}
                     src="/imgs/undraw_real_time_collaboration_c62i.svg"
                     alt="Collaboration"
                     className="w-full h-48 object-cover rounded-xl shadow-lg"
@@ -1060,12 +972,6 @@ const About: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   whileHover={{ y: -5, scale: 1.02 }}
-                  style={gyroEnabled ? {
-                    perspective: "1200px",
-                    rotateX: motionPosition.y * 2,
-                    rotateY: motionPosition.x * 2,
-                    transformStyle: "preserve-3d"
-                  } : {}}
                   className="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-slate-700 group"
                 >
                   {/* Top Banner */}

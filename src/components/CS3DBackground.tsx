@@ -5,21 +5,14 @@ import { useTheme } from '../contexts/ThemeContext';
 
 interface CS3DBackgroundProps {
   className?: string;
-  gyroEnabled?: boolean;
-  gyroPosition?: { x: number; y: number };
 }
 
 const CS3DBackground: React.FC<CS3DBackgroundProps> = ({ 
-  className = "cs-3d-background",
-  gyroEnabled = false,
-  gyroPosition = { x: 0, y: 0 }
+  className = "cs-3d-background"
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>();
   const { theme } = useTheme();
-  
-  // Store current gyroscope values for animation
-  const gyroRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -204,24 +197,10 @@ const CS3DBackground: React.FC<CS3DBackgroundProps> = ({
       // Calculate scroll effect (scrollY is now 0-1 range)
       const scrollSpeed = scrollY * 0.5;
       const scrollRotation = scrollY * 0.2;
-
-      // Update gyroRef with current gyroPosition values
-      if (gyroEnabled) {
-        gyroRef.current = { 
-          x: gyroPosition.x || 0, 
-          y: gyroPosition.y || 0 
-        };
-      }
       
-      // Camera movement with scroll effect and gyroscope if enabled
-      if (gyroEnabled) {
-        // Apply gyroscope data with smooth interpolation
-        camera.position.x += (gyroRef.current.x * 2 - camera.position.x) * 0.1;
-        camera.position.y += (-gyroRef.current.y * 2 - camera.position.y) * 0.1;
-      } else {
-        camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05;
-        camera.position.y += (mouseY * 0.5 - camera.position.y) * 0.05;
-      }
+      // Camera movement with scroll effect
+      camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05;
+      camera.position.y += (mouseY * 0.5 - camera.position.y) * 0.05;
       
       camera.position.z = 5 + scrollSpeed * 3; // Move camera based on scroll
       camera.rotation.z = scrollRotation * 0.1; // Slight rotation on scroll
@@ -331,7 +310,7 @@ const CS3DBackground: React.FC<CS3DBackgroundProps> = ({
       scene.clear();
       renderer.dispose();
     };
-  }, [theme, gyroEnabled, gyroPosition]);
+  }, [theme]);
 
   return <canvas ref={canvasRef} className={className} />;
 };
