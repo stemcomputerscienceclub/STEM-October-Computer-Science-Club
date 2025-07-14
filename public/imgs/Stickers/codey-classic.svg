@@ -1,0 +1,15 @@
+<!-- Simple SVG for a "Codey Classic" sticker -->
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4F46E5;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <circle cx="150" cy="150" r="140" fill="url(#grad)" />
+  <circle cx="150" cy="150" r="130" fill="#FFFFFF" />
+  <circle cx="150" cy="150" r="120" fill="url(#grad)" />
+  <text x="150" y="130" font-family="Arial, sans-serif" font-size="30" fill="white" text-anchor="middle" font-weight="bold">CODEY</text>
+  <text x="150" y="170" font-family="Arial, sans-serif" font-size="24" fill="white" text-anchor="middle">CLASSIC</text>
+  <text x="150" y="200" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">STEM CS CLUB</text>
+</svg>

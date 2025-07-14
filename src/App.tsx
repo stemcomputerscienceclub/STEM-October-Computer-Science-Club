@@ -18,6 +18,7 @@ import Projects from './pages/Projects';
 import ProjectDetail from './components/ProjectDetail';
 import { projects } from './data/projectsData';
 import Donation from './pages/Donation';
+import Stickers from './pages/Stickers';
 import './index.css';
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/projects/:projectId" element={<ProjectDetail projects={projects} />} />
                 <Route path="/donation" element={<Donation />} />
+                <Route path="/stickers" element={<Stickers />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>

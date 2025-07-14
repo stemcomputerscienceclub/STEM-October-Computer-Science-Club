@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Bot, Code, Sparkles, MessageCircle, Terminal, Laptop, Smile, Brain } from 'lucide-react';
 
@@ -174,10 +175,26 @@ const CodeyIntro: React.FC = () => {
                             </div>
                         </div>
 
-                        <blockquote className="border-l-4 border-blue-500 pl-4 py-2 italic text-slate-600 dark:text-slate-300">
+                        <blockquote className="border-l-4 border-blue-500 pl-4 py-2 italic text-slate-600 dark:text-slate-300 mb-6">
                             "Programming isn't about what you know; it's about what you can figure out. I'm here to help you figure it out together!"
                             <footer className="text-slate-500 dark:text-slate-400 text-sm mt-1">— Codey</footer>
                         </blockquote>
+                        
+                        <div className="flex items-center">
+                            <motion.div 
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                className="inline-flex"
+                            >
+                                <Link 
+                                    to="/stickers" 
+                                    className="inline-flex items-center px-5 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 rounded-full text-white font-medium text-sm md:text-base shadow-lg hover:shadow-xl transition-all duration-300"
+                                >
+                                    <Sparkles className="w-5 h-5 mr-2" />
+                                    Collect Codey Stickers
+                                </Link>
+                            </motion.div>
+                        </div>
                     </motion.div>
                 </div>
             </div>
