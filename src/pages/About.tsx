@@ -1,9 +1,53 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Users, Target, Award, Heart, Code, Lightbulb, Rocket, Globe, Crown, Trophy, MapPin, Video, Mail, Phone, Linkedin, Calendar, Star, Filter, ChevronDown, Medal, Zap, BookOpen, Users2, Clock, GraduationCap, Building, Briefcase, Brain, Smartphone, Cpu, Monitor, Wifi, Database, ChevronRight } from 'lucide-react';
+import { Users, Target, Award, Heart, Code, Lightbulb, Rocket, Globe, Crown, Trophy, MapPin, Video, Mail, Phone, Linkedin, Calendar, Star, Filter, ChevronDown, Medal, Zap, BookOpen, Users2, Clock, GraduationCap, Building, Briefcase, Brain, Smartphone, Cpu, Monitor, Wifi, Database, ChevronRight, ArrowUp } from 'lucide-react';
 import SEO from '../components/SEO';
 import '../styles/flipCard.css';
 import LearningPathwaysSection from '../components/LearningPathwaysSection';
+import CodeyIntro from '../components/CodeyIntro';
+import CodeyNews from '../components/CodeyNews';
+// Import the ScrollToTop component to use its functionality
+import ScrollToTop from '../components/ScrollToTop';
+
+// Visual scroll-to-top button component
+const ScrollToTopButton: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Show button when page is scrolled down
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  // Scroll to top smooth
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', toggleVisibility);
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
+
+  return (
+    <motion.button
+      initial={{ opacity: 0 }}
+      animate={{ opacity: isVisible ? 1 : 0 }}
+      transition={{ duration: 0.3 }}
+      onClick={scrollToTop}
+      className={`fixed bottom-6 right-6 z-50 p-3 bg-indigo-600 dark:bg-indigo-500 text-white rounded-full shadow-lg hover:bg-indigo-700 dark:hover:bg-indigo-600 transition-all duration-300 ${isVisible ? 'flex' : 'hidden'}`}
+      aria-label="Scroll to top"
+    >
+      <ArrowUp size={24} />
+    </motion.button>
+  );
+};
 
 const About: React.FC = () => {
   const values = [
@@ -496,7 +540,7 @@ const About: React.FC = () => {
           break;
       }
     };
-    
+
     // Check if the member is a teacher supervisor
     const isTeacherSupervisor = member.isTeacher;
 
@@ -718,6 +762,9 @@ const About: React.FC = () => {
 
   return (
     <div className="min-h-screen pt-20">
+      {/* Visible scroll-to-top button */}
+      <ScrollToTopButton />
+      
       {/* SEO Component */}
       <SEO
         title="About Us - STEM Computer Science Club"
@@ -727,7 +774,7 @@ const About: React.FC = () => {
         url="https://stemcsclub.org/about"
       />
 
-      {/* Enhanced Hero Section */}
+      {/* Hero Section */}
       <section className="relative section-padding bg-gradient-to-br from-primary-50 via-white to-secondary-50 dark:from-secondary-900 dark:via-secondary-800 dark:to-primary-900 overflow-hidden">          {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
@@ -924,6 +971,12 @@ const About: React.FC = () => {
         </div>
       </section>
 
+      {/* Codey Introduction Section */}
+      <CodeyIntro />
+
+      {/* Learning Pathways Section */}
+      <LearningPathwaysSection />
+
       {/* Best Members Section */}
       <section className="py-20 bg-white dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -995,21 +1048,15 @@ const About: React.FC = () => {
                 >
                   {/* Top Banner */}
                   <div className="h-3 bg-gradient-to-r from-blue-500 via-blue-600 to-indigo-600"></div>
-                  
+
                   {/* Member Header with Photo */}
                   <div className="relative pt-6 pb-4 px-6">
-                    {/* Featured Badge */}
-                    <div className="absolute top-4 right-4">
-                      <span className="flex items-center bg-yellow-500 text-white px-3 py-1 rounded-full text-xs font-bold">
-                        <Crown className="w-3 h-3 mr-1" /> Top Performer
-                      </span>
-                    </div>
-                    
+
                     {/* Member Photo */}
                     <div className="flex justify-center">
                       <div className="w-24 h-24 relative">
-                        <img 
-                          src={`https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=3b82f6&color=fff&size=150`} 
+                        <img
+                          src={`https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=3b82f6&color=fff&size=150`}
                           alt={member.name}
                           className="w-full h-full rounded-full object-cover border-4 border-white dark:border-slate-700 shadow-lg transition-transform duration-500 group-hover:scale-105"
                         />
@@ -1018,10 +1065,10 @@ const About: React.FC = () => {
                         </div>
                       </div>
                     </div>
-                    
+
                     <h3 className="text-center text-xl font-bold text-slate-900 dark:text-white mt-4 mb-1">{member.name}</h3>
                   </div>
-                  
+
                   {/* Member Content */}
                   <div className="px-6 pb-6">
                     {/* Track Badge */}
@@ -1030,7 +1077,7 @@ const About: React.FC = () => {
                         {member.track}
                       </span>
                     </div>
-                    
+
                     {/* Stats */}
                     <div className="flex justify-between items-center p-3 bg-slate-50 dark:bg-slate-700/30 rounded-xl mb-4">
                       <div className="text-center flex-1 border-r border-slate-200 dark:border-slate-600">
@@ -1042,7 +1089,7 @@ const About: React.FC = () => {
                         <div className="text-lg font-bold text-blue-600 dark:text-blue-400">{member.projects}</div>
                       </div>
                     </div>
-                    
+
                     {/* Rank Indicator */}
                     <div className="flex justify-center">
                       <div className="px-4 py-1.5 bg-gradient-to-r from-yellow-500 to-amber-500 text-white rounded-md text-xs font-bold shadow-sm">
@@ -1055,6 +1102,79 @@ const About: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Partners */}
+      <section className="section-padding bg-white dark:bg-secondary-900">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-4">
+              Our Partners
+            </h2>
+            <p className="text-lg text-secondary-600 dark:text-secondary-400 max-w-3xl mx-auto">
+              Collaborating with leading organizations to enhance learning opportunities
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            className="flex flex-wrap justify-center items-center gap-12 md:gap-16"
+          >
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ scale: 1.1, y: -5 }}
+              className="group cursor-pointer"
+              onClick={() => window.open('https://usaco.guide', '_blank')}
+            >
+              <div className="relative p-8 bg-white dark:bg-secondary-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-secondary-200 dark:border-secondary-700 group-hover:border-primary-300 dark:group-hover:border-primary-600">
+                <img
+                  src="/pages/parteners/usacologo.png"
+                  alt="USACO Guide"
+                  className="h-16 w-auto mx-auto filter group-hover:brightness-110 transition-all duration-300"
+                />
+                <div className="mt-4 text-center">
+                  <h3 className="text-lg font-semibold text-secondary-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                    USACO Guide
+                  </h3>
+                  <p className="text-sm text-secondary-600 dark:text-secondary-400 mt-1">
+                    Provides us with competitive programming materials and resources
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={itemVariants}
+              whileHover={{ scale: 1.1, y: -5 }}
+              className="group cursor-pointer"
+              onClick={() => window.open('https://hackclub.com', '_blank')}
+            >
+              <div className="relative p-8 bg-white dark:bg-secondary-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-secondary-200 dark:border-secondary-700 group-hover:border-primary-300 dark:group-hover:border-primary-600">
+                <img
+                  src="/pages/parteners/Hackclublogo1.png"
+                  alt="Hack Club"
+                  className="h-16 w-auto mx-auto filter group-hover:brightness-110 transition-all duration-300"
+                />
+                <div className="mt-4 text-center">
+                  <h3 className="text-lg font-semibold text-secondary-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                    Hack Club
+                  </h3>
+                  <p className="text-sm text-secondary-600 dark:text-secondary-400 mt-1">
+                    We are the official Hack Club chapter in Egypt
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
 
       {/* Leadership & Mentorship */}
       <section className="section-padding bg-secondary-50 dark:bg-secondary-800">
@@ -1394,77 +1514,6 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Partners */}
-      <section className="section-padding bg-white dark:bg-secondary-900">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold gradient-text mb-4">
-              Our Partners
-            </h2>
-            <p className="text-lg text-secondary-600 dark:text-secondary-400 max-w-3xl mx-auto">
-              Collaborating with leading organizations to enhance learning opportunities
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            className="flex flex-wrap justify-center items-center gap-12 md:gap-16"
-          >
-            <motion.div
-              variants={itemVariants}
-              whileHover={{ scale: 1.1, y: -5 }}
-              className="group cursor-pointer"
-              onClick={() => window.open('https://usaco.guide', '_blank')}
-            >
-              <div className="relative p-8 bg-white dark:bg-secondary-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-secondary-200 dark:border-secondary-700 group-hover:border-primary-300 dark:group-hover:border-primary-600">
-                <img
-                  src="/pages/parteners/usacologo.png"
-                  alt="USACO Guide"
-                  className="h-16 w-auto mx-auto filter group-hover:brightness-110 transition-all duration-300"
-                />
-                <div className="mt-4 text-center">
-                  <h3 className="text-lg font-semibold text-secondary-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                    USACO Guide
-                  </h3>
-                  <p className="text-sm text-secondary-600 dark:text-secondary-400 mt-1">
-                    Provides us with competitive programming materials and resources
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={itemVariants}
-              whileHover={{ scale: 1.1, y: -5 }}
-              className="group cursor-pointer"
-              onClick={() => window.open('https://hackclub.com', '_blank')}
-            >
-              <div className="relative p-8 bg-white dark:bg-secondary-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-secondary-200 dark:border-secondary-700 group-hover:border-primary-300 dark:group-hover:border-primary-600">
-                <img
-                  src="/pages/parteners/Hackclublogo1.png"
-                  alt="Hack Club"
-                  className="h-16 w-auto mx-auto filter group-hover:brightness-110 transition-all duration-300"
-                />
-                <div className="mt-4 text-center">
-                  <h3 className="text-lg font-semibold text-secondary-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
-                    Hack Club
-                  </h3>
-                  <p className="text-sm text-secondary-600 dark:text-secondary-400 mt-1">
-                    We are the official Hack Club chapter in Egypt
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* Values */}
       <section className="section-padding bg-secondary-50 dark:bg-secondary-800">
@@ -1628,8 +1677,7 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Learning Pathways Section */}
-      <LearningPathwaysSection />
+
 
       {/* Timeline Section */}
       <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-950">
@@ -1802,7 +1850,7 @@ const About: React.FC = () => {
 
                   {/* Decorative Corner Elements */}
                   <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-primary-200/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-secondary-200/20 to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-secondary-200/20 to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity ml-0 duration-500"></div>
 
                   <div className="flex-shrink-0 relative z-10">
                     {/* Enhanced Icon with Glow Effect */}
@@ -1858,3 +1906,4 @@ const About: React.FC = () => {
 };
 
 export default About;
+
