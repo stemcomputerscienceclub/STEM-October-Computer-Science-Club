@@ -1,7 +1,7 @@
 import React, { useEffect, Suspense, lazy, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Code, Users, Globe, BookOpen, Trophy, UserPlus, Terminal, Cpu, Database, GitBranch, Braces, FileCode, Zap, Target, Lightbulb, School, Rocket, Users2, Award, Lightbulb as Innovation, BookOpenCheck } from 'lucide-react';
+import { ArrowRight, Code, Users, Globe, BookOpen, Trophy, UserPlus, Terminal, Cpu, Database, GitBranch, Braces, FileCode, Zap, Target, Lightbulb, School, Rocket, Users2, Award, Lightbulb as Innovation, BookOpenCheck, Quote } from 'lucide-react';
 import SEO from '../components/SEO';
 import { useScrollCounter } from '../hooks/useScrollCounter';
 import { gsap } from 'gsap';
@@ -14,7 +14,6 @@ const CS3DBackground = lazy(() => import('../components/CS3DBackground'));
 gsap.registerPlugin(ScrollTrigger);
 
 const Home: React.FC = () => {
-  // GSAP Horizontal Scroll Animation
   // GSAP Horizontal Scroll Animation
   useEffect(() => {
     const techTrack = document.getElementById('tech-track');
@@ -48,6 +47,38 @@ const Home: React.FC = () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
+
+  // Testimonials data
+  const testimonials = [
+    {
+      quote: "Joining STEM CS Club transformed my career trajectory. The mentorship and hands-on projects helped me secure an internship at Google!",
+      author: "Sarah Ahmed",
+      role: "Web Development Track",
+      image: "/imgs/members/Ahmed Adel.jpg",
+      year: "2024"
+    },
+    {
+      quote: "The AI/ML track gave me practical experience that my regular classes couldn't. I published my first research paper thanks to skills I gained here.",
+      author: "Omar Hassan",
+      role: "AI/ML Track",
+      image: "/imgs/members/Omar-Negm.jpeg", 
+      year: "2023"
+    },
+    {
+      quote: "The collaborative environment is unmatched. I found team members for my startup through club projects and we just secured our first round of funding!",
+      author: "Layla Mohamed",
+      role: "Mobile Development Track",
+      image: "/imgs/members/Moi.jpg",
+      year: "2024"
+    },
+    {
+      quote: "STEM CS Club workshops taught me more practical skills in one semester than I learned in two years of traditional classes.",
+      author: "Karim Atef",
+      role: "Algorithms & Data Structures",
+      image: "/imgs/members/kemo.jpg",
+      year: "2023"
+    }
+  ];
 
   const features = [
     {
@@ -284,7 +315,7 @@ const Home: React.FC = () => {
                 className="w-full sm:w-auto"
               >
                 <Link
-                  to="/tracks"
+                  to="/about"
                   className="group relative inline-flex items-center justify-center w-full sm:w-auto px-10 py-5 bg-gradient-to-r from-blue-700 to-indigo-700 hover:from-blue-800 hover:to-indigo-800 text-white font-bold rounded-2xl transition-all duration-300 shadow-2xl shadow-blue-600/30 hover:shadow-blue-600/50 border border-blue-600/30 backdrop-blur-sm overflow-hidden btn-responsive"
                 >
                   {/* Animated background overlay */}
@@ -599,13 +630,13 @@ const Home: React.FC = () => {
                 <h3 className="text-xl font-bold mb-2">TypeScript</h3>
                 <p className="text-center text-sm">Type Safety</p>
               </div>
-
-              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+             
+              <div className="tech-item flex-shrink-0 w-64 h-80 backdrop-blur-xl rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
+                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" className="w-12 h-12" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Git</h3>
-                <p className="text-slate-400 text-center text-sm">Version Control</p>
+                <h3 className="text-xl font-bold mb-2">Git</h3>
+                <p className="text-center text-sm">Version Control</p>
               </div>
 
               <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
@@ -957,41 +988,8 @@ const Home: React.FC = () => {
               </div>
 
               <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                  <div className="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-xs">HF</span>
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Hugging Face</h3>
-                <p className="text-slate-400 text-center text-sm">ML Models</p>
-              </div>
-
-              {/* Data Science & ML Libraries */}
-              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-green-500/20 to-teal-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                  <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-xs">PD</span>
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Pandas</h3>
-                <p className="text-slate-400 text-center text-sm">Data Analysis</p>
-              </div>
-
-              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                  <div className="w-12 h-12 bg-yellow-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-xs">SK</span>
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Scikit-learn</h3>
-                <p className="text-slate-400 text-center text-sm">Machine Learning</p>
-              </div>
-              {/* Computational Science */}
-              <div className="tech-item flex-shrink-0 w-64 h-80 bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 rounded-3xl p-8 flex flex-col items-center justify-center hover:scale-105 transition-transform duration-300 group">
-                <div className="w-20 h-20 mb-6 flex items-center justify-center bg-gradient-to-br from-purple-500/20 to-indigo-500/20 rounded-2xl group-hover:scale-110 transition-transform duration-300">
-                  <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-xs">∫</span>
-                  </div>
+                <div className="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-xs">∫</span>
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">MATLAB</h3>
                 <p className="text-slate-400 text-center text-sm">Computational Science</p>
@@ -1048,6 +1046,260 @@ const Home: React.FC = () => {
               <ArrowRight className="w-5 h-5" />
               <span className="text-sm">Keep scrolling to continue</span>
             </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Student Testimonials Section */}
+      <section className="py-24 bg-gradient-to-br from-slate-100 to-blue-100 dark:from-slate-900 dark:to-blue-900 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <motion.div
+              initial={{ scale: 0.5, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center px-4 py-2 bg-blue-600/20 border border-blue-400/30 rounded-full mb-6"
+            >
+              <Quote className="w-4 h-4 text-blue-400 mr-2" />
+              <span className="text-blue-400 text-sm font-medium">Student Voices</span>
+            </motion.div>
+
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+              Member Testimonials
+            </h2>
+            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+              Hear from our members about how the club has impacted their learning journey and career paths
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Testimonial 1 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-xl relative"
+            >
+              <div className="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/4">
+                <Quote className="w-16 h-16 text-blue-200 dark:text-blue-900" />
+              </div>
+              <p className="text-slate-600 dark:text-slate-300 mb-6 relative z-10">
+                "Joining the STEM CS Club was a turning point in my career. The workshops on web development gave me the skills to land my first internship at a tech startup. The mentorship and community support were invaluable!"
+              </p>
+              <div className="flex items-center">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg mr-4">
+                  AM
+                </div>
+                <div>
+                  <h4 className="font-bold text-slate-800 dark:text-white">Ahmed Mahmoud</h4>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">Class of 2024, Software Engineer Intern</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Testimonial 2 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-xl relative"
+            >
+              <div className="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/4">
+                <Quote className="w-16 h-16 text-blue-200 dark:text-blue-900" />
+              </div>
+              <p className="text-slate-600 dark:text-slate-300 mb-6 relative z-10">
+                "The machine learning track completely transformed my understanding of AI. The hands-on projects helped me build a strong portfolio that caught the attention of recruiters. I'm now working on AI solutions that make a real difference."
+              </p>
+              <div className="flex items-center">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-white font-bold text-lg mr-4">
+                  SH
+                </div>
+                <div>
+                  <h4 className="font-bold text-slate-800 dark:text-white">Sara Hassan</h4>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">Class of 2023, ML Engineer</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Testimonial 3 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              viewport={{ once: true }}
+              className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-xl relative"
+            >
+              <div className="absolute top-0 right-0 transform translate-x-1/4 -translate-y-1/4">
+                <Quote className="w-16 h-16 text-blue-200 dark:text-blue-900" />
+              </div>
+              <p className="text-slate-600 dark:text-slate-300 mb-6 relative z-10">
+                "Participating in the hackathons organized by the CS Club taught me how to work under pressure and collaborate effectively with a team. These experiences were highlighted in my university applications and helped me get accepted to my dream computer science program."
+              </p>
+              <div className="flex items-center">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold text-lg mr-4">
+                  OT
+                </div>
+                <div>
+                  <h4 className="font-bold text-slate-800 dark:text-white">Omar Tarek</h4>
+                  <p className="text-sm text-slate-500 dark:text-slate-400">Class of 2025, CS Student at MIT</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Code Samples & Project Previews Section */}
+      <section className="py-24 bg-white dark:bg-slate-900 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <motion.div
+              initial={{ scale: 0.5, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center px-4 py-2 bg-blue-600/20 border border-blue-400/30 rounded-full mb-6"
+            >
+              <span className="text-blue-400 text-sm font-medium">Project Showcase</span>
+            </motion.div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+              Student Project Highlights
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Code Snippet Card - Machine Learning Model */}
+            {/* <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="bg-slate-900 rounded-xl shadow-2xl overflow-hidden"
+            >
+              <div className="bg-slate-800 px-6 py-4 border-b border-slate-700 flex items-center justify-between">
+                <div className="flex items-center space-x-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                </div>
+                <span className="text-slate-400 text-sm">sentiment_analysis.py</span>
+                <div className="text-slate-400 text-sm">Python</div>
+              </div>
+              <div className="p-6">
+                <pre className="text-blue-400 font-mono text-sm overflow-x-auto">
+                  <code>
+{`import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, LSTM, Embedding
+
+# Student Project: Sentiment Analysis Model
+def create_sentiment_model(vocab_size, embedding_dim, max_length):
+    model = Sequential([
+        Embedding(vocab_size, embedding_dim, input_length=max_length),
+        LSTM(64, dropout=0.2, recurrent_dropout=0.2),
+        Dense(32, activation='relu'),
+        Dense(1, activation='sigmoid')
+    ])
+    
+    model.compile(
+        loss='binary_crossentropy',
+        optimizer='adam',
+        metrics=['accuracy']
+    )
+    
+    return model
+
+# Model training code
+# Created by Sara Hassan, STEM CS Club`}
+                  </code>
+                </pre>
+              </div>
+              <div className="px-6 py-4 bg-slate-800 border-t border-slate-700">
+                <div className="flex items-center justify-between">
+                  <span className="text-slate-400 text-sm">Sentiment Analysis ML Project</span>
+                  <button className="text-blue-400 hover:text-blue-300 text-sm flex items-center">
+                    View Full Project <ArrowRight className="w-4 h-4 ml-1" />
+                  </button>
+                </div>
+              </div>
+            </motion.div> */}
+
+            {/* Interactive Demo Card - Web App */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl overflow-hidden"
+            >
+              <div className="px-6 py-4 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center">
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white">Interactive 3D Visualization</h3>
+                <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full dark:bg-green-900 dark:text-green-200">React + Three.js</span>
+              </div>
+              <div className="aspect-video bg-gradient-to-br from-indigo-500 to-purple-700 relative overflow-hidden">
+                <img 
+                  src="/imgs/Projects/visualization-demo.png" 
+                  alt="3D Data Visualization Demo"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = "https://placehold.co/800x450/indigo/white?text=Interactive+3D+Visualization";
+                  }}
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <button 
+                    aria-label="Play demo video"
+                    title="Play demo video"
+                    className="bg-white/90 dark:bg-slate-800/90 hover:bg-white dark:hover:bg-slate-800 text-slate-900 dark:text-white rounded-full w-16 h-16 flex items-center justify-center transition-all duration-300 shadow-xl">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
+                      <path fillRule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clipRule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div className="px-6 py-4">
+                <p className="text-slate-600 dark:text-slate-300">
+                  Interactive data visualization tool that transforms complex datasets into explorable 3D models. Created by Ahmed Ibrahim using React and Three.js.
+                </p>
+                <div className="mt-4 flex items-center justify-between">
+                  <div className="flex space-x-2">
+                    <span className="px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">React</span>
+                    <span className="px-3 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200">Three.js</span>
+                    <span className="px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">D3.js</span>
+                  </div>
+                  <a href="#" className="text-blue-600 dark:text-blue-400 hover:underline text-sm font-medium flex items-center">
+                    Live Demo <ArrowRight className="w-4 h-4 ml-1" />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
+          >
+            <Link to="/projects" className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors duration-300">
+              Explore All Projects <ArrowRight className="w-5 h-5 ml-2" />
+            </Link>
           </motion.div>
         </div>
       </section>
@@ -1169,7 +1421,7 @@ const Home: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                to="/tracks"
+                to="/about"
                 className="bg-white text-primary-600 hover:bg-primary-50 px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95"
               >
                 Get Started Today

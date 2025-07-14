@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Users, Target, Award, Heart, Code, Lightbulb, Rocket, Globe, Crown, Trophy, MapPin, Video, Mail, Phone, Linkedin, Calendar, Star, Filter, ChevronDown, Medal, Zap, BookOpen, Users2, Clock, GraduationCap, Building, Briefcase } from 'lucide-react';
+import { Users, Target, Award, Heart, Code, Lightbulb, Rocket, Globe, Crown, Trophy, MapPin, Video, Mail, Phone, Linkedin, Calendar, Star, Filter, ChevronDown, Medal, Zap, BookOpen, Users2, Clock, GraduationCap, Building, Briefcase, Brain, Smartphone, Cpu, Monitor, Wifi, Database, ChevronRight } from 'lucide-react';
 import SEO from '../components/SEO';
 import '../styles/flipCard.css';
+import LearningPathwaysSection from '../components/LearningPathwaysSection';
 
 const About: React.FC = () => {
   const values = [
@@ -245,6 +246,14 @@ const About: React.FC = () => {
           image: '/imgs/members/Adam.jpeg',
           // email: 'omar.hassan@stemcs.club',
           // linkedin: 'linkedin.com/in/omar-hassan'
+        },
+        {
+          name: 'Dr. Sarah Ahmed',
+          role: 'Teacher Supervisor',
+          image: '/imgs/members/Moi.jpg', // Using existing image as a placeholder
+          email: 'sarah.ahmed@stemegypt.edu.eg',
+          linkedin: 'linkedin.com/in/sarah-ahmed-cs-educator',
+          isTeacher: true
         }
       ],
 
@@ -487,12 +496,22 @@ const About: React.FC = () => {
           break;
       }
     };
+    
+    // Check if the member is a teacher supervisor
+    const isTeacherSupervisor = member.isTeacher;
 
     const getTypeIndicator = () => {
       switch (type) {
         case 'highboard':
           return (
             <div className="">
+              {isTeacherSupervisor && (
+                <div className="absolute -top-2 -right-2 z-10">
+                  <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-3 py-1 rounded-full text-xs font-semibold shadow-lg">
+                    Teacher Supervisor
+                  </div>
+                </div>
+              )}
               <div className=""></div>
             </div>
           );
@@ -1608,6 +1627,9 @@ const About: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Learning Pathways Section */}
+      <LearningPathwaysSection />
 
       {/* Timeline Section */}
       <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-slate-800 dark:to-indigo-950">

@@ -9,7 +9,7 @@ import MouseFollower from './components/MouseFollower';
 import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import About from './pages/About';
-import Tracks from './pages/Tracks';
+import NotFound from './pages/NotFound';
 import Workshops from './pages/Workshops';
 import Leaderboard from './pages/Leaderboard';
 import Articles from './pages/Articles';
@@ -32,7 +32,6 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/tracks" element={<Tracks />} />
                 <Route path="/workshops" element={<Workshops />} />
                 <Route path="/leaderboard" element={<Leaderboard />} />
                 <Route path="/articles" element={<Articles />} />
@@ -40,6 +39,7 @@ function App() {
                 <Route path="/projects" element={<Projects />} />
                 <Route path="/projects/:projectId" element={<ProjectDetail projects={projects} />} />
                 <Route path="/donation" element={<Donation />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
             <Footer />

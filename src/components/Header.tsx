@@ -22,7 +22,6 @@ const Header: React.FC = () => {
   const navItems = [
     { name: 'Home', path: '/', icon: Code },
     { name: 'About', path: '/about', icon: Users },
-    { name: 'Tracks', path: '/tracks', icon: BookOpen },
     { name: 'Projects', path: '/projects', icon: Code },
     { name: 'Events', path: '/workshops', icon: Calendar },
     { name: 'Leaderboard', path: '/leaderboard', icon: Trophy },

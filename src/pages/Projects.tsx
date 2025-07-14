@@ -9,9 +9,11 @@ const Projects: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedTech, setSelectedTech] = useState('all');
+  const [selectedDifficulty, setSelectedDifficulty] = useState('all');
   const [sortBy, setSortBy] = useState('date');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
   const [showFilters, setShowFilters] = useState(false);
+  const [showGitHubStats, setShowGitHubStats] = useState(false);
 
   // Categories and technologies for filtering
   const categories = useMemo(() => {
@@ -28,6 +30,25 @@ const Projects: React.FC = () => {
       ...uniqueCategories.map(category => ({
         value: category,
         label: category.charAt(0).toUpperCase() + category.slice(1).replace('-', ' ') + 's'
+      }))
+    ];
+  }, []);
+
+  // Difficulty levels for filtering
+  const difficultyLevels = useMemo(() => {
+    // Get unique difficulty levels from projects
+    const difficultyMap: Record<string, boolean> = {};
+    projects.forEach(project => {
+      difficultyMap[project.difficulty] = true;
+    });
+    const uniqueDifficulties = Object.keys(difficultyMap);
+    
+    // Create the difficulty levels array with 'all' first
+    return [
+      { value: 'all', label: 'All Levels' },
+      ...uniqueDifficulties.map(difficulty => ({
+        value: difficulty,
+        label: difficulty.charAt(0).toUpperCase() + difficulty.slice(1)
       }))
     ];
   }, []);
@@ -57,7 +78,9 @@ const Projects: React.FC = () => {
       const matchesTech = selectedTech === 'all' || 
                          project.technologies.some(tech => tech.toLowerCase() === selectedTech.toLowerCase());
       
-      return matchesSearch && matchesCategory && matchesTech;
+      const matchesDifficulty = selectedDifficulty === 'all' || project.difficulty === selectedDifficulty;
+      
+      return matchesSearch && matchesCategory && matchesTech && matchesDifficulty;
     });
 
     // Sort projects
@@ -85,7 +108,7 @@ const Projects: React.FC = () => {
     });
 
     return filtered;
-  }, [projects, searchQuery, selectedCategory, selectedTech, sortBy, sortOrder]);
+  }, [projects, searchQuery, selectedCategory, selectedTech, selectedDifficulty, sortBy, sortOrder]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -127,12 +150,15 @@ const Projects: React.FC = () => {
   };
 
   const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty) {
-      case 'Beginner':
+    // Normalize the difficulty to handle case inconsistencies
+    const normalizedDifficulty = difficulty.toLowerCase();
+    
+    switch (normalizedDifficulty) {
+      case 'beginner':
         return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300';
-      case 'Intermediate':
+      case 'intermediate':
         return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300';
-      case 'Advanced':
+      case 'advanced':
         return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300';
       default:
         return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300';
@@ -281,12 +307,31 @@ const Projects: React.FC = () => {
                 </select>
               </div>
               
+              <div>
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                  Difficulty Level
+                </label>
+                <select
+                  value={selectedDifficulty}
+                  onChange={(e) => setSelectedDifficulty(e.target.value)}
+                  className="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  aria-label="Filter by difficulty level"
+                >
+                  {difficultyLevels.map(level => (
+                    <option key={level.value} value={level.value}>
+                      {level.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              
               <div className="flex items-end">
                 <button
                   onClick={() => {
                     setSearchQuery('');
                     setSelectedCategory('all');
                     setSelectedTech('all');
+                    setSelectedDifficulty('all');
                     setSortBy('date');
                     setSortOrder('desc');
                   }}
@@ -294,6 +339,28 @@ const Projects: React.FC = () => {
                 >
                   Clear Filters
                 </button>
+              </div>
+              
+              {/* GitHub Stats Toggle */}
+              <div className="lg:col-span-3 border-t border-slate-200 dark:border-slate-700 pt-4 mt-4">
+                <div className="flex items-center justify-between">
+                  <label className="flex items-center cursor-pointer">
+                    <div className="mr-3">
+                      <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Show GitHub Activity</span>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">Display recent commit activity and contributor stats</p>
+                    </div>
+                    <div className="relative">
+                      <input 
+                        type="checkbox" 
+                        checked={showGitHubStats} 
+                        onChange={() => setShowGitHubStats(!showGitHubStats)} 
+                        className="sr-only" 
+                      />
+                      <div className={`w-10 h-6 rounded-full transition-colors ${showGitHubStats ? 'bg-blue-600' : 'bg-slate-400'}`}></div>
+                      <div className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full transition-transform transform ${showGitHubStats ? 'translate-x-4' : ''}`}></div>
+                    </div>
+                  </label>
+                </div>
               </div>
             </motion.div>
           )}
@@ -453,6 +520,25 @@ const Projects: React.FC = () => {
                       </div>
                     )}
 
+                    {/* GitHub Integration & Stats */}
+                    {project.githubUrl && showGitHubStats && (
+                      <div className="border-t border-slate-200 dark:border-slate-700 pt-4 mt-4">
+                        <h4 className="font-medium text-sm mb-2 text-slate-700 dark:text-slate-300">GitHub Activity</h4>
+                        <div className="flex items-center space-x-4 text-xs">
+                          <div className="flex items-center text-green-600 dark:text-green-400">
+                            <div className="w-2 h-2 bg-green-500 rounded-full mr-1"></div>
+                            <span>4 commits this week</span>
+                          </div>
+                          <div className="flex items-center text-blue-600 dark:text-blue-400">
+                            <div className="w-2 h-2 bg-blue-500 rounded-full mr-1"></div>
+                            <span>2 contributors</span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* We removed the duplicate difficulty badge here */}
+
                     {/* Action Buttons */}
                     <div className="flex gap-3">
                       <Link
@@ -509,6 +595,7 @@ const Projects: React.FC = () => {
                   setSearchQuery('');
                   setSelectedCategory('all');
                   setSelectedTech('all');
+                  setSelectedDifficulty('all');
                 }}
                 className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
               >

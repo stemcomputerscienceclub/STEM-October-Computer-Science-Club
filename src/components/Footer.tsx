@@ -48,6 +48,62 @@ const Footer: React.FC = () => {
                 <p className="text-sm text-secondary-400">Programming Community</p>
               </div>
             </div>
+            
+            {/* Contact Form */}
+            <div className="mt-6 bg-secondary-800 p-5 rounded-xl">
+              <h4 className="text-lg font-bold mb-4">Get In Touch</h4>
+              <form className="space-y-3" onSubmit={(e) => {
+                e.preventDefault();
+                // Collect form data
+                const formData = new FormData(e.currentTarget);
+                const name = formData.get('name');
+                const email = formData.get('email');
+                const message = formData.get('message');
+                
+                // Log form data (replace with actual form submission in production)
+                console.log('Contact form submitted:', { name, email, message });
+                
+                // Show success message (could be replaced with state-based UI feedback)
+                alert('Thank you for your message! We will get back to you soon.');
+                
+                // Reset the form
+                e.currentTarget.reset();
+              }}>
+                <div>
+                  <input 
+                    type="text" 
+                    name="name"
+                    placeholder="Your Name" 
+                    required
+                    className="w-full px-4 py-2 bg-secondary-700 border border-secondary-600 rounded-lg text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <input 
+                    type="email" 
+                    name="email"
+                    placeholder="Your Email" 
+                    required
+                    className="w-full px-4 py-2 bg-secondary-700 border border-secondary-600 rounded-lg text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <textarea 
+                    name="message"
+                    placeholder="Your Message" 
+                    rows={3}
+                    required
+                    className="w-full px-4 py-2 bg-secondary-700 border border-secondary-600 rounded-lg text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  ></textarea>
+                </div>
+                <button 
+                  type="submit"
+                  className="w-full py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg transition-colors"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
             <p className="text-secondary-300 text-sm leading-relaxed">
               Empowering students with cutting-edge programming skills and fostering innovation 
               in computer science through hands-on learning and collaborative projects.
