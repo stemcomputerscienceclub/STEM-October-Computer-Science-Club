@@ -2,11 +2,13 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { ThemeProvider } from './contexts/ThemeContext';
+import { UpdatesProvider } from './contexts/UpdatesContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ChatBot from './components/ChatBot';
 import MouseFollower from './components/MouseFollower';
 import ScrollToTop from './components/ScrollToTop';
+import UpdateToast from './components/UpdateToast';
 import Home from './pages/Home';
 import About from './pages/About';
 import NotFound from './pages/NotFound';
@@ -19,16 +21,19 @@ import ProjectDetail from './components/ProjectDetail';
 import { projects } from './data/projectsData';
 import Donation from './pages/Donation';
 import Stickers from './pages/Stickers';
+import Updates from './pages/Updates';
 import './index.css';
 
 function App() {
   return (
     <HelmetProvider>
       <ThemeProvider>
-        <Router>
-          <ScrollToTop />
-          <div className="min-h-screen flex flex-col bg-white dark:bg-secondary-900 transition-colors duration-300">
-            <Header />
+        <UpdatesProvider>
+          <Router>
+            <ScrollToTop />
+            <div className="min-h-screen flex flex-col bg-white dark:bg-secondary-900 transition-colors duration-300">
+              <Header />
+              <UpdateToast />
             <main className="flex-grow">
               <Routes>
                 <Route path="/" element={<Home />} />
@@ -41,6 +46,7 @@ function App() {
                 <Route path="/projects/:projectId" element={<ProjectDetail projects={projects} />} />
                 <Route path="/donation" element={<Donation />} />
                 <Route path="/stickers" element={<Stickers />} />
+                <Route path="/updates" element={<Updates />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
@@ -48,7 +54,8 @@ function App() {
             <ChatBot />
             <MouseFollower />
           </div>
-        </Router>
+          </Router>
+        </UpdatesProvider>
       </ThemeProvider>
     </HelmetProvider>
   );

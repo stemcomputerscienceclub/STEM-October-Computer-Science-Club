@@ -129,7 +129,7 @@ const CodeyNews: React.FC<CodeyNewsProps> = ({ variant }) => {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-full h-full relative">
                     <img 
-                      src="/imgs/official-logo.png" 
+                      src="/imgs/codey-news.png" 
                       alt="Codey" 
                       className="w-full h-full object-contain z-10 relative"
                     />

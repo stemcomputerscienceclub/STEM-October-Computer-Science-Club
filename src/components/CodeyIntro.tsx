@@ -21,7 +21,7 @@ const CodeyIntro: React.FC = () => {
                             {/* Main image with glow effect */}
                             <div className="relative w-56 h-56 md:w-72 md:h-72">
                                 <img
-                                    src="/imgs/official-logo.png"
+                                    src="/imgs/codey.png"
                                     alt="Codey - STEM CS Club Mascot"
                                     className="w-full h-full object-contain z-20 relative drop-shadow-xl"
                                 />

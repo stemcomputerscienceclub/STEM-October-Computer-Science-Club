@@ -6,6 +6,7 @@ import SEO from '../components/SEO';
 import { useScrollCounter } from '../hooks/useScrollCounter';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import CodeyNews from '../components/CodeyNews';
 
 // Lazy load the 3D background for better performance and to avoid build issues
 const CS3DBackground = lazy(() => import('../components/CS3DBackground'));
@@ -1049,6 +1050,8 @@ const Home: React.FC = () => {
           </motion.div>
         </div>
       </section>
+
+      <CodeyNews variant='home' />
 
       {/* Student Testimonials Section */}
       <section className="py-24 bg-gradient-to-br from-slate-100 to-blue-100 dark:from-slate-900 dark:to-blue-900 relative overflow-hidden">
