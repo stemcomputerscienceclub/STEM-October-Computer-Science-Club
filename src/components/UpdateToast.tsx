@@ -23,7 +23,7 @@ interface ToastProps {
 }
 
 // Toast component with a reasonable timeout
-const UpdateToast: React.FC<ToastProps> = ({ autoCloseTime = 15000 }) => { // 15 seconds
+const UpdateToast: React.FC<ToastProps> = ({ autoCloseTime = 7000 }) => { 
     const { latestUpdate, hasSeenLatestUpdate, markLatestUpdateAsSeen } = useUpdates();
     const [isVisible, setIsVisible] = useState<boolean>(false); // Start invisible for delay
     const [currentUpdate, setCurrentUpdate] = useState<Update | null>(STATIC_UPDATE); // Use static update for testing
@@ -33,7 +33,7 @@ const UpdateToast: React.FC<ToastProps> = ({ autoCloseTime = 15000 }) => { // 15
         // Force delay then show
         const showTimer = setTimeout(() => {
             setIsVisible(true);
-        }, 2000); // 2 second delay
+        }, 5000); // 2 second delay
         
         // Set up auto-close timer
         if (autoCloseTime > 0) {

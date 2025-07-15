@@ -574,6 +574,11 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
+
+      
+      <CodeyNews variant='home' />
+
+
       {/* Mastered Technologies Section */}
       <section className="py-32 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 dark:from-slate-900 dark:via-blue-900 dark:to-indigo-900 relative overflow-hidden" id="tech-section">
         {/* Background Effects */}
@@ -1050,8 +1055,6 @@ const Home: React.FC = () => {
           </motion.div>
         </div>
       </section>
-
-      <CodeyNews variant='home' />
 
       {/* Student Testimonials Section */}
       <section className="py-24 bg-gradient-to-br from-slate-100 to-blue-100 dark:from-slate-900 dark:to-blue-900 relative overflow-hidden">
