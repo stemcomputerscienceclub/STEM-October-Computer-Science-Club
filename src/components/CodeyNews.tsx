@@ -52,7 +52,7 @@ const newsData: NewsItem[] = [
 
 const CodeyNews: React.FC<CodeyNewsProps> = ({ variant }) => {
   const isHome = variant === 'home';
-  
+
   return (
     <section className={`py-20 ${isHome ? 'bg-gradient-to-b from-white to-blue-50 dark:from-slate-900 dark:to-slate-800' : 'bg-white dark:bg-slate-800'} relative overflow-hidden`}>
       {/* Background decoration */}
@@ -60,7 +60,7 @@ const CodeyNews: React.FC<CodeyNewsProps> = ({ variant }) => {
         <div className="absolute -top-24 -left-24 w-64 h-64 rounded-full bg-blue-300 blur-3xl"></div>
         <div className="absolute top-1/3 -right-32 w-80 h-80 rounded-full bg-purple-300 blur-3xl"></div>
         <div className="absolute -bottom-40 left-1/3 w-96 h-96 rounded-full bg-green-300 blur-3xl"></div>
-        
+
         {/* Code snippets decoration */}
         <div className="absolute top-20 right-20 text-xs opacity-20 font-mono transform rotate-6">
           {`function codeyHelps() {`}
@@ -95,7 +95,7 @@ const CodeyNews: React.FC<CodeyNewsProps> = ({ variant }) => {
               </div>
               <span className="text-blue-600 dark:text-blue-400 font-medium">Latest Updates</span>
             </motion.div>
-            
+
             <motion.h2
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -105,7 +105,7 @@ const CodeyNews: React.FC<CodeyNewsProps> = ({ variant }) => {
             >
               News from Codey
             </motion.h2>
-            
+
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -116,7 +116,7 @@ const CodeyNews: React.FC<CodeyNewsProps> = ({ variant }) => {
               Stay updated with the latest happenings, events, and announcements from your favorite coding mascot.
             </motion.p>
           </div>
-          
+
           {isHome && (
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -128,21 +128,21 @@ const CodeyNews: React.FC<CodeyNewsProps> = ({ variant }) => {
               <div className="relative w-40 h-40 md:w-56 md:h-56">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-full h-full relative">
-                    <img 
-                      src="/imgs/codey-news.png" 
-                      alt="Codey" 
+                    <img
+                      src="/imgs/codey-news.png"
+                      alt="Codey"
                       className="w-full h-full object-contain z-10 relative"
                     />
                     <div className="absolute inset-0 bg-blue-500 rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
                   </div>
                 </div>
-                
-                <motion.div 
-                  animate={{ 
+
+                <motion.div
+                  animate={{
                     rotate: [0, 10, -10, 0],
                     y: [0, -5, 5, 0]
                   }}
-                  transition={{ 
+                  transition={{
                     repeat: Infinity,
                     repeatType: "loop",
                     duration: 5
@@ -151,7 +151,7 @@ const CodeyNews: React.FC<CodeyNewsProps> = ({ variant }) => {
                 >
                   <Sparkles className="w-8 h-8 text-yellow-400" />
                 </motion.div>
-                
+
                 <motion.div
                   animate={{
                     scale: [1, 1.2, 1],
@@ -210,7 +210,7 @@ const CodeyNews: React.FC<CodeyNewsProps> = ({ variant }) => {
         ) : (
           <div className="relative">
             <div className="absolute left-5 inset-y-0 w-0.5 bg-gradient-to-b from-blue-600 to-purple-600"></div>
-            
+
             {newsData.map((news, index) => (
               <motion.div
                 key={news.id}
@@ -246,7 +246,7 @@ const CodeyNews: React.FC<CodeyNewsProps> = ({ variant }) => {
                 </div>
               </motion.div>
             ))}
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

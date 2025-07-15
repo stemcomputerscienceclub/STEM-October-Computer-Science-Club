@@ -42,11 +42,11 @@ interface UpdatesProviderProps {
 // Sample updates data - this would ideally come from an API or CMS
 const UPDATES_DATA: Update[] = [
   {
-    id: 'update-2025-07-14',
-    title: 'Summer Hackathon Registration Open',
-    content: 'Registration for our annual summer hackathon is now open! Join us for a weekend of coding, collaboration, and prizes.',
+    id: 'update-2025-07-14-new',
+    title: '🔥 URGENT: Summer Hackathon Registration Open',
+    content: 'Registration for our annual summer hackathon is now open! Join us for a weekend of coding, collaboration, and prizes. Limited spots available!',
     date: '2025-07-14',
-    type: 'info',
+    type: 'warning',
     link: {
       url: '/workshops',
       text: 'Register Now'
@@ -78,19 +78,22 @@ const UPDATES_DATA: Update[] = [
 
 // The UpdatesProvider component
 export const UpdatesProvider: React.FC<UpdatesProviderProps> = ({ children }) => {
-  // Load updates and seen status from localStorage
+  // Load updates from our data
   const [updates, setUpdates] = useState<Update[]>([]);
-  const [hasSeenLatestUpdate, setHasSeenLatestUpdate] = useState<boolean>(true);
+  // Track if the user has seen the latest update
+  const [hasSeenLatestUpdate, setHasSeenLatestUpdate] = useState<boolean>(false);
   
   useEffect(() => {
-    // Get updates (this could be an API call in a real application)
+    console.log("Updates provider mounted, data:", UPDATES_DATA);
+    
+    // Get updates (this would be an API call in a real application)
     setUpdates(UPDATES_DATA);
     
-    // Check if user has seen the latest update
-    const latestUpdateId = UPDATES_DATA[0]?.id;
-    const lastSeenUpdateId = localStorage.getItem('lastSeenUpdateId');
+    // Always mark updates as not seen to ensure the toast appears
+    setHasSeenLatestUpdate(false);
     
-    setHasSeenLatestUpdate(lastSeenUpdateId === latestUpdateId);
+    // Clear any previously stored IDs to force the toast to show
+    localStorage.removeItem('lastSeenUpdateId');
   }, []);
   
   // Get the latest update

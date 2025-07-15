@@ -44,6 +44,7 @@ module.exports = {
         'slide-up': 'slideUp 0.5s ease-out',
         'slide-down': 'slideDown 0.5s ease-out',
         'bounce-slow': 'bounce 2s infinite',
+        'bounce-subtle': 'bounceSubtle 2s infinite',
         'pulse-slow': 'pulse 3s infinite',
         'float': 'float 3s ease-in-out infinite'
       },
@@ -63,6 +64,10 @@ module.exports = {
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-10px)' }
+        },
+        bounceSubtle: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-3px)' }
         }
       }
     },

@@ -67,7 +67,7 @@ const MouseFollower: React.FC = () => {
 
   return (
     <motion.div
-      className="fixed pointer-events-none z-50"
+      className="fixed pointer-events-none z-[9999]"
       style={{
         left: mousePosition.x - 30, // Offset to center the character
         top: mousePosition.y - 30 + yOffset,
