@@ -542,32 +542,23 @@ const About: React.FC = () => {
       ],
       graphicDesigners: [
         {
-          name: 'Rana Khaled',
-          role: 'Brand Designer',
-          image: '/imgs/members/Ahmed Adel.jpg',
-          email: 'rana.khaled@stemcs.club',
-          phone: '+20 100 234 5679',
-          linkedin: 'linkedin.com/in/rana-khaled'
+          name: 'Islam Abdelsalam',
+          role: 'Graphic Designer',
+          image: '/imgs/creative/Islam_graphic.jpg',
+    
         }
       ],
       developers: [
         {
-          name: 'Mostafa Reda',
-          role: 'Mobile Developer',
-          image: '/imgs/members/Omar-Negm.jpeg',
-          email: 'mostafa.reda@stemcs.club',
-          phone: '+20 100 345 6790',
-          linkedin: 'linkedin.com/in/mostafa-reda'
+        
         }
       ],
       marketers: [
         {
-          name: 'Salma Hassan',
-          role: 'Content Marketing Lead',
-          image: '/imgs/members/Moi.jpg',
-          email: 'salma.hassan@stemcs.club',
-          phone: '+20 100 567 8902',
-          linkedin: 'linkedin.com/in/salma-hassan'
+          name: 'Abdelaziz Ahmed',
+          role: 'Marketing Lead',
+          image: '/imgs/creativ/Abdo_Marketing.jpg',
+      
         }
       ]
     }
