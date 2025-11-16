@@ -486,7 +486,7 @@ const About: React.FC = () => {
        {
           name: 'Yassin Ahmed',
           role: 'Web Development',
-          image: '/imgs/board 2025/online/Yassin_web.jpg'
+          image: '/imgs/board 2025/online/yassin_web.jpg'
         }  , {
           name: 'Tareq Ahmed',
           role: 'Web Development',
@@ -501,13 +501,13 @@ const About: React.FC = () => {
        {
           name: 'Muhamed Waleed',
           role: 'Competitive Programming',
-          image: '/imgs/board 2025/online/Muhamed_CP.jpg',
+          image: '/imgs/board 2025/online/Muhamed_cp.jpg',
 
         }  ,
        {
           name: 'Faissal Mukhaimer',
           role: 'Competitive Programming',
-          image: '/imgs/board 2025/online/Faissal_CP.jpg',
+          image: '/imgs/board 2025/online/faissal_cp.jpg',
    
         }  ,
        {
