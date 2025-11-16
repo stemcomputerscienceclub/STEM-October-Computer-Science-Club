@@ -472,7 +472,7 @@ const About: React.FC = () => {
         {
           name: 'Adam Shaaban',
           role: 'Quantum Computing',
-          image: '/imgs/board 2025/mangement/Adam_quantum.jpg',
+          image: '/imgs/board 2025/offline/Adam_quantum.jpg',
   
         }
       ],
