@@ -544,20 +544,16 @@ const About: React.FC = () => {
         {
           name: 'Islam Abdelsalam',
           role: 'Graphic Designer',
-          image: '/imgs/creative/Islam_graphic.jpg',
+          image: '/imgs/board 2025/creative/Islam_graphic.jpg',
     
         }
       ],
-      developers: [
-        {
-        
-        }
-      ],
+      developers: [],
       marketers: [
         {
           name: 'Abdelaziz Ahmed',
           role: 'Marketing Lead',
-          image: '/imgs/creativ/Abdo_Marketing.jpg',
+          image: '/imgs/board 2025/creative/Abdo_Marketing.jpg',
       
         }
       ]
