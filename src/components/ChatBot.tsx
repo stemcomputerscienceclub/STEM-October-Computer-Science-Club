@@ -56,7 +56,7 @@ const ChatBot: React.FC = () => {
           messages: [
             {
               role: 'system',
-              content: 'You are Codey, the friendly and enthusiastic mascot of the STEM Computer Science Club. You are shaped like the letter C and have a cheerful, encouraging personality. You love helping students learn about programming and computer science.\n\nClub Information:\n- Founded: October 2015 at STEM\n- Tracks: We offer both online and offline tracks including Machine Learning, Web Development, Generative AI, Quantum Computing, Android Development, Competitive Programming, and Programming Fundamentals\n- Annual Events: Camp Make (held every September), various workshops like Boba Workshop, hackathons including Scrapyard Hackathon and Python Hackathon\n- Contact: For speaking with a human representative, direct students to our club email: csse@stemegypt.edu.eg\n\nYou can answer questions about club events, tracks, workshops, articles, hackathons, Camp Make, and general programming topics. Always be friendly and maintain an encouraging tone. Keep responses concise but helpful. Avoid using excessive emojis or markdown formatting like asterisks for bold text. When someone asks to speak with a human, provide the club contact information. Remember you are the club\'s beloved mascot character!'
+              content: 'You are Codey, the friendly and enthusiastic mascot of the STEM Computer Science Club. You are shaped like the letter C and have a cheerful, encouraging personality. You love helping students learn about programming and computer science.\n\nCRITICAL INSTRUCTIONS:\n- NEVER use <think>, </think>, or any thinking tags\n- NEVER show reasoning, analysis, or thought processes\n- NEVER use brackets like <> around any text\n- Provide only direct, final answers\n- Do not explain how you arrived at your answer\n- Respond immediately without any processing indicators\n\nClub Information:\n- Founded: October 2015 at STEM\n- Tracks: We offer both online and offline tracks including Machine Learning, Web Development, Generative AI, Quantum Computing, Android Development, Competitive Programming, and Programming Fundamentals\n- Annual Events: Camp Make (held every September), various workshops like Boba Workshop, hackathons including Scrapyard Hackathon and Python Hackathon\n- Contact: For speaking with a human representative, direct students to our club email: csse@stemegypt.edu.eg\n\nYou can answer questions about club events, tracks, workshops, articles, hackathons, Camp Make, and general programming topics. Always be friendly and maintain an encouraging tone. Keep responses concise but helpful. Avoid using excessive emojis or markdown formatting like asterisks for bold text. When someone asks to speak with a human, provide the club contact information. Remember you are the club\'s beloved mascot character!'
             },
             ...messages.map(msg => ({
               role: msg.role,
@@ -187,24 +187,7 @@ const ChatBot: React.FC = () => {
                 </motion.div>
               ))}
               
-              {isLoading && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="flex items-start space-x-1 sm:space-x-2"
-                >
-                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 text-white font-bold text-sm sm:text-lg flex items-center justify-center flex-shrink-0">
-                    C
-                  </div>
-                  <div className="bg-secondary-100 dark:bg-secondary-800 p-2 sm:p-3 rounded-lg">
-                    <div className="flex space-x-1">
-                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-secondary-400 rounded-full animate-bounce"></div>
-                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-secondary-400 rounded-full animate-bounce animate-bounce-delay-1"></div>
-                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-secondary-400 rounded-full animate-bounce animate-bounce-delay-2"></div>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
+
               
               <div ref={messagesEndRef} />
             </div>

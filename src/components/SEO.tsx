@@ -26,7 +26,7 @@ const SEO: React.FC<SEOProps> = ({
   article
 }) => {
   const siteTitle = process.env.REACT_APP_SITE_NAME || 'STEM CS Club';
-  const fullTitle = title.includes(siteTitle) ? title : `${title} | ${siteTitle}`;
+  const fullTitle = title && title.includes(siteTitle) ? title : `${title} | ${siteTitle}`;
 
   return (
     <Helmet>

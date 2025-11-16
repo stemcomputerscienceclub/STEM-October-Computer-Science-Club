@@ -8,6 +8,7 @@ import CodeyIntro from '../components/CodeyIntro';
 import CodeyNews from '../components/CodeyNews';
 // Import the ScrollToTop component to use its functionality
 import ScrollToTop from '../components/ScrollToTop';
+import { link } from 'fs';
 
 // Visual scroll-to-top button component
 const ScrollToTopButton: React.FC = () => {
@@ -291,14 +292,14 @@ const About: React.FC = () => {
           // email: 'omar.hassan@stemcs.club',
           // linkedin: 'linkedin.com/in/omar-hassan'
         },
-        {
-          name: 'Dr. Sarah Ahmed',
-          role: 'Teacher Supervisor',
-          image: '/imgs/members/Moi.jpg', // Using existing image as a placeholder
-          email: 'sarah.ahmed@stemegypt.edu.eg',
-          linkedin: 'linkedin.com/in/sarah-ahmed-cs-educator',
-          isTeacher: true
-        }
+        // {
+        //   name: 'Dr. Sarah Ahmed',
+        //   role: 'Teacher Supervisor',
+        //   image: '/imgs/members/Moi.jpg', // Using existing image as a placeholder
+        //   email: 'sarah.ahmed@stemegypt.edu.eg',
+        //   linkedin: 'linkedin.com/in/sarah-ahmed-cs-educator',
+        //   isTeacher: true
+        // }
       ],
 
       mentors: [{
@@ -399,51 +400,144 @@ const About: React.FC = () => {
         {
           name: 'Mohamed Ramadan',
           role: 'President',
-          image: '/imgs/members/Ahmed Adel.jpg',
-          email: 'nadia.farouk@stemcs.club',
-          phone: '+20 123 456 7894',
-          linkedin: 'linkedin.com/in/nadia-farouk'
+          image: '/imgs/board 2025/mangement/me22.jpg',
+          email: 'mohamedr7825@gmail.com',
+          phone: '+20 115 880 6644',
+          linkedin: 'https://www.linkedin.com/in/mohamed-ramadan-551a17272/'
         },
         {
           name: 'Yaseen Saad',
           role: 'Vice-President',
-          image: '/imgs/members/Omar-Negm.jpeg',
-          email: 'youssef.ibrahim@stemcs.club',
-          linkedin: 'linkedin.com/in/youssef-ibrahim'
+          image: '/imgs/board 2025/mangement/yasoo_webjpg.jpg',
+          email: 'yaseen.saad.frontend@gmail.com',
+          linkedin: 'https://www.linkedin.com/in/yaseen-mohamed-abdelal-483344255/'
         },
         {
           name: 'Mohamed Nady',
           role: 'Online coordinator',
-          image: '/imgs/members/Omar-Negm.jpeg',
-          email: 'youssef.ibrahim@stemcs.club',
-          linkedin: 'linkedin.com/in/youssef-ibrahim'
+          image: '/imgs/board 2025/mangement/nady_genai.jpg',
+          phone: '+20 110 278 8490'
         },
         {
           name: 'Mohamed Hassan',
           role: 'Computational Coordinator',
-          image: '/imgs/members/Omar-Negm.jpeg',
-          email: 'youssef.ibrahim@stemcs.club',
-          linkedin: 'linkedin.com/in/youssef-ibrahim'
+          image: '/imgs/board 2025/mangement/Muhamed_app.jpg',
+          email: 'Ed.m7md7asn@gmail.com',
+          linkedin: 'https://www.linkedin.com/in/mohamed-hassan-84962622a/',
+          phone: '+20 114 211 8210'
         }
       ],
       offlineMentors: [
         {
-          name: 'Dr. Amira Saleh',
-          role: 'Senior AI Engineer',
-          image: '/imgs/members/Moi.jpg',
-          email: 'amira.saleh@mentor.stemcs.club',
-          phone: '+20 100 123 4574',
-          linkedin: 'linkedin.com/in/amira-saleh'
+          name: 'Mohamed Ramadan',
+          role: 'AI/ML',
+          image: '/imgs/board 2025/mangement/me22.jpg',
+          email: 'mohamedr7825@gmail.com',
+          phone: '+20 115 880 6644',
+          linkedin: 'https://www.linkedin.com/in/mohamed-ramadan-551a17272/'
+        }, {
+          name: 'Youssef Tarek',
+          role: 'AI/ML',
+          image: '/imgs/board 2025/offline/youssef_ml.jpg',
+          phone: '+20 106 019 9608',
+          
+        },{
+          name: 'George Elsaba',
+          role: 'AI/ML',
+          image: '/imgs/board 2025/offline/george_ml.jpg',
+          phone: '+20 121 167 7840',
+          linkedin: 'https://www.linkedin.com/in/george-elsaba-4134b427a/'
+          
+        },
+        {
+          name: 'Yaseen Saad',
+          role: 'Web Development',
+          image: '/imgs/board 2025/mangement/yasoo_webjpg.jpg',
+          email: 'yaseen.saad.frontend@gmail.com',
+          linkedin: 'https://www.linkedin.com/in/yaseen-mohamed-abdelal-483344255/'
+        },  {
+          name: 'Abdelrahman Abdelkader',
+          role: 'Web Development',
+          image: '/imgs/board 2025/offline/Abdelrahman_web.jpg',
+          linkedin: 'https://www.linkedin.com/in/yaseen-mohamed-abdelal-483344255/'
+        },
+        {
+          name: 'Mohamed Hassan',
+          role: 'App Development',
+          image: '/imgs/board 2025/mangement/Muhamed_app.jpg',
+          email: 'Ed.m7md7asn@gmail.com',
+          linkedin: 'https://www.linkedin.com/in/mohamed-hassan-84962622a/',
+          phone: '+20 114 211 8210'
         }
       ],
       onlineMentors: [
         {
-          name: 'Hassan Ali',
-          role: 'Cloud Architect',
-          image: '/imgs/members/Zaki.jpg',
-          email: 'hassan.ali@mentor.stemcs.club',
-          phone: '+20 100 123 4575',
-          linkedin: 'linkedin.com/in/hassan-ali'
+          name: 'Abdelrahman Mohamed',
+          role: 'Web Development',
+          image: '/imgs/online/Abdelrahman_web.jpg'
+        }
+      ,
+       {
+          name: 'Yassin Ahmed',
+          role: 'Web Development',
+          image: '/imgs/online/Yassin_web.jpg'
+        }  , {
+          name: 'Tareq Ahmed',
+          role: 'Web Development',
+          image: '/imgs/online/Tareq_web.jpg'
+        }  ,
+       {
+          name: 'Ahmed Sameh',
+          role: 'Competitive Programming',
+          image: '/imgs/online/Ahmed_CP.jpg',
+        
+        }  ,
+       {
+          name: 'Muhamed Waleed',
+          role: 'Competitive Programming',
+          image: '/imgs/online/Muhamed_CP.jpg',
+
+        }  ,
+       {
+          name: 'Faissal Mukhaimer',
+          role: 'Competitive Programming',
+          image: '/imgs/online/Faissal_CP.jpg',
+   
+        }  ,
+       {
+          name: 'Hamza Amr',
+          role: 'Machine Learning',
+          image: '/imgs/online/amr_ml.jpg',
+        }  ,
+       {
+          name: 'Arwa Khaled',
+          role: 'Machine Learning',
+          image: '/imgs/online/Arwa_ml.jpg',
+        }  ,
+       {
+          name: 'Yousef Ahmed',
+          role: 'Gen AI',
+          image: '/imgs/online/Youssef_genai.jpg',
+        }  ,
+       {
+          name: 'Mohamed Nady',
+          role: 'Gen AI',
+          image: '/imgs/online/nady_genai.jpg',
+        }  ,
+       {
+          name: 'Salem Ahmed',
+          role: 'Fundementals programming',
+          image: '/imgs/online/Salam_fund.jpg',
+        }   ,
+       {
+          name: 'Youssef Mahmoud',
+          role: 'Fundementals programming',
+          image: '/imgs/online/youssef_fund.jpg',
+        },
+       {
+          name: 'Ahmed',
+          role: 'Quantum Computing',
+          image: '/imgs/online/ahmed_quantum.jpg',
         }
       ],
       graphicDesigners: [
