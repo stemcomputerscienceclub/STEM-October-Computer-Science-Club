@@ -438,7 +438,7 @@ const About: React.FC = () => {
         }, {
           name: 'Youssef Tarek',
           role: 'AI/ML',
-          image: '/imgs/board 2025/offline/youssef_ml.jpg',
+          image: '/imgs/board 2025/offline/Youssef_ml.jpg',
           phone: '+20 106 019 9608',
           
         },{
@@ -468,76 +468,82 @@ const About: React.FC = () => {
           email: 'Ed.m7md7asn@gmail.com',
           linkedin: 'https://www.linkedin.com/in/mohamed-hassan-84962622a/',
           phone: '+20 114 211 8210'
+        },
+        {
+          name: 'Adam Shaaban',
+          role: 'Quantum Computing',
+          image: '/imgs/board 2025/mangement/Adam_quantum.jpg',
+  
         }
       ],
       onlineMentors: [
         {
           name: 'Abdelrahman Mohamed',
           role: 'Web Development',
-          image: '/imgs/online/Abdelrahman_web.jpg'
+          image: '/imgs/board 2025/online/Abdelrahman_web.jpg'
         }
       ,
        {
           name: 'Yassin Ahmed',
           role: 'Web Development',
-          image: '/imgs/online/Yassin_web.jpg'
+          image: '/imgs/board 2025/online/Yassin_web.jpg'
         }  , {
           name: 'Tareq Ahmed',
           role: 'Web Development',
-          image: '/imgs/online/Tareq_web.jpg'
+          image: '/imgs/board 2025/online/Tareq_web.jpg'
         }  ,
        {
           name: 'Ahmed Sameh',
           role: 'Competitive Programming',
-          image: '/imgs/online/Ahmed_CP.jpg',
+          image: '/imgs/board 2025/online/Ahmed_CP.jpg',
         
         }  ,
        {
           name: 'Muhamed Waleed',
           role: 'Competitive Programming',
-          image: '/imgs/online/Muhamed_CP.jpg',
+          image: '/imgs/board 2025/online/Muhamed_CP.jpg',
 
         }  ,
        {
           name: 'Faissal Mukhaimer',
           role: 'Competitive Programming',
-          image: '/imgs/online/Faissal_CP.jpg',
+          image: '/imgs/board 2025/online/Faissal_CP.jpg',
    
         }  ,
        {
           name: 'Hamza Amr',
           role: 'Machine Learning',
-          image: '/imgs/online/amr_ml.jpg',
+          image: '/imgs/board 2025/online/amr_ml.jpg',
         }  ,
        {
           name: 'Arwa Khaled',
           role: 'Machine Learning',
-          image: '/imgs/online/Arwa_ml.jpg',
+          image: '/imgs/board 2025/online/Arwa_ml.jpg',
         }  ,
        {
           name: 'Yousef Ahmed',
           role: 'Gen AI',
-          image: '/imgs/online/Youssef_genai.jpg',
+          image: '/imgs/board 2025/online/Youssef_genai.jpg',
         }  ,
        {
           name: 'Mohamed Nady',
           role: 'Gen AI',
-          image: '/imgs/online/nady_genai.jpg',
+          image: '/imgs/board 2025/online/nady_genai.jpg',
         }  ,
        {
           name: 'Salem Ahmed',
           role: 'Fundementals programming',
-          image: '/imgs/online/Salam_fund.jpg',
+          image: '/imgs/board 2025/online/Salam_fund.jpg',
         }   ,
        {
           name: 'Youssef Mahmoud',
           role: 'Fundementals programming',
-          image: '/imgs/online/youssef_fund.jpg',
+          image: '/imgs/board 2025/online/youssef_fund.jpg',
         },
        {
           name: 'Ahmed',
           role: 'Quantum Computing',
-          image: '/imgs/online/ahmed_quantum.jpg',
+          image: '/imgs/board 2025/online/ahmed_quantum.jpg',
         }
       ],
       graphicDesigners: [
